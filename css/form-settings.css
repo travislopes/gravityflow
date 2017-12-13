@@ -214,3 +214,9 @@ tr#gaddon-setting-row-step_type label > span > i {
 .gravityflow-sub-setting{
     margin-bottom: 10px;
 }
+
+#next-step-if-skipped-setting {
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid lightgray
+}

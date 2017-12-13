@@ -937,7 +937,7 @@ PRIMARY KEY  (id)
 					),
 					array(
 						'name'           => 'condition',
-						'tooltip'        => esc_html__( "Build the conditional logic that should be applied to this step before it's allowed to be processed. If an entry does not meet the conditions of this step it will fall on to the next step in the list.", 'gravityflow' ),
+						'tooltip'        => esc_html__( "Build the conditional logic that should be applied to this step before it's allowed to be processed. Select the next step if skipped - if an entry does not match the conditional logic.", 'gravityflow' ),
 						'label'          => esc_html__( 'Condition', 'gravityflow' ),
 						'type'           => 'feed_condition',
 						'checkbox_label' => esc_html__( 'Enable Condition for this step', 'gravityflow' ),
@@ -2206,7 +2206,7 @@ PRIMARY KEY  (id)
 			$this->settings_hidden( $field );
 		}
 
-		public function settings_step_selector( $field ) {
+		public function settings_step_selector( $field, $echo = true ) {
 			$form = $this->get_current_form();
 			$feed_id = $this->get_current_feed_id();
 			$form_id = absint( $form['id'] );
@@ -2231,7 +2231,13 @@ PRIMARY KEY  (id)
 				'choices'    => $step_choices,
 			);
 
-			$this->settings_select( $step_selector_field );
+			$html = $this->settings_select( $step_selector_field, false );
+
+			if ( $echo ) {
+				echo $html;
+			}
+
+			return $html;
 		}
 
 		public function settings_editable_fields( $field ) {
@@ -6103,11 +6109,57 @@ AND m.meta_value='queued'";
 		 *
 		 * @return string
 		 */
-		public function settings_feed_condition( $field, $echo = true ) {
+		public function settings_feed_condition2( $field, $echo = true ) {
 			$entry_meta  = array_merge( $this->get_feed_condition_entry_meta(), $this->get_feed_condition_entry_properties() );
 			$find        = 'var feedCondition';
 			$replacement = sprintf( 'var entry_meta = %s; %s', json_encode( $entry_meta ), $find );
 			$html        = str_replace( $find, $replacement, parent::settings_feed_condition( $field, false ) );
+
+			if ( $echo ) {
+				echo $html;
+			}
+
+			return $html;
+		}
+
+		public function settings_feed_condition( $field, $echo = true ) {
+
+			$conditional_logic = $this->get_feed_condition_conditional_logic();
+
+			$enabled = $this->get_setting( 'feed_condition_conditional_logic' );
+			$enabled_style = $enabled ? '' : 'style="display:none;"';
+
+			$checkbox_field = $this->get_feed_condition_checkbox( $field );
+			$checkbox_field['onclick'] .= 'jQuery("#next-step-if-skipped-setting").toggle();';
+
+			$entry_meta  = array_merge( $this->get_feed_condition_entry_meta(), $this->get_feed_condition_entry_properties() );
+
+			$hidden_field = $this->get_feed_condition_hidden_field();
+			$instructions = isset( $field['instructions'] ) ? $field['instructions'] : esc_html__( 'Process this feed if', 'gravityforms' );
+			$html         = $this->settings_checkbox( $checkbox_field, false );
+			$html .= $this->settings_hidden( $hidden_field, false );
+
+			$next_step_field = array(
+				'name'          => 'destination_skipped',
+				'label'         => esc_html__( 'Next Step if NONE of the conditions match', 'gravityflow' ),
+				'type'          => 'step_selector',
+				'default_value' => 'next',
+			);
+			$skip_setting = esc_html__( 'Next Step if skipped', 'gravityflow' );
+			$skip_setting .= '&nbsp;' . $this->settings_step_selector( $next_step_field, false );
+			$html .= '<div id="feed_condition_conditional_logic_container"><!-- dynamically populated --></div>';
+			$html .= sprintf( '<div id="next-step-if-skipped-setting" %s>%s</div>', $enabled_style, $skip_setting );
+			$html .= '<script type="text/javascript">' .
+			         'var entry_meta = ' . json_encode( $entry_meta ) . ';' .
+			         'var feedCondition = new FeedConditionObj({' .
+			         'strings: { objectDescription: "' . esc_attr( $instructions ) . '" },' .
+			         'logicObject: ' . $conditional_logic .
+			         '}); </script>';
+
+
+			if ( $this->field_failed_validation( $field ) ) {
+				$html .= $this->get_error_icon( $field );
+			}
 
 			if ( $echo ) {
 				echo $html;
