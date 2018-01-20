@@ -1,1 +1,2 @@
+- Updated the Sprout Invoices step to support the new Sprout Invoices + Gravity Forms add-on.
 - Fixed an issue where, in some situations, getting the next step was not using the latest version of the entry.
