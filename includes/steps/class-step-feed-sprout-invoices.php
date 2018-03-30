@@ -151,15 +151,15 @@ class Gravity_Flow_Step_Feed_Sprout_Invoices extends Gravity_Flow_Step_Feed_Add_
 
 		if ( empty( $label ) ) {
 			switch ( $feed['meta']['si_generation'] ) {
-				case 'estimate' :
+				case 'estimate':
 					$label = esc_html__( 'Estimate (and Client Record)', 'gravityflow' );
 					break;
 
-				case 'invoice' :
+				case 'invoice':
 					$label = esc_html__( 'Invoice (and Client Record)', 'gravityflow' );
 					break;
 
-				case 'client' :
+				case 'client':
 					$label = esc_html__( 'Client (only)', 'gravityflow' );
 					break;
 			}
