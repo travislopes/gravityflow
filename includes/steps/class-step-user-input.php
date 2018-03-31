@@ -1228,7 +1228,8 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 		}
 
 		$existing_value = rgar( $entry, $field->id );
-		$value          = $field->get_value_save_entry( $existing_value, $form, $input_name, $entry['id'], $entry );
+		$this->maybe_pre_process_post_image_field( $field, $existing_value, $input_name );
+		$value = $field->get_value_save_entry( $existing_value, $form, $input_name, $entry['id'], $entry );
 
 		if ( ! empty( $value ) && $existing_value != $value ) {
 			$result = GFAPI::update_entry_field( $entry['id'], $field->id, $value );
