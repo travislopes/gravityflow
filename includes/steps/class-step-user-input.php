@@ -1228,7 +1228,8 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 		}
 
 		$existing_value = rgar( $entry, $field->id );
-		$value          = $field->get_value_save_entry( $existing_value, $form, $input_name, $entry['id'], $entry );
+		$this->maybe_pre_process_post_image_field( $field, $existing_value, $input_name );
+		$value = $field->get_value_save_entry( $existing_value, $form, $input_name, $entry['id'], $entry );
 
 		if ( ! empty( $value ) && $existing_value != $value ) {
 			$result = GFAPI::update_entry_field( $entry['id'], $field->id, $value );
@@ -1244,6 +1245,23 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 					gform_update_meta( $entry['id'], '_post_images', $post_images, $form['id'] );
 				}
 			}
+		}
+	}
+
+	/**
+	 * Add the existing post image URL to the $_gf_uploaded_files global so the image title, caption, and description can be updated.
+	 *
+	 * @since 2.1.2-dev
+	 *
+	 * @param GF_Field $field          The current field object.
+	 * @param string   $existing_value The current fields existing entry value.
+	 * @param string   $input_name     The input name to use when accessing the current fields values in the submission.
+	 */
+	public function maybe_pre_process_post_image_field( $field, $existing_value, $input_name ) {
+		if ( $existing_value && $field->type === 'post_image' && empty( $_FILES[ $input_name ]['name'] ) ) {
+			$parts = explode( '|:|', $existing_value );
+			global $_gf_uploaded_files;
+			$_gf_uploaded_files[ $input_name ] = $parts[0];
 		}
 	}
 
