@@ -1259,9 +1259,14 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 	 */
 	public function maybe_pre_process_post_image_field( $field, $existing_value, $input_name ) {
 		if ( $existing_value && $field->type === 'post_image' && empty( $_FILES[ $input_name ]['name'] ) ) {
-			$parts = explode( '|:|', $existing_value );
-			global $_gf_uploaded_files;
-			$_gf_uploaded_files[ $input_name ] = $parts[0];
+			$parts             = explode( '|:|', $existing_value );
+			$existing_filename = basename( rgar( $parts, 0 ) );
+			$new_filename      = rgar( GFFormsModel::$uploaded_files[ $field->formId ], $input_name );
+
+			if ( ! empty( $new_filename ) && $new_filename === $existing_filename ) {
+				global $_gf_uploaded_files;
+				$_gf_uploaded_files[ $input_name ] = $parts[0];
+			}
 		}
 	}
 
