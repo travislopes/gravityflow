@@ -2,7 +2,7 @@
 Contributors: stevehenty
 Tags: workflow, approvals, gravity forms
 Requires at least: 4.2
-Tested up to: 4.9.1
+Tested up to: 4.9.4
 License: GPL-3.0+
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -54,6 +54,44 @@ https://gravityflow.io/contact/
 Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.io/out/gravityforms).
 
 == ChangeLog ==
+
+= 2.1.1 =
+- Fixed editable Post Category field not being populated with the current entry value on the User Input step.
+- Fixed an issue which prevents the rendering of certain merge tags e.g. {workflow_form_submission_link} in extensions and custom code.
+
+= 2.1 =
+- Added support for the Gravity Perks Nested Forms add-on.
+- Added the current step as parameters to the gravityflow_feedback_approval_token and gravityflow_feedback_approval filters.
+- Added the filter gravityflow_feedback_cancel_workflow to allow the user feedback to be modified when the workflow is cancelled using the cancel workflow link.
+- Added the filter gravityflow_inbox_search_criteria to allow the search criteria to be modify.
+- Added the filter gravityflow_assignee_choices to allow the list of assignee choices to be modified in the step settings.
+- Added the filter gravityflow_step_schedule_timestamp to allow the scheduled start of steps to apply custom logic (business hours, delay specific entries, etc)
+- Added the filter gravityflow_event_limit_activity_page to allow the activity page to display custom amount of events
+- Added the filter gravityflow_discussion_items_display_toggle to allow view more / less effect to be modified per discussion field
+- Added the filter gravityflow_inbox_paging to inbox page to enable control of pagination options
+- Added the filter gravityflow_step_status_webhook to enable custom logic at conclusion of outbound webhook step processing
+- Added the filter gravityflow_response_message_webhook to enable customization of timeline note for an outbound webhook step
+- Added the Step ID # to workflow settings list. Accessible by mouseover in the row actions
+- Added the Step ID # to sub-title of edit step screen for existing steps
+- Updated the Status Page export to match table display and run gravityflow_field_value_status_table filter
+- Updated the Sliced Invoices integration.
+- Updated discussion field to display the view more / less effect on all step types for status and inbox pages. Previously limited to user input edit field.
+- Updated the Outgoing Webhook Step to handle multiple response codes appropriate statuses: 2xx (complete), 4xx (error_client), 5xx (error_server), other (error)
+- Fixed an issue where, in some situations, getting the next step was not using the latest version of the entry.
+- Fixed an issue where calculated product fields hidden by conditional logic could appear in order summary when the entry is updated on the User Input step.
+- Fixed an issue where feeds with conditional logic can block the progress of the workflow if the conditional is not met.
+- API: Updated the way assignees are handled to allow the base assignee class to be extended so new types of assignees can be created.
+
+
+= 2.0.1 =
+- Added the {workflow_fields} merge tag, similar to the {all_fields} merge tag with the following true/false attributes: empty, value, admin, editable and display.
+- Added 'Send to step' to admin action when workflow is complete.
+- Added the gravityflow_display_field_choices filter.
+- Added the gravityflow_date_format_entry_detail filter.
+- Added CSS RTL improvements.
+- Fixed an issue with the cron task to prevent running during the upgrade of Gravity Forms.
+- Fixed an issue where Section Breaks show during the User Input step regardless of being selected in the UI.
+
 
 = 2.0.0 =
 - Added the highlight setting to all the step settings.
