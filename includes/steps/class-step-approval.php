@@ -890,30 +890,6 @@ class Gravity_Flow_Step_Approval extends Gravity_Flow_Step {
 	}
 
 	/**
-	 * Replaces the step merge tags.
-	 *
-	 * @param string                $text     The text containing merge tags to be processed.
-	 * @param Gravity_Flow_Assignee $assignee The assignee properties.
-	 *
-	 * @return string
-	 */
-	public function replace_variables( $text, $assignee ) {
-		$text = parent::replace_variables( $text, $assignee );
-
-		$args = array(
-			'assignee' => $assignee,
-			'step'     => $this,
-		);
-
-		$text = Gravity_Flow_Merge_Tags::get( 'workflow_approve_token', $args )->replace( $text );
-		$text = Gravity_Flow_Merge_Tags::get( 'workflow_approve', $args )->replace( $text );
-		$text = Gravity_Flow_Merge_Tags::get( 'workflow_reject_token', $args )->replace( $text );
-		$text = Gravity_Flow_Merge_Tags::get( 'workflow_reject', $args )->replace( $text );
-
-		return $text;
-	}
-
-	/**
 	 * Provides a way for a step to process a token action before anything else. If feedback is returned it is displayed and nothing else with be rendered.
 	 *
 	 * @param array $action The action properties.

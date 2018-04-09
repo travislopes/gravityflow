@@ -1044,17 +1044,6 @@ abstract class Gravity_Flow_Step extends stdClass {
 	 * @return string
 	 */
 	public function replace_variables( $text, $assignee ) {
-
-		$args = array(
-			'assignee' => $assignee,
-			'step'     => $this,
-		);
-
-		$merge_tags = Gravity_Flow_Merge_Tags::get_all( $args );
-
-		foreach ( $merge_tags as $merge_tag ) {
-			$text = $merge_tag->replace( $text );
-		}
 		return $text;
 	}
 
