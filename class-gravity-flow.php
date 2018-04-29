@@ -561,6 +561,16 @@ PRIMARY KEY  (id)
 					),
 				),
 				array(
+					'handle'  => 'gravityflow_quicksearch',
+					'src'     => $this->get_base_url() . "/js/quicksearch{$min}.js",
+					'deps'    => array( 'jquery' ),
+					'version' => $this->_version,
+					'enqueue' => array(
+						array( 'query' => 'page=gf_edit_forms&view=settings&subview=gravityflow&fid=_notempty_' ),
+						array( 'query' => 'page=gf_edit_forms&view=settings&subview=gravityflow&fid=0' ),
+					),
+				),
+				array(
 					'handle'  => 'gf_routing_setting',
 					'src'     => $this->get_base_url() . "/js/routing-setting{$min}.js",
 					'deps'    => array( 'jquery' ),
@@ -588,6 +598,7 @@ PRIMARY KEY  (id)
 						'feedId'         => absint( rgget( 'fid' ) ),
 						'formId'         => absint( rgget( 'id' ) ),
 						'mergeTagLabels' => $this->get_form_settings_js_merge_tag_labels(),
+						'assigneeSearchPlaceholder' => esc_attr__( 'Type to search', 'gravityflow' ),
 					),
 				),
 				array(
@@ -1176,7 +1187,7 @@ PRIMARY KEY  (id)
 			$step_id = absint( rgget( 'fid' ) );
 
 			$step_title = $step_id === 0 ? $step_title = esc_html__( 'Step', 'gravityflow' ) : esc_html__( 'Step ID #', 'gravityflow' ) . $step_id;
-			
+
 			$settings[] = array(
 				'title'  => $step_title,
 				'fields' => array(
@@ -2750,10 +2761,10 @@ PRIMARY KEY  (id)
 				'delete'    => '<a title="' . esc_attr__( 'Delete this feed', 'gravityforms' ) . '" class="submitdelete" onclick="javascript: if(confirm(\'' . esc_js( __( 'WARNING: You are about to delete this item.', 'gravityforms' ) ) . esc_js( __( "'Cancel' to stop, 'OK' to delete.", 'gravityforms' ) ) . '\')){ gaddon.deleteFeed(\'' . esc_js( $feed_id ) . '\'); }" onkeypress="javascript: if(confirm(\'' . esc_js( __( 'WARNING: You are about to delete this item.', 'gravityforms' ) ) . esc_js( __( "'Cancel' to stop, 'OK' to delete.", 'gravityforms' ) ) . '\')){ gaddon.deleteFeed(\'' . esc_js( $feed_id ) . '\'); }" style="cursor:pointer;">' . esc_html__( 'Delete', 'gravityforms' ) . '</a>',
 				'step_id'   => 'Step ID# ' . $feed_id,
 			);
-	
+
 			return $links;
 		}
-	
+
 
 		/**
 		 * Returns the message to be displayed in the feeds list when no steps have been configured for the form.
