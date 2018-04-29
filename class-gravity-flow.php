@@ -6703,15 +6703,15 @@ AND m.meta_value='queued'";
 				'onchange' => 'jQuery(this).siblings(".gravityflow_display_fields_selected_container").toggle(this.value != "all_fields");',
 				'choices' => array(
 					array(
-						'label' => __( 'All fields', 'gravityflow' ),
+						'label' => __( 'Display all fields', 'gravityflow' ),
 						'value' => 'all_fields',
 					),
 					array(
-						'label' => __( 'All fields Except', 'gravityflow' ),
+						'label' => __( 'Display all fields except selected', 'gravityflow' ),
 						'value' => 'all_fields_except',
 					),
 					array(
-						'label' => __( 'Selected fields', 'gravityflow' ),
+						'label' => __( 'Hide all fields except selected', 'gravityflow' ),
 						'value' => 'selected_fields',
 					),
 				),
