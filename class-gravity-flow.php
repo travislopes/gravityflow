@@ -6700,11 +6700,15 @@ AND m.meta_value='queued'";
 				'label'    => '',
 				'type'     => 'select',
 				'default_value' => 'all_fields',
-				'onchange' => 'jQuery(this).siblings(".gravityflow_display_fields_selected_container").toggle(this.value=="selected_fields");',
+				'onchange' => 'jQuery(this).siblings(".gravityflow_display_fields_selected_container").toggle(this.value != "all_fields");',
 				'choices' => array(
 					array(
 						'label' => __( 'All fields', 'gravityflow' ),
 						'value' => 'all_fields',
+					),
+					array(
+						'label' => __( 'All fields Except', 'gravityflow' ),
+						'value' => 'all_fields_except',
 					),
 					array(
 						'label' => __( 'Selected fields', 'gravityflow' ),
@@ -6753,7 +6757,7 @@ AND m.meta_value='queued'";
 				'choices' => $fields_as_choices,
 			);
 			$this->settings_select( $mode_field );
-			$style = $mode_value == 'selected_fields' ? '' :  'style="display:none;"';
+			$style = $mode_value == 'all_fields' ? 'style="display:none;"' : '';
 			echo '<div class="gravityflow_display_fields_selected_container" ' . $style . '>';
 			$this->settings_select( $multiselect_field );
 			echo '</div>';
