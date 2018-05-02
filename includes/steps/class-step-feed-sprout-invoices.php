@@ -28,7 +28,7 @@ class Gravity_Flow_Step_Feed_Sprout_Invoices extends Gravity_Flow_Step_Feed_Add_
 	/**
 	 * The name of the class used by the add-on.
 	 *
-	 * @since 2.0.2-dev
+	 * @since 2.1.2-dev
 	 *
 	 * @var string
 	 */
@@ -129,7 +129,7 @@ class Gravity_Flow_Step_Feed_Sprout_Invoices extends Gravity_Flow_Step_Feed_Add_
 	/**
 	 * Checks if the feed based add-on is active.
 	 *
-	 * @since 2.0.2-dev
+	 * @since 2.1.2-dev
 	 *
 	 * @return bool
 	 */
@@ -140,7 +140,7 @@ class Gravity_Flow_Step_Feed_Sprout_Invoices extends Gravity_Flow_Step_Feed_Add_
 	/**
 	 * Returns the label of the given feed.
 	 *
-	 * @since 2.0.2-dev
+	 * @since 2.1.2-dev
 	 *
 	 * @param array $feed The add-on feed properties.
 	 *
@@ -173,7 +173,7 @@ class Gravity_Flow_Step_Feed_Sprout_Invoices extends Gravity_Flow_Step_Feed_Add_
 	 *
 	 * The Form Integrations and Invoice Submissions add-ons do not extend the GF add-on framework so lets return dummy feeds for them.
 	 *
-	 * @since 2.0.2-dev Added support for the feed based add-on.
+	 * @since 2.1.2-dev Added support for the feed based add-on.
 	 * @since 1.4.3-dev
 	 *
 	 * @return array
@@ -219,7 +219,7 @@ class Gravity_Flow_Step_Feed_Sprout_Invoices extends Gravity_Flow_Step_Feed_Add_
 	/**
 	 * Processes the given feed for the add-on.
 	 *
-	 * @since 2.0.2-dev Added support for the feed based add-on.
+	 * @since 2.1.2-dev Added support for the feed based add-on.
 	 * @since 1.4.3-dev
 	 *
 	 * @param array $feed The add-on feed properties.
@@ -251,7 +251,7 @@ class Gravity_Flow_Step_Feed_Sprout_Invoices extends Gravity_Flow_Step_Feed_Add_
 	 *
 	 * If enabled prevent the Sprout Invoices/Estimates integrations from running during submission for the current form.
 	 *
-	 * @since 2.0.2-dev Added support for the feed based add-on.
+	 * @since 2.1.2-dev Added support for the feed based add-on.
 	 * @since 1.4.3-dev
 	 */
 	public function intercept_submission() {
