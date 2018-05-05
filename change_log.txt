@@ -1,3 +1,4 @@
+- Added the Multi-User field.
 - Added the filter gravityflow_step_status_evaluation_approval to allow the status evaluation of approval step to check custom logic (X of Y approvals).
 - Added the "Display all fields except selected" choice to the Display Fields setting.
 - Added searching to the lists of assignees.
