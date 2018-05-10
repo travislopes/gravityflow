@@ -106,7 +106,9 @@ abstract class Gravity_Flow_Merge_Tag_Assignee_Base extends Gravity_Flow_Merge_T
 	}
 
 	/**
-	 * Get the reject token for the current assignee and step.
+	 * Get the token for the current assignee and step.
+	 *
+	 * @param string $action The access token action.
 	 *
 	 * @return string
 	 */
