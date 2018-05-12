@@ -415,7 +415,7 @@ class Gravity_Flow_Assignee {
 		$assignee_key = $this->step->get_current_assignee_key();
 		$assignee     = $this->step->get_assignee( $assignee_key );
 
-		if ( in_array( $this->get_type(), array( 'user_id', 'email' ) ) && $assignee->get_id() != $this->get_id() ) {
+		if ( ! $assignee || in_array( $this->get_type(), array( 'user_id', 'email' ) ) && $assignee->get_id() != $this->get_id() ) {
 			return false;
 		}
 
