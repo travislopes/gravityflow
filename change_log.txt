@@ -1,1 +1,2 @@
 - Fixed an issue preventing the one-click approve and reject links from working
+- Fixed a fatal error which can occur if the entry is deleted before workflow processing starts
