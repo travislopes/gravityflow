@@ -4753,7 +4753,7 @@ PRIMARY KEY  (id)
 		 */
 		public function filter_after_update_entry( $form, $entry_id ) {
 			$entry = GFAPI::get_entry( $entry_id );
-			if ( isset( $entry['workflow_final_status'] ) && $entry['workflow_final_status'] == 'pending' ) {
+			if ( ! is_wp_error( $entry ) && isset( $entry['workflow_final_status'] ) && $entry['workflow_final_status'] == 'pending' ) {
 				$this->process_workflow( $form, $entry_id );
 			}
 		}
@@ -4767,7 +4767,7 @@ PRIMARY KEY  (id)
 		public function process_workflow( $form, $entry_id ) {
 
 			$entry = GFAPI::get_entry( $entry_id );
-			if ( isset( $entry['workflow_step'] ) ) {
+			if ( ! is_wp_error( $entry ) && isset( $entry['workflow_step'] ) ) {
 
 				$this->log_debug( __METHOD__ . '() - processing. entry id ' . $entry_id );
 
