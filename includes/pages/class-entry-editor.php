@@ -422,10 +422,16 @@ class Gravity_Flow_Entry_Editor {
 			// Process merge tags in default values.
 			if ( is_array( $field->get_entry_inputs() ) ) {
 				foreach ( $value as $key => $item ) {
-					$value[ $key ] = GFCommon::replace_variables_prepopulate( $item );
+					$input = GFFormsModel::get_input( $field, $key );
+					if ( $item === rgar( $input, 'defaultValue' ) ) {
+						$value[ $key ] = GFCommon::replace_variables_prepopulate( $item );
+					}
 				}
 			} elseif ( $field->get_input_type() == 'email' && $field->emailConfirmEnabled ) {
-				$value = GFCommon::replace_variables_prepopulate( $value );
+				$input = GFFormsModel::get_input( $field, $field->id );
+				if ( $value === rgar( $input, 'defaultValue' ) ) {
+					$value = GFCommon::replace_variables_prepopulate( $value );
+				}
 				$value = array( $value, $value );
 			} else {
 				$value = $field->get_value_default_if_empty( $value );
