@@ -1,5 +1,0 @@
-- Fixed an issue preventing the one-click approve and reject links from working.
-- Fixed a fatal error which can occur if the entry is deleted before workflow processing starts.
-- Fixed a fatal error which can occur when entry detail permissions are evaluated with the status page shortcode set to allow anonymous access.
-- Fixed an issue with the Multi-User field on the User Input step where no fields are editable for the assignee.
-- Fixed a performance issue in the WP admin which can affect sites with a lot of users.
