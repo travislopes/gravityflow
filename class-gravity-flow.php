@@ -7392,7 +7392,7 @@ AND m.meta_value='queued'";
 			if ( isset( $search_criteria['search_criteria']['field_filters'] ) && is_array( $search_criteria['search_criteria']['field_filters'] ) ) {
 				$field_filters = $search_criteria['search_criteria']['field_filters'];
 				foreach ( $field_filters as &$field_filter ) {
-					if ( is_array( $field_filter ) && $field_filter['key'] == 'workflow_assignee' ) {
+					if ( is_array( $field_filter ) && isset( $field_filter['key'] ) && $field_filter['key'] == 'workflow_assignee' ) {
 						$assignee_key          = $field_filter['value'] == 'current_user' ? gravity_flow()->get_current_user_assignee_key() : $field_filter['value'];
 						$field_filter['key']   = 'workflow_' . str_replace( '|', '_', $assignee_key );
 						$field_filter['value'] = 'pending';

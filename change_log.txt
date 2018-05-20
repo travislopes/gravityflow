@@ -1,0 +1,1 @@
+- Fixed a notice which can get displayed if GravityView is installed.
