@@ -190,6 +190,11 @@ class Gravity_Flow_Entry_Editor {
 	 * @return array The filtered form.
 	 */
 	public function filter_gform_pre_render( $form ) {
+
+		if( $form['id'] != rgget( 'id' ) ) {
+			return $form;
+		}
+
 		$form                              = $this->remove_page_fields( $form );
 		$fields                            = array();
 		$dynamic_conditional_logic_enabled = $this->_is_dynamic_conditional_logic_enabled;
