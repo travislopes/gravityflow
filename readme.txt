@@ -55,6 +55,15 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+= 2.2.2 =
+- Added the filter gravityflow_form_ids_inbox which allows adjustment of form id(s) when searching for entries for the inbox table.
+- Added the filter gravityflow_form_ids_status which allows adjustment of form id(s) when searching for entries for the status table.
+- Fixed a notice which can get displayed if GravityView is installed.
+- Fixed a compatibility issue with the Nested Forms Perk.
+- Fixed an issue with the assignee policy for multiple role assignees.
+- Fixed an issue where date field expiration may use the wrong field to caluclate the expiration date.
+
+
 = 2.2.1 =
 - Fixed an issue preventing the one-click approve and reject links from working.
 - Fixed a fatal error which can occur if the entry is deleted before workflow processing starts.
