@@ -1,0 +1,1 @@
+- Fixed an issue which prevents tokens from working correctly with role assignees.
