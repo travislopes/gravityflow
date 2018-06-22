@@ -4640,6 +4640,7 @@ PRIMARY KEY  (id)
 				$events['workflow_approval']   = __( 'Workflow: approved or rejected', 'gravityflow' );
 				$events['workflow_user_input'] = __( 'Workflow: user input', 'gravityflow' );
 				$events['workflow_complete']   = __( 'Workflow: complete', 'gravityflow' );
+				$events['workflow_cancelled']  = __( 'Workflow: cancelled', 'gravityflow' );
 			}
 
 			return $events;
