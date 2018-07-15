@@ -5,4 +5,5 @@
 - Fixed the step ID in the notification ID.
 - Fixed an issue where reminders are sent out when forms or steps are inactive.
 - Fixed some issues with RTL styles
-- Fixed some issues with styles on the Twentyseventeen theme.
+- Fixed some issues with styles on the Twenty Seventeen theme.
+- Fixed an issue with the status shortcode where the workflow_info and step_status attributes are ignored.
