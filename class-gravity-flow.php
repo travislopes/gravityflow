@@ -4085,7 +4085,7 @@ PRIMARY KEY  (id)
 			<div class="wrap gf_entry_wrap gravityflow_workflow_wrap gravityflow_workflow_submit">
 				<?php if ( $admin_ui ) :	?>
 					<h2 class="gf_admin_page_title">
-						<img width="45" height="22" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravityflow-icon-blue-grad.svg" style="margin-right:5px;"/>
+						<img width="45" height="22" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravity-flow-icon-cropped.svg" style="margin-right:5px;"/>
 
 						<span><?php esc_html_e( 'Submit a Workflow Form', 'gravityflow' ); ?></span>
 
@@ -4325,7 +4325,7 @@ PRIMARY KEY  (id)
 				<div class="wrap gf_entry_wrap gravityflow_workflow_wrap gravityflow_workflow_detail">
 					<?php if ( $args['show_header'] ) :	?>
 						<h2 class="gf_admin_page_title">
-							<img width="45" height="22" src="<?php echo $this->get_base_url(); ?>/images/gravityflow-icon-blue-grad.svg" style="margin-right:5px;"/>
+							<img width="45" height="22" src="<?php echo $this->get_base_url(); ?>/images/gravity-flow-icon-cropped.svg" style="margin-right:5px;"/>
 							<span><?php esc_html_e( 'Workflow Inbox', 'gravityflow' ); ?></span>
 						</h2>
 
@@ -4371,7 +4371,7 @@ PRIMARY KEY  (id)
 
 				<?php if ( $args['display_header'] ) : ?>
 					<h2 class="gf_admin_page_title">
-						<img width="45" height="22" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravityflow-icon-blue-grad.svg" style="margin-right:5px;"/>
+						<img width="44px" height="22px" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravity-flow-icon-cropped.svg" style="margin-right:5px;"/>
 						<span><?php esc_html_e( 'Workflow Status', 'gravityflow' ); ?></span>
 					</h2>
 
@@ -4415,7 +4415,7 @@ PRIMARY KEY  (id)
 
 				<?php if ( $args['display_header'] ) : ?>
 					<h2 class="gf_admin_page_title">
-						<img width="45" height="22" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravityflow-icon-blue-grad.svg" style="margin-right:5px;"/>
+						<img width="45" height="22" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravity-flow-icon-cropped.svg" style="margin-right:5px;"/>
 
 						<span><?php esc_html_e( 'Workflow Activity', 'gravityflow' ); ?></span>
 
@@ -4461,7 +4461,7 @@ PRIMARY KEY  (id)
 
 				<?php if ( $args['display_header'] ) : ?>
 					<h2 class="gf_admin_page_title">
-						<img width="45" height="22" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravityflow-icon-blue-grad.svg" style="margin-right:5px;"/>
+						<img width="45" height="22" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravity-flow-icon-cropped.svg" style="margin-right:5px;"/>
 
 						<span><?php esc_html_e( 'Workflow Reports', 'gravityflow' ); ?></span>
 
