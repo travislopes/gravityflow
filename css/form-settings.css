@@ -193,7 +193,6 @@ tr#gaddon-setting-row-step_type .gaddon-setting-radio{
 }
 
 tr#gaddon-setting-row-step_type label > span > i {
-    width:32px;
     height:32px;
     display:inline-block;
     font-size:2.5em;
