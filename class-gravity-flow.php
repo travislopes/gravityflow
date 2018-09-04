@@ -7135,46 +7135,61 @@ AND m.meta_value='queued'";
 				}
 			}
 
-			return array(
-				'ip'             => array(
-					'label'  => esc_html__( 'User IP', 'gravityflow' ),
-					'filter' => array(
-						'operators' => array( 'is', 'isnot', '>', '<', 'contains' ),
+			$form_id = absint( rgget( 'id' ) );
+
+			/**
+			 * Allows feed condition entry properties to be modified for the form.
+			 *
+			 * @since 2.2.4-dev
+			 *
+			 * @param array $properties The feed condition entry properties.
+			 * @param int   $form_id Form id.
+			 */
+			$properties = apply_filters( 'gravityflow_feed_condition_entry_properties',
+				array(
+					'ip'             => array(
+						'label'  => esc_html__( 'User IP', 'gravityflow' ),
+						'filter' => array(
+							'operators' => array( 'is', 'isnot', '>', '<', 'contains' ),
+						),
+					),
+					'source_url'     => array(
+						'label'  => esc_html__( 'Source URL', 'gravityflow' ),
+						'filter' => array(
+							'operators' => array( 'is', 'isnot', '>', '<', 'contains' ),
+						),
+					),
+					'payment_status' => array(
+						'label'  => esc_html__( 'Payment Status', 'gravityflow' ),
+						'filter' => array(
+							'operators' => array( 'is', 'isnot' ),
+							'choices'   => $this->get_entry_payment_statuses_as_choices(),
+						),
+					),
+					'payment_amount' => array(
+						'label'  => esc_html__( 'Payment Amount', 'gravityflow' ),
+						'filter' => array(
+							'operators' => array( 'is', 'isnot', '>', '<', 'contains' ),
+						),
+					),
+					'transaction_id' => array(
+						'label'  => esc_html__( 'Transaction ID', 'gravityflow' ),
+						'filter' => array(
+							'operators' => array( 'is', 'isnot', '>', '<', 'contains' ),
+						),
+					),
+					'created_by' => array(
+						'label'  => esc_html__( 'Created By', 'gravityflow' ),
+						'filter' => array(
+							'operators' => array( 'is', 'isnot' ),
+							'choices'   => $user_choices,
+						),
 					),
 				),
-				'source_url'     => array(
-					'label'  => esc_html__( 'Source URL', 'gravityflow' ),
-					'filter' => array(
-						'operators' => array( 'is', 'isnot', '>', '<', 'contains' ),
-					),
-				),
-				'payment_status' => array(
-					'label'  => esc_html__( 'Payment Status', 'gravityflow' ),
-					'filter' => array(
-						'operators' => array( 'is', 'isnot' ),
-						'choices'   => $this->get_entry_payment_statuses_as_choices(),
-					),
-				),
-				'payment_amount' => array(
-					'label'  => esc_html__( 'Payment Amount', 'gravityflow' ),
-					'filter' => array(
-						'operators' => array( 'is', 'isnot', '>', '<', 'contains' ),
-					),
-				),
-				'transaction_id' => array(
-					'label'  => esc_html__( 'Transaction ID', 'gravityflow' ),
-					'filter' => array(
-						'operators' => array( 'is', 'isnot', '>', '<', 'contains' ),
-					),
-				),
-				'created_by' => array(
-					'label'  => esc_html__( 'Created By', 'gravityflow' ),
-					'filter' => array(
-						'operators' => array( 'is', 'isnot' ),
-						'choices'   => $user_choices,
-					),
-				),
+				$form_id
 			);
+
+			return $properties;
 		}
 
 		/**
