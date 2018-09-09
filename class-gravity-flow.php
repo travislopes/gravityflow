@@ -198,7 +198,13 @@ if ( class_exists( 'GFForms' ) ) {
 			add_action( 'gform_register_init_scripts', array( $this, 'filter_gform_register_init_scripts' ), 10, 3 );
 			add_action( 'wp_login', array( $this, 'filter_wp_login' ), 10, 2 );
 			add_action( 'gform_post_add_entry', array( $this, 'action_gform_post_add_entry' ), 10, 2 );
-			add_action( 'gform_after_submission', array( $this, 'after_submission' ), 9, 2 );
+
+			if ( $this->is_gravityforms_supported( '2.3.3.10' ) ) {
+				add_action( 'gform_pre_handle_confirmation', array( $this, 'after_submission' ), 9, 2 );
+			} else {
+				add_action( 'gform_after_submission', array( $this, 'after_submission' ), 9, 2 );
+			}
+
 			add_action( 'gform_after_update_entry', array( $this, 'filter_after_update_entry' ), 10, 2 );
 
 			$this->add_delayed_payment_support(
@@ -4721,7 +4727,11 @@ PRIMARY KEY  (id)
 
 			if ( $is_delayed ) {
 				$this->log_debug( __METHOD__ . '() - processing delayed for entry id ' . $entry['id'] );
-				remove_action( 'gform_after_submission', array( $this, 'after_submission' ), 9 );
+				if ( $this->is_gravityforms_supported( '2.3.3.10' ) ) {
+					remove_action( 'gform_pre_handle_confirmation', array( $this, 'after_submission' ), 9 );
+				} else {
+					remove_action( 'gform_after_submission', array( $this, 'after_submission' ), 9 );
+				}
 			} else {
 				gform_update_meta( $entry['id'], "{$this->_slug}_is_fulfilled", true );
 			}
@@ -7289,6 +7299,9 @@ AND m.meta_value='queued'";
 		/**
 		 * Target for the gform_pre_replace_merge_tags filter. Replaces the workflow_timeline and created_by merge tags.
 		 *
+		 * @since 2.2.4 Added the assignee to the merge tag if the current user is an assignee.
+		 * @since unknown
+		 *
 		 * @param string $text       The text which may contain merge tags to be processed.
 		 * @param array  $form       The current form.
 		 * @param array  $entry      The current entry.
@@ -7306,7 +7319,21 @@ AND m.meta_value='queued'";
 			}
 
 			$step = gravity_flow()->get_current_step( $form, $entry );
-			$args = compact( 'form', 'entry', 'url_encode', 'esc_html', 'nl2br', 'format', 'step' );
+
+			$assignee = null;
+
+			if ( $step ) {
+				$current_assignees = $step->get_assignees();
+				foreach ( $current_assignees as $current_assignee ) {
+					if ( $current_assignee->is_current_user() ) {
+						$assignee = $current_assignee;
+						break;
+					}
+				}
+			}
+
+			$args = compact( 'form', 'entry', 'url_encode', 'esc_html', 'nl2br', 'format', 'step', 'assignee' );
+
 			$merge_tags = Gravity_Flow_Merge_Tags::get_all( $args );
 
 			foreach ( $merge_tags as $merge_tag ) {
