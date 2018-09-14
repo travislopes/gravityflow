@@ -206,6 +206,7 @@ table#gravityflow-inbox th{
 }
 .rtl table#gravityflow-inbox th{
     border-left:0;
+    text-align: right;
 }
 table#gravityflow-inbox td {
     padding: 0;
@@ -213,6 +214,7 @@ table#gravityflow-inbox td {
 }
 .rtl table#gravityflow-inbox td {
     border-left:0;
+    text-align: right;
 }
 table#gravityflow-inbox td a {
     text-decoration:none!important;
