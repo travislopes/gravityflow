@@ -317,7 +317,7 @@ class Gravity_Flow_Step_Webhook extends Gravity_Flow_Step {
 				'label'               => esc_html__( 'Response Field Values', 'gravityflow' ),
 				'type'                => 'generic_map',
 				'enable_custom_key'   => false,
-				'enable_custom_value' => false,
+				'enable_custom_value' => true,
 				'key_field_title'     => esc_html__( 'Key', 'gravityflow' ),
 				'value_field_title'   => esc_html__( 'Field', 'gravityflow' ),
 				'value_choices'       => $this->value_mappings(),
