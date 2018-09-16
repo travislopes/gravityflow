@@ -280,7 +280,7 @@ class Gravity_Flow_Step_Webhook extends Gravity_Flow_Step {
 					'enable_custom_key'   => false,
 					'enable_custom_value' => true,
 					'key_field_title'     => esc_html__( 'Key', 'gravityflow' ),
-					'value_field_title'   => esc_html__( 'Value', 'gravityflow' ),
+					'value_field_title'   => esc_html__( 'Field', 'gravityflow' ),
 					'value_choices'       => $this->value_mappings(),
 					'tooltip'             => '<h6>' . esc_html__( 'Mapping', 'gravityflow' ) . '</h6>' . esc_html__( 'Map the fields of this form to the selected form. Values from this form will be saved in the entry in the selected form', 'gravityflow' ),
 					'dependency'          => array(
