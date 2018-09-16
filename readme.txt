@@ -2,7 +2,7 @@
 Contributors: stevehenty
 Tags: workflow, approvals, gravity forms
 Requires at least: 4.2
-Tested up to: 4.9.5
+Tested up to: 4.9.8
 License: GPL-3.0+
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,7 +33,7 @@ Twitter: [Gravity Flow](https://twitter.com/GravityFlow_io)
 
 1. [Purchase and install Gravity Forms](https://gravityflow.io/out/gravityforms)
 2. Wordpress 4.2+
-3. Gravity Forms 2.1+
+3. Gravity Forms 2.3+
 
 
 = Support =
@@ -55,6 +55,22 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+= 2.3 =
+- Added "Authorized" as an available choice for the entry Payment Status property in the step condition setting.
+- Added response field mapping for JSON values to the Outgoing Webhook step.
+- Added gravityflow_entry_webhook_response_mapping to allow the entry/response values to be adjusted during webhook response mapping.
+- Added gravityflow_columns_inbox_table to allow columns in inbox to be adjusted in similar fashion to status (gravityflow_columns_status_table)
+- Added gravityflow_date_format_current_step_merge_tag filter to allow the date/time-based modifiers for {current_step} adjust format: expiration, schedule, and start.
+- Added gravityflow_feed_condition_entry_properties filter to allow modifying entry properties in the feed condition.
+- Added admin notices when license keys are not valid.
+- Added support for tokens in Gravity Forms confirmations. Requires Gravity Forms 2.3.3.10.
+- Updated the Status Table Step Column to display the queued start time for a scheduled step and the expiration time for a step when set.
+- Updated the Entry Detail workflow info box display of step expiration date to use existing gravityflow_date_format_entry_detail filter.
+- Updated the step condition setting, inbox, and status pages to support custom payment statuses added by the gform_payment_statuses filter with Gravity Forms 2.4 and greater.
+- Fixed an issue with the Multi-User field on the entry detail pages where the ID is displayed instead of the user's name.
+- Fixed an issue with the File Upload field display the inbox shortcode page via fields attribute. The file icon/link was not displaying and generating PHP error.
+- Fixed RTL CSS in the inbox and entry detail page for Divi and other themes that don't fully support RTL.
+
 = 2.2.3 =
 - Added the "Workflow: cancelled" notification event for sending form notifications when the workflow is cancelled.
 - Added the merge_tag {current_step} with [modifiers] for duration (time), expiration (date/time), ID, name (default), schedule (date/time), start (date/time) and type.
@@ -66,8 +82,6 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 - Fixed some issues with RTL styles
 - Fixed some issues with styles on the Twenty Seventeen theme.
 - Fixed an issue with the status shortcode where the workflow_info and step_status attributes are ignored.
-
-
 
 = 2.2.2 =
 - Added the filter gravityflow_form_ids_inbox which allows adjustment of form id(s) when searching for entries for the inbox table.
