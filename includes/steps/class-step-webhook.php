@@ -280,7 +280,7 @@ class Gravity_Flow_Step_Webhook extends Gravity_Flow_Step {
 					'enable_custom_key'   => false,
 					'enable_custom_value' => true,
 					'key_field_title'     => esc_html__( 'Key', 'gravityflow' ),
-					'value_field_title'   => esc_html__( 'Field', 'gravityflow' ),
+					'value_field_title'   => esc_html__( 'Value', 'gravityflow' ),
 					'value_choices'       => $this->value_mappings(),
 					'tooltip'             => '<h6>' . esc_html__( 'Mapping', 'gravityflow' ) . '</h6>' . esc_html__( 'Map the fields of this form to the selected form. Values from this form will be saved in the entry in the selected form', 'gravityflow' ),
 					'dependency'          => array(
@@ -317,11 +317,11 @@ class Gravity_Flow_Step_Webhook extends Gravity_Flow_Step {
 				'label'               => esc_html__( 'Response Field Values', 'gravityflow' ),
 				'type'                => 'generic_map',
 				'enable_custom_key'   => false,
-				'enable_custom_value' => true,
+				'enable_custom_value' => false,
 				'key_field_title'     => esc_html__( 'Key', 'gravityflow' ),
-				'value_field_title'   => esc_html__( 'Value', 'gravityflow' ),
+				'value_field_title'   => esc_html__( 'Field', 'gravityflow' ),
 				'value_choices'       => $this->value_mappings(),
-				'tooltip'             => '<h6>' . esc_html__( 'Mapping', 'gravityflow' ) . '</h6>' . esc_html__( 'Map selected field values from the request response to the form. Values from the response will be saved in the entry in the selected form', 'gravityflow' ),
+				'tooltip'             => '<h6>' . esc_html__( 'Response Mapping', 'gravityflow' ) . '</h6>' . esc_html__( 'Map selected field values from the request response to the form. Values from the response will be saved in the entry in the selected form.', 'gravityflow' ),
 				'dependency'          => array(
 					'field'  => 'response_body',
 					'values' => array( 'select_fields' ),
