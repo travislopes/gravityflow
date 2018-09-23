@@ -56,7 +56,7 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 == ChangeLog ==
 
 = 2.3.1 =
-- Added support for depp parsing of the webhook response values. e.g. "translations\0\text"
+- Added support for deep parsing of the webhook response values. e.g. "translations\0\text"
 - Added the gravityflow_webhook_url_in_note filter to prevent the webhook URL from containing the URL. e.g. add_filter( 'gravityflow_webhook_url_in_note', '__return_false' );
 
 = 2.3 =
