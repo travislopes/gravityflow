@@ -57,6 +57,7 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 = 2.3.1 =
 - Added support for depp parsing of the webhook response values. e.g. "translations\0\text"
+- Added the gravityflow_webhook_url_in_note filter to prevent the webhook URL from containing the URL. e.g. add_filter( 'gravityflow_webhook_url_in_note', '__return_false' );
 
 = 2.3 =
 - Added "Authorized" as an available choice for the entry Payment Status property in the step condition setting.
