@@ -55,6 +55,9 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+= 2.3.1 =
+- Added support for depp parsing of the webhook response values. e.g. "translations\0\text"
+
 = 2.3 =
 - Added "Authorized" as an available choice for the entry Payment Status property in the step condition setting.
 - Added response field mapping for JSON values to the Outgoing Webhook step.
