@@ -672,11 +672,16 @@ class Gravity_Flow_Step_Webhook extends Gravity_Flow_Step {
 					return;
 				}
 
-				$response_body = wp_remote_retrieve_body( $response );
+				$data = wp_remote_retrieve_body( $response );
+
+				if ( empty( $data ) ) {
+					$this->log_debug( __METHOD__ . '(): Response body empty' );
+					return;
+				}
 
 				// Remove UTF-8 BOM if present, json_decode() does not like it.
-				if ( substr( $response_body, 0, 3 ) == pack( "CCC", 0xEF, 0xBB, 0xBF ) ) {
-					$data = substr( $response_body, 3 );
+				if ( substr( $data, 0, 3 ) == pack( "CCC", 0xEF, 0xBB, 0xBF ) ) {
+					$data = substr( $data, 3 );
 				}
 
 				$data = trim( $data );
