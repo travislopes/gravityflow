@@ -672,7 +672,16 @@ class Gravity_Flow_Step_Webhook extends Gravity_Flow_Step {
 					return;
 				}
 
-				$data = json_decode( wp_remote_retrieve_body( $response ), true );
+				$response_body = wp_remote_retrieve_body( $response );
+
+				// Remove UTF-8 BOM if present, json_decode() does not like it.
+				if ( substr( $response_body, 0, 3 ) == pack( "CCC", 0xEF, 0xBB, 0xBF ) ) {
+					$data = substr( $response_body, 3 );
+				}
+
+				$data = trim( $data );
+
+				$data = json_decode( $data, true );
 
 				if ( ! is_array( $data ) ) {
 					$this->log_debug( __METHOD__ . '(): Response body does not include properly formatted JSON' );
