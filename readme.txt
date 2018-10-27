@@ -55,6 +55,9 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+= 2.3.3 =
+- Fixed an issue where delayed feeds are not delayed on Gravity Forms >2.3.4.2
+
 = 2.3.2 =
 - Added the gravityflow_step_expiration_timestamp filter.
 - Added the step merge tag attribute to allow merge tags to specify the step for which tokens must be generated. This allows feed add-ons to specify the step. For example, a Twilio or Slack message can contain a one-click approval link for the next step.
