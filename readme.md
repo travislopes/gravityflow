@@ -62,6 +62,10 @@ Contributors:
 * Jake Jackson @gravitypdf
 * WP Pro Translations (https://wp-translations.org/)
 
+Thanks to [BrowserStack](https://www.browserstack.com) for sponsoring the automated browser testing.
+
+![BrowserStack](https://gravityflow.io/wp-content/uploads/2015/05/browserstack-300x64.png)
+
 ## Legal
 Gravity Flow is a legally registered trademark belonging to Steven Henty S.L. Further details: https://gravityflow.io/trademark
 
