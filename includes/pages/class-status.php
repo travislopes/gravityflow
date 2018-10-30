@@ -92,6 +92,10 @@ class Gravity_Flow_Status {
 		if ( ! isset( $args['constraint_filters']['form_id'] ) ) {
 			$args['constraint_filters']['form_id'] = 0;
 		}
+		if ( ! isset( $args['constraint_filters']['assignee_id'] ) ) {
+			$args['constraint_filters']['assignee_id'] = '';
+		}
+
 		if ( ! isset( $args['constraint_filters']['start_date'] ) ) {
 			$args['constraint_filters']['start_date'] = '';
 		}
@@ -465,17 +469,18 @@ class Gravity_Flow_Status_Table extends WP_List_Table {
 
 			<div id="gravityflow-status-date-filters">
 				<?php
-				$filter_entry_id = $this->entry_id_input();
-				$start_date      = $this->date_input( esc_html__( 'Start:', 'gravityflow' ), 'start_date' );
-				$end_date        = $this->date_input( esc_html__( 'End:', 'gravityflow' ), 'end_date' );
-				$filter_form_id  = $this->form_select();
+				$filter_entry_id     = $this->entry_id_input();
+				$start_date          = $this->date_input( esc_html__( 'Start:', 'gravityflow' ), 'start_date' );
+				$end_date            = $this->date_input( esc_html__( 'End:', 'gravityflow' ), 'end_date' );
+				$filter_assignee_id  = $this->assignee_select();
+				$filter_form_id      = $this->form_select();
 				$this->status_input();
 				?>
 
 				<div id="entry_filters" style="display:inline-block;"></div>
 				<input type="submit" class="button-secondary" value="<?php esc_html_e( 'Apply', 'gravityflow' ); ?>"/>
 
-				<?php if ( ! empty( $start_date ) || ! empty( $end_date ) || ! empty( $filter_form_id ) | ! empty( $filter_entry_id ) ) : ?>
+				<?php if ( ! empty( $start_date ) || ! empty( $end_date ) || ! empty( $filter_form_id ) || ! empty( $filter_assignee_id ) || ! empty( $filter_entry_id ) ) : ?>
 					<a href="<?php echo esc_url( $this->base_url ); ?>"
 					   class="button-secondary"><?php esc_html_e( 'Clear Filter', 'gravityflow' ); ?></a>
 				<?php endif; ?>
@@ -557,6 +562,38 @@ class Gravity_Flow_Status_Table extends WP_List_Table {
 
 		}
 	}
+
+	/**
+	 * Output the assignee drop down or a hidden input if an assignee was specified in the constraint filters.
+	 *
+	 * @return string|int $filter_assignee_id The assignee ID to filter the entries by.
+	 */
+	public function assignee_select() {
+		if ( ! empty( $this->constraint_filters['assignee_id'] ) ) {
+
+			printf( '<input type="hidden" name="assignee-id" id="gravityflow-form-select" value="%s">', esc_attr( $this->constraint_filters['assignee_id'] ) );
+
+			return '';
+
+		} else {
+
+			$filter_assignee_id = empty( $_REQUEST['assignee-id'] ) ? '' : absint( $_REQUEST['assignee-id'] );
+			$selected       = '';
+			$options        = sprintf( '<option value="" %s >%s</option>', $selected, esc_html__( 'Workflow Assignee', 'gravityflow' ) );
+			$users = get_users();
+
+			foreach ( $users as $user ) {
+				$selected = selected( $filter_assignee_id, $user->ID, false );
+				$options .= sprintf( '<option value="%d" %s>%s</option>', $user->ID, $selected, esc_html( $user->display_name ) );
+			}
+
+			printf( '<select id="gravityflow-assignee-select" name="assignee-id">%s</select>', $options );
+
+			return $filter_assignee_id;
+
+		}
+	}
+
 
 	/**
 	 * Output the hidden input for the status filter.
@@ -1679,6 +1716,13 @@ class Gravity_Flow_Status_Table extends WP_List_Table {
 			$search_criteria['field_filters'][] = array(
 				'key'   => 'id',
 				'value' => absint( $_REQUEST['entry-id'] ),
+			);
+		}
+
+		if ( ! empty( $_REQUEST['assignee-id'] ) ) {
+			$search_criteria['field_filters'][] = array(
+				'key'   => 'workflow_user_id_' . absint( $_REQUEST['assignee-id'] ) ,
+				'value' => 'pending',
 			);
 		}
 
