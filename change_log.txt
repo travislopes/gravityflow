@@ -1,3 +1,4 @@
+- Added approval step setting for notification on revert (only displays when revert setting for user input step is selected).
 - Added the Gravity_Flow_API::get_inbox_entries() and Gravity_Flow_API::get_inbox_entries_count() methods.
 - Added settings for the Email Service, default From Name, and default From Email.
 - Added support for the Gravity Forms Advanced Post Creation Add-On.
