@@ -22,6 +22,7 @@ $I->selectOption( 'input[name=input_7]', 'Third Choice' );
 $I->scrollTo( [ 'css' => '.gform_page_footer .gform_next_button' ], 20, 50 ); // needed for chromedriver
 // Next page
 $I->click( '.gform_page_footer .gform_next_button' );
+$I->waitForElement( 'select[name=input_20]', 3 );
 $I->selectOption( 'select[name=input_20]', 'Third Choice' );
 
 //$I->makeScreenshot( 'Before form submit.' );
@@ -30,7 +31,7 @@ $I->click( 'input[type=submit]' );
 
 //$I->makeScreenshot( 'Form submitted.' );
 
-$I->see( 'Thanks for contacting us!' );
+$I->waitForText( 'Thanks for contacting us!', 3 );
 
 // Login to wp-admin
 $I->loginAsAdmin();
@@ -41,6 +42,7 @@ $I->amOnWorkflowPage( 'Inbox' );
 $I->click( '0014 Two Pages Rejected' );
 
 // Reject
+$I->waitForText( 'Reject', 3 );
 $I->click( 'Reject' );
 
 // Complete

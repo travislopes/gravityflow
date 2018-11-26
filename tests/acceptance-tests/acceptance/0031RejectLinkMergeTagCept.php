@@ -17,6 +17,7 @@ $I->resetCookie( 'gflow_access_token' );
 
 // Submit the form
 $I->amOnPage( '/0031-reject-link-merge-tag' );
+$I->waitForText( '0031 Reject Link Merge Tag', 3 );
 $I->see( '0031 Reject Link Merge Tag' );
 $I->click( 'Submit' );
 $I->waitForText( 'Thanks for contacting us! We will get in touch with you shortly.', 3 );
@@ -29,7 +30,8 @@ $I->see( 'Reject Link: Reject' );
 
 // Test that the link token works for the email field assignee.
 $I->click( 'Reject' );
-$I->waitForText( 'INBOX', 3 );
+$I->scrollTo( [ 'css' => '.site-title' ] );
+$I->see( 'inbox' );
 //$I->see( 'Entry Rejected' ); // Occurs when the test is run on its own.
 //$I->see( "You don't have permission to view this entry." ); // Occurs when multiple tests run.
 

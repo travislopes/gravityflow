@@ -14,6 +14,7 @@ $I->wantTo( 'Test that the current step merge tags are replaced in the form conf
 // Submit the form.
 $I->logOut();
 $I->amOnPage( '/0038-current-step-merge-tag' );
+$I->waitForText( '0038 Current Step Merge Tag', 3 );
 $I->see( '0038 Current Step Merge Tag' );
 $I->click( 'Submit' );
 $I->waitForText( 'Thanks for contacting us! We will get in touch with you shortly.', 3 );
@@ -42,9 +43,13 @@ $I->assertStringStartsWith( date( 'F j, Y', strtotime( '+1 week' ) ) . ' at', $e
 
 // Don't wait for the cron, start the step now.
 $entry_id = $I->grabTextFrom( '.entry-id' );
-$entry    = GFAPI::get_entry( $entry_id );
-$form     = GFAPI::get_form( $entry['form_id'] );
-$step     = gravity_flow()->get_current_step( $form, $entry );
+$entry_id = intval( $entry_id );
+$I->assertNotEmpty( $entry_id );
+$entry = GFAPI::get_entry( $entry_id );
+$I->assertArrayHasKey( 'form_id', $entry );
+$form = GFAPI::get_form( $entry['form_id'] );
+$I->assertArrayHasKey( 'id', $form );
+$step = gravity_flow()->get_current_step( $form, $entry );
 
 $step->scheduled = false;
 $step->start();
@@ -54,12 +59,12 @@ gform_update_meta( $entry['id'], 'workflow_step_' . $step_id . '_timestamp', str
 $I->loginAsAdmin();
 $I->amOnWorkflowPage( 'Inbox' );
 $I->click( '0038 Current Step Merge Tag' );
-$I->waitForText( '0038 Current Step Merge Tag : Entry #' );
+$I->waitForText( '0038 Current Step Merge Tag : Entry #', 3 );
 $I->see( 'Approval (Pending Approval)' );
 $I->click( 'Approve' );
-
+$I->waitForText( 'Entry Approved',3 );
 // Go to the page created from the approval email.
-$I->amOnPage( '/0038-approval-email' );
+$I->amOnPage( '/0038-approval-email/' );
 $I->see( '0038 Approval Email' );
 
 // Confirm the merge tags are replaced.

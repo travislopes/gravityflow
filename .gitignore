@@ -24,5 +24,9 @@ vendor/
 .svn/
 .DS_Store
 .env
+tests/acceptance-tests/_support/_generated/AcceptanceTesterActions.php
+codeclimate-report.html
+codeception-local.yml
+tests/acceptance-tests/_support/_generated/
 .idea/
 .vscode/

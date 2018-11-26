@@ -17,6 +17,7 @@ $I->resetCookie( 'gflow_access_token' );
 
 // Submit the form
 $I->amOnPage( '/0032-entry-link-merge-tag' );
+$I->waitForText( '0032 Entry Link Merge Tag', 3 );
 $I->see( '0032 Entry Link Merge Tag' );
 $I->click( 'Submit' );
 $I->waitForText( 'Thanks for contacting us! We will get in touch with you shortly.', 3 );
@@ -29,6 +30,6 @@ $I->see( 'Entry Link: Entry' );
 
 // Test that the link token works for the email field assignee.
 $I->click( 'Entry' );
-$I->waitForText( 'INBOX', 3 );
+$I->waitForText( '0032 Entry Link Merge Tag : Entry #', 3 );
 $I->see( '0032 Entry Link Merge Tag : Entry #' );
 $I->see( 'Email: entry@test.test (Pending)' );
