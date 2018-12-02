@@ -99,20 +99,6 @@ module.exports = function(grunt) {
         },
 
         /**
-         * Unit tests
-         */
-		phpunit: {
-			classes: {
-				dir: ''
-			},
-			options: {
-				bin: 'vendor/bin/phpunit',
-				bootstrap: process.cwd() + '/tests/bootstrap.php',
-				colors: true
-			}
-		},
-
-        /**
          * Minify JavaScript source files.
          */
         uglify: {
@@ -260,18 +246,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-
-		slack_upload: {
-			gravityflow: {
-				options: {
-					token: config.slackUpload.token,
-					filetype: 'zip',
-					file: 'gravityflow_<%= grunt.getPluginVersion(true) %>.zip',
-					title:'gravityflow_<%= grunt.getPluginVersion(true) %>.zip',
-					channels: config.slackUpload.channel
-				}
-			}
-		},
 
 		slack_notifier: {
 			notification: {
