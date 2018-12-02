@@ -57,17 +57,17 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 = 2.4 =
 - Added approval step setting for notification on revert (only displays when revert setting for user input step is selected).
-- Added the Gravity_Flow_API::get_inbox_entries() and Gravity_Flow_API::get_inbox_entries_count() methods.
+- Added support for multiple Gravity PDFs to be sent with each email. Credit: The Team at Gravity PDF.
 - Added settings for the Email Service, default From Name, and default From Email.
-- Added support for the Gravity Forms Advanced Post Creation Add-On.
-- Added the gform_order_summary filter enabling the GP eCommerce Fields Add-On to modify the location of discount and tax fields in the order summary table.
-- Added support for multiple Gravity PDFs to be sent with each email.
 - Added support for Gravity Forms OAuth1 connected apps for use in the Outgoing Webhook step.
+- Added support for the Gravity Forms Advanced Post Creation Add-On.
 - Added support for Gravity Forms Repeater Fields.
+- Added the gform_order_summary filter enabling the GP eCommerce Fields Add-On to modify the location of discount and tax fields in the order summary table.
 - Fixed status page step column from display expires date/time when step also has schedule queued.
 - Fixed an issue where the file upload field appears to lose its value following progress save on the user input step.
 - Fixed gravityflow_is_fulfilled entry meta being set when there are no steps to process.
 - API: Added the entry filter step setting.
+- API: Added the Gravity_Flow_API::get_inbox_entries() and Gravity_Flow_API::get_inbox_entries_count() methods.
 
 = 2.3.3 =
 - Fixed an issue where delayed feeds are not delayed on Gravity Forms >2.3.4.2
