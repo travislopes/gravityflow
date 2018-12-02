@@ -6,6 +6,7 @@ config-sample.json
 node_modules
 Gruntfile.js
 package.json
+package-lock.json
 
 js/*.min.js
 css/*.min.css
