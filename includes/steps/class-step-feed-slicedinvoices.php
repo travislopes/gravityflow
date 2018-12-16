@@ -304,7 +304,7 @@ class Gravity_Flow_Step_Feed_Sliced_Invoices extends Gravity_Flow_Step_Feed_Add_
 				$feed  = gravity_flow()->get_feed( $feed_id );
 				$label = $step->get_feed_label( $feed );
 				$step->add_note( sprintf( esc_html__( 'Invoice paid: %s', 'gravityflow' ), $label ) );
-				$step->log_debug( __METHOD__ . '() - Feed processing complete: ' . $label );
+				$step->log_debug( __METHOD__ . '(): Feed processing complete: ', $label );
 
 				$add_on_feeds = $step->get_processed_add_on_feeds( $entry_id );
 				if ( ! in_array( $feed_id, $add_on_feeds ) ) {
