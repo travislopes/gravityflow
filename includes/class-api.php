@@ -301,7 +301,7 @@ class Gravity_Flow_API {
 			}
 		}
 
-		gravity_flow()->log_debug( __METHOD__ . '(): duration of get_entries: ' . timer_stop() );
+		gravity_flow()->log_debug( __METHOD__ . '(): Duration of get_entries: ' . timer_stop() );
 		gravity_flow()->log_debug( __METHOD__ . "(): {$total_count} pending tasks." );
 
 		return $entries;
@@ -376,7 +376,7 @@ class Gravity_Flow_API {
 		 */
 		$search_criteria = apply_filters( 'gravityflow_inbox_search_criteria', $search_criteria );
 
-		gravity_flow()->log_debug( __METHOD__ . '(): ' . print_r( $search_criteria, 1 ) );
+		gravity_flow()->log_debug( __METHOD__ . '(): ', $search_criteria );
 
 		return $search_criteria;
 	}
@@ -399,7 +399,7 @@ class Gravity_Flow_API {
 			$filter_key = gravity_flow()->parse_token_assignee( $token )->get_status_key();
 		}
 
-		gravity_flow()->log_debug( __METHOD__ . '(): ' . $filter_key );
+		gravity_flow()->log_debug( __METHOD__ . '(): ', $filter_key );
 
 		return $filter_key;
 	}
@@ -429,7 +429,7 @@ class Gravity_Flow_API {
 		 */
 		$form_ids = apply_filters( 'gravityflow_form_ids_inbox', $form_ids, $search_criteria );
 
-		gravity_flow()->log_debug( __METHOD__ . '(): ' . print_r( $form_ids, 1 ) );
+		gravity_flow()->log_debug( __METHOD__ . '(): ', $form_ids );
 
 		return $form_ids;
 	}
