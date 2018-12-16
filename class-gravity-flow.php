@@ -8133,5 +8133,22 @@ AND m.meta_value='queued'";
 				GFCommon::display_dismissible_message( $notices );
 			}
 		}
+
+		/**
+		 * Writes a message to the Gravity Flow log when logging is enabled in Gravity Forms.
+		 *
+		 * @since
+		 *
+		 * @param string     $message The message to be written to the log.
+		 * @param null|mixed $var     Null or the variable to be appended to the message.
+		 */
+		public function log_debug( $message, $var = null ) {
+			if ( ! is_null( $var ) ) {
+				$message = Gravity_Flow_Common::format_log_message( $message, $var );
+			}
+
+			parent::log_debug( $message );
+		}
+
 	}
 }
