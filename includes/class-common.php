@@ -394,4 +394,64 @@ class Gravity_Flow_Common {
 		return in_array( $field->id, $current_step->get_editable_fields() );
 	}
 
+	/**
+	 * Formats the message and variable which are to be logged.
+	 *
+	 * @since
+	 *
+	 * @param string $message The message to be written to the log.
+	 * @param mixed  $var     The variable to be formatted and appended to the message.
+	 *
+	 * @return string
+	 */
+	public static function format_log_message( $message, $var ) {
+		$var_output = array();
+
+		switch ( gettype( $var ) ) {
+			case 'object':
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG || isset( $_GET['gform_debug'] ) ) {
+					$message .= print_r( $var, true );
+
+					return $message;
+				} elseif ( $var instanceof GF_Field ) {
+					$var_output['id']        = $var->id;
+					$var_output['type']      = $var->type;
+					$var_output['inputType'] = $var->inputType;
+					$var_output['label']     = $var->label;
+				} else {
+					$callback = array( $var, 'get_log_output' );
+					if ( is_callable( $callback ) ) {
+						$var_output = call_user_func( $callback );
+					}
+				}
+				break;
+			case 'array':
+				$properties = array(
+					'id',
+					'created_by',
+					'date_created',
+					'date_updated',
+					'form_id',
+					'title',
+					'to',
+					'subject',
+					'name'
+				);
+				foreach ( $properties as $property ) {
+					if ( ! empty( $var[ $property ] ) ) {
+						$var_output[ $property ] = $var[ $property ];
+					}
+				}
+				break;
+		}
+
+		if ( empty( $var_output ) ) {
+			$var_output = $var;
+		}
+
+		$message .= json_encode( $var_output );
+
+		return $message;
+	}
+
 }
