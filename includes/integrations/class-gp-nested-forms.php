@@ -519,7 +519,7 @@ class Gravity_Flow_GP_Nested_Forms {
 		$meta_key            = $this->get_meta_key( $step_id );
 		$requires_processing = gform_get_meta( $entry_id, $meta_key );
 		if ( $requires_processing ) {
-			$current_step->log_debug( __METHOD__ . '(): triggering processing of delayed nested form notifications and feeds.' );
+			$current_step->log_debug( __METHOD__ . '(): Triggering processing of delayed nested form notifications and feeds.' );
 			$entry = $current_step->get_entry();
 			$form  = $current_step->get_form();
 			$this->maybe_process_nested_forms( $entry, $form );
