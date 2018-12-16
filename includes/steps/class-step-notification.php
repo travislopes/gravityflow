@@ -92,7 +92,7 @@ class Gravity_Flow_Step_Notification extends Gravity_Flow_Step {
 	 * @return bool
 	 */
 	function process() {
-		$this->log_debug( __METHOD__ . '(): starting' );
+		$this->log_debug( __METHOD__ . '(): Running.' );
 
 		/* Ensure compatibility with Gravity PDF 3.x */
 		if ( defined( 'PDF_EXTENDED_VERSION' ) && version_compare( PDF_EXTENDED_VERSION, '4.0-beta1', '<' ) && class_exists( 'GFPDF_Core' ) ) {
@@ -111,11 +111,11 @@ class Gravity_Flow_Step_Notification extends Gravity_Flow_Step {
 			$setting_key     = 'notification_id_' . $notification_id;
 			if ( $this->{$setting_key} ) {
 				if ( ! GFCommon::evaluate_conditional_logic( rgar( $notification, 'conditionalLogic' ), $form, $entry ) ) {
-					$this->log_debug( __METHOD__ . "(): Notification conditional logic not met, not processing notification (#{$notification_id} - {$notification['name']})." );
+					$this->log_debug( __METHOD__ . '(): Notification conditional logic not met: ', $notification );
 					continue;
 				}
 				GFCommon::send_notification( $notification, $form, $entry );
-				$this->log_debug( __METHOD__ . "(): Notification sent (#{$notification_id} - {$notification['name']})." );
+				$this->log_debug( __METHOD__ . '(): Notification sent: ', $notification );
 
 				$this->add_note( sprintf( esc_html__( 'Sent Notification: %s', 'gravityflow' ), $notification['name'] ) );
 			}
