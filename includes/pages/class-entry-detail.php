@@ -65,7 +65,7 @@ class Gravity_Flow_Entry_Detail {
 			 */
 			$permission_granted = apply_filters( 'gravityflow_permission_granted_entry_detail', $permission_granted, $entry, $form, $current_step );
 
-			gravity_flow()->log_debug( __METHOD__ . '() $permission_granted: ' . ( $permission_granted ? 'yes' : 'no' ) );
+			gravity_flow()->log_debug( __METHOD__ . '(): Permission granted? ', $permission_granted );
 
 
 			if ( ! $permission_granted ) {
@@ -153,7 +153,7 @@ class Gravity_Flow_Entry_Detail {
 		);
 
 		$args = array_merge( $defaults, $args );
-		gravity_flow()->log_debug( __METHOD__ . '() args: ' . print_r( $args, true ) );
+		gravity_flow()->log_debug( __METHOD__ . '(): Args: ', $args );
 
 		return $args;
 	}
@@ -294,7 +294,7 @@ class Gravity_Flow_Entry_Detail {
 			$assignee_key = 'user_id|' . $user_id;
 		}
 
-		gravity_flow()->log_debug( __METHOD__ . '() checking permissions.  $current_user->ID: ' . $current_user->ID . ' created_by: ' . $entry['created_by'] . ' assignee key: ' . $assignee_key );
+		gravity_flow()->log_debug( __METHOD__ . '(): Checking permissions. $current_user->ID: ' . $current_user->ID . '. created_by: ' . $entry['created_by'] . '. assignee key: ' . $assignee_key );
 
 		if ( ! empty( $user_id ) && $entry['created_by'] == $user_id ) {
 			$permission_granted = true;
@@ -302,14 +302,14 @@ class Gravity_Flow_Entry_Detail {
 
 			$is_assignee = $current_step ? $current_step->is_assignee( $assignee_key ) : false;
 
-			gravity_flow()->log_debug( __METHOD__ . '() $is_assignee: ' . ( $is_assignee ? 'yes' : 'no' ) );
+			gravity_flow()->log_debug( __METHOD__ . '(): Is assignee? ', $is_assignee );
 
 			$full_access = GFAPI::current_user_can_any( array(
 				'gform_full_access',
 				'gravityflow_status_view_all',
 			) );
 
-			gravity_flow()->log_debug( __METHOD__ . '() $full_access: ' . ( $full_access ? 'yes' : 'no' ) );
+			gravity_flow()->log_debug( __METHOD__ . '(): Full access? ', $full_access );
 
 			if ( $is_assignee || $full_access ) {
 				$permission_granted = true;
