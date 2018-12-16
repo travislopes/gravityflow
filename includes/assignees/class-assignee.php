@@ -561,4 +561,21 @@ class Gravity_Flow_Assignee {
 
 		return $text;
 	}
+
+	/**
+	 * Returns a few properties for output in the log.
+	 *
+	 * @since
+	 *
+	 * @return array
+	 */
+	public function get_log_output() {
+		return array(
+			'name'            => $this->name,
+			'id'              => $this->get_id(),
+			'type'            => $this->get_type(),
+			'editable fields' => $this->get_editable_fields(),
+		);
+	}
+
 }

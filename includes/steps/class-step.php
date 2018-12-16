@@ -2247,4 +2247,22 @@ abstract class Gravity_Flow_Step extends stdClass {
 		$this->log_debug( 'Assignees purged. number of rows deleted: ' . $result );
 	}
 
+	/**
+	 * Returns a few properties for output in the log.
+	 *
+	 * @since
+	 *
+	 * @return array
+	 */
+	public function get_log_output() {
+		return array(
+			'id'        => $this->get_id(),
+			'is_active' => $this->is_active(),
+			'step_type' => $this->get_type(),
+			'step_name' => $this->get_name(),
+			'entry_id'  => $this->get_entry_id(),
+			'form_id'   => $this->get_form_id(),
+		);
+	}
+
 }
