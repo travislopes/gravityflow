@@ -859,8 +859,6 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 
 		$assignees = $this->get_assignees();
 
-		$this->log_debug( __METHOD__ . '(): assignee details: ' . print_r( $assignees, true ) );
-
 		foreach ( $assignees as $assignee ) {
 			$assignee_status_label = $assignee->get_status_label();
 			$assignee_status_li    = sprintf( '<li>%s</li>', $assignee_status_label );
@@ -1278,7 +1276,7 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 					if ( intval( $current_field->meta_key ) == $sub_field->id && ! isset( $current_field->update ) ) {
 						$current_field->delete = true;
 						$result = GFFormsModel::queue_batch_field_operation( $form, $entry, $sub_field, $current_field->id, $current_field->meta_key, '', $current_field->item_index );
-						$this->log_debug( __METHOD__ . "(): Deleting: {$field->label}(#{$sub_field->id}{$current_field->item_index} - {$field->type}). Result: " . var_export( $result, 1 ) );
+						$this->log_debug( __METHOD__ . "(): Deleting: {$field->label}(#{$sub_field->id}{$current_field->item_index} - {$field->type}). Result: ", $result );
 					}
 				}
 			}
@@ -1303,7 +1301,7 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 			if ( $existing_value != $value ) {
 				$entry_meta_id = GFFormsModel::get_lead_detail_id( $current_fields, $input_id );
 				$result = GFFormsModel::queue_batch_field_operation( $form, $entry, $field, $entry_meta_id, $input_id, $value );
-				$this->log_debug( __METHOD__ . "(): Updating: {$field->label}(#{$field->id} - {$field->type}). Result: " . var_export( $result, 1 ) );
+				$this->log_debug( __METHOD__ . "(): Updating: {$field->label}(#{$field->id} - {$field->type}). Result: ", $result );
 			}
 		}
 
@@ -1332,7 +1330,7 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 
 		if ( ! empty( $value ) && $existing_value != $value ) {
 			$result = GFAPI::update_entry_field( $entry['id'], $field->id, $value );
-			$this->log_debug( __METHOD__ . "(): Saving: {$field->label}(#{$field->id} - {$field->type}). Result: " . var_export( $result, 1 ) );
+			$this->log_debug( __METHOD__ . "(): Saving: {$field->label}(#{$field->id} - {$field->type}). Result: ", $result );
 
 			if ( GFCommon::is_post_field( $field ) && ! in_array( $field->id, $this->_update_post_fields['images'] ) ) {
 				$this->_update_post_fields['images'][] = $field->id;
@@ -1378,10 +1376,10 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 	 * @param int   $post_id The ID of the post created from the current entry.
 	 */
 	public function maybe_process_post_fields( $form, $post_id ) {
-		$this->log_debug( __METHOD__ . '(): running.' );
+		$this->log_debug( __METHOD__ . '(): Running.' );
 
 		if ( empty( $post_id ) ) {
-			$this->log_debug( __METHOD__ . '(): aborting; no post id' );
+			$this->log_debug( __METHOD__ . '(): Aborting; no post id' );
 
 			return;
 		}
@@ -1389,13 +1387,13 @@ class Gravity_Flow_Step_User_Input extends Gravity_Flow_Step {
 		$post = get_post( $post_id );
 
 		if ( ! $post ) {
-			$this->log_debug( __METHOD__ . '(): aborting; unable to get post.' );
+			$this->log_debug( __METHOD__ . '(): Aborting; unable to get post.' );
 
 			return;
 		}
 
 		$result = $this->process_post_fields( $form, $post );
-		$this->log_debug( __METHOD__ . '(): wp_update_post result => ' . print_r( $result, 1 ) );
+		$this->log_debug( __METHOD__ . '(): wp_update_post result: ', $result );
 	}
 
 	/**
