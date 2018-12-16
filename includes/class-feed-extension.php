@@ -279,7 +279,7 @@ abstract class Gravity_Flow_Feed_Extension extends GFFeedAddOn {
 		if ( $old_license && $field_setting != $old_license ) {
 			$item_name_or_id = empty( $this->edd_item_id ) ? $this->edd_item_name : $this->edd_item_id;
 			$response        = gravity_flow()->perform_edd_license_request( 'deactivate_license', $old_license, $item_name_or_id );
-			$this->log_debug( __METHOD__ . '(): response: ' . print_r( $response, 1 ) );
+			$this->log_debug( __METHOD__ . '(): Response: ', $response );
 		}
 
 		if ( empty( $field_setting ) ) {
@@ -496,6 +496,7 @@ abstract class Gravity_Flow_Feed_Extension extends GFFeedAddOn {
 			GFCommon::display_dismissible_message( $notices );
 		}
 	}
+
 	/**
 	 * Returns TRUE if the current page is the extension settings main page.
 	 *
@@ -509,4 +510,21 @@ abstract class Gravity_Flow_Feed_Extension extends GFFeedAddOn {
 
 		return $is_extension_settings;
 	}
+
+	/**
+	 * Writes a message to the extension log when logging is enabled in Gravity Forms.
+	 *
+	 * @since
+	 *
+	 * @param string     $message The message to be written to the log.
+	 * @param null|mixed $var     Null or the variable to be appended to the message.
+	 */
+	public function log_debug( $message, $var = null ) {
+		if ( ! is_null( $var ) ) {
+			$message = Gravity_Flow_Common::format_log_message( $message, $var );
+		}
+
+		parent::log_debug( $message );
+	}
+
 }
