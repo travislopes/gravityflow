@@ -395,7 +395,7 @@ class Gravity_Flow_Assignee {
 			$users = get_users( array( 'include' => array( $assignee_id ) ) );
 		}
 
-		$this->step->log_debug( __METHOD__ . sprintf( '() sending notifications to %d users', count( $users ) ) );
+		$this->step->log_debug( __METHOD__ . sprintf( '(): Sending notifications to %d users.', count( $users ) ) );
 
 		$user_assignee_args = array(
 			'type' => $assignee_type,
@@ -496,12 +496,12 @@ class Gravity_Flow_Assignee {
 	 * @return string
 	 */
 	public function get_status_label() {
+		$this->step->log_debug( __METHOD__ . '(): Running: ', $this );
 
 		$assignee_status_label = '';
 		$user_approval_status  = $this->get_status();
 
-		$this->step->log_debug( __METHOD__ . '(): status for: ' . $this->get_key() );
-		$this->step->log_debug( __METHOD__ . '(): assignee status: ' . $user_approval_status );
+		$this->step->log_debug( __METHOD__ . '(): Status: ', $user_approval_status );
 
 		$status_label = $this->step->get_status_label( $user_approval_status );
 		if ( ! empty( $user_approval_status ) ) {
