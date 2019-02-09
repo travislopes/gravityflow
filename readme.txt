@@ -55,6 +55,10 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+= 2.4.2 =
+- Updated the WP E-Signature step to allow the feed to redirect to the document if processed during submission.
+- Updated the license checks to reduce load on the licensing server.
+
 = 2.4.1 =
 - Fixed the Gravity Perks Nested Forms Add-On integration not delaying the workflow for child entries created before the parent form is submitted.
 - Fixed an issue where Conditional Routing based on what values a Multiuser field contains could lead to extra users being set as step assignees.
