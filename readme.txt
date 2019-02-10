@@ -58,6 +58,7 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 = 2.4.2 =
 - Updated the WP E-Signature step to allow the feed to redirect to the document if processed during submission.
 - Updated the license checks to reduce load on the licensing server.
+- Fixed an issue with the admin notice license checks for third-party extensions.
 
 = 2.4.1 =
 - Fixed the Gravity Perks Nested Forms Add-On integration not delaying the workflow for child entries created before the parent form is submitted.
