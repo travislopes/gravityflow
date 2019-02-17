@@ -1,1 +1,2 @@
+- Added security enhancement.
 - Fixed an issue where workflows don't start when the entry is created before the init action.
