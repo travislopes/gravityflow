@@ -461,7 +461,7 @@ abstract class Gravity_Flow_Feed_Extension extends GFFeedAddOn {
 				}
 				$license_details = $this->check_license();
 				if ( $license_details ) {
-					if ( $this->license_key && $license_details->license == 'site_inactive' ) {
+					if ( $this->license_key && in_array( $license_details->license, array( 'site_inactive', 'inactive' ) ) ) {
 						$license_details = $this->activate_license( $this->license_key );
 					}
 					$expiration = DAY_IN_SECONDS + rand( 0, DAY_IN_SECONDS );

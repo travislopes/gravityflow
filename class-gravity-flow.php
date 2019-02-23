@@ -8101,7 +8101,7 @@ AND m.meta_value='queued'";
 					$license_key     = defined( 'GRAVITY_FLOW_LICENSE_KEY' ) ? GRAVITY_FLOW_LICENSE_KEY : '';
 					$license_details = $this->check_license( $license_key );
 					if ( $license_details ) {
-						if ( defined( 'GRAVITY_FLOW_LICENSE_KEY' ) && $license_details->license == 'site_inactive' ) {
+						if ( defined( 'GRAVITY_FLOW_LICENSE_KEY' ) && in_array( $license_details->license, array( 'site_inactive', 'inactive' ) ) ) {
 							$license_details = $this->activate_license( GRAVITY_FLOW_LICENSE_KEY );
 						}
 						$expiration = DAY_IN_SECONDS + rand( 0, DAY_IN_SECONDS );
