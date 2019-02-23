@@ -7943,6 +7943,9 @@ AND m.meta_value='queued'";
 					$license_key     = defined( 'GRAVITY_FLOW_LICENSE_KEY' ) ? GRAVITY_FLOW_LICENSE_KEY : '';
 					$license_details = $this->check_license( $license_key );
 					if ( $license_details ) {
+						if ( defined( 'GRAVITY_FLOW_LICENSE_KEY' ) && in_array( $license_details->license, array( 'site_inactive', 'inactive' ) ) ) {
+							$license_details = $this->activate_license( GRAVITY_FLOW_LICENSE_KEY );
+						}
 						$expiration = DAY_IN_SECONDS + rand( 0, DAY_IN_SECONDS );
 						set_transient( 'gravityflow_license_details', $license_details, $expiration );
 						update_option( 'gravityflow_last_license_check', time() );
@@ -7954,7 +7957,7 @@ AND m.meta_value='queued'";
 
 			if ( $license_status != 'valid' ) {
 
-				$add_buttons = ! defined( 'GRAVITY_FLOW_LICENSE_KEY' ) || ! is_multisite();
+				$add_buttons = ! is_multisite();
 
 				$primary_button_link = admin_url( 'admin.php?page=gravityflow_settings' );
 
@@ -7986,12 +7989,12 @@ AND m.meta_value='queued'";
 						break;
 				}
 
-				$message .= ' ' . esc_html__( 'This means you&rsquo;re missing out on security fixes, updates and support!', 'gravityflow' );
+				$message .= ' ' . esc_html__( "This means you're missing out on security fixes, updates and support.", 'gravityflow' );
 
 				$url = 'https://gravityflow.io/?utm_source=admin_notice&utm_medium=admin&utm_content=' . $license_status . '&utm_campaign=Admin%20Notice#pricing';
 
 				// Show a different notice on settings page for inactive licenses (hide the buttons)
-				if ( $add_buttons && ! $this->is_app_settings() ) {
+				if ( ! defined( 'GRAVITY_FLOW_LICENSE_KEY' ) && $add_buttons && ! $this->is_app_settings() ) {
 					$message .= '<br /><br />' . esc_html__( '%sActivate your license%s or %sget a license here%s', 'gravityflow' );
 					$message = sprintf( $message, '<a href="' . esc_url( $primary_button_link ) . '" class="button button-primary">', '</a>', '<a href="' . esc_url( $url ) . '" class="button button-secondary">', '</a>' );
 				}
