@@ -412,7 +412,7 @@ class Gravity_Flow_EDD_SL_Plugin_Updater {
 			'version'    => isset( $data['version'] ) ? $data['version'] : false,
 			'slug'       => $data['slug'],
 			'author'     => $data['author'],
-			'url'        => home_url(),
+			'url'        => network_home_url(),
 			'beta'       => ! empty( $data['beta'] ),
 		);
 
