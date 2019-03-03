@@ -60,7 +60,7 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 - Added support for license key constants in extensions.
 - Fixed an issue where workflows don't start when the entry is created before the init action.
 - Fixed an issue with the signature generation for GET requests for OAuth1.0a webhook requests for WordPress and Gravity Forms connected apps.
-
+- Fixed an issue where importing a form without workflow steps would incorrectly display Gravity Flow notice.
 
 = 2.4.3 =
 - Fixed the styles in the installation wizard.
