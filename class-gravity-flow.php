@@ -4001,7 +4001,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 		public function app_settings_fields() {
 			$settings = array();
 
-			if ( ( ! is_multisite() || ( is_multisite() && is_main_site() ) ) && ! defined( 'GRAVITY_FLOW_LICENSE_KEY' ) ) {
+			if ( ! defined( 'GRAVITY_FLOW_LICENSE_KEY' ) ) {
 				$settings[] = array(
 					'title'  => esc_html__( 'Settings', 'gravityflow' ),
 					'fields' => array(
@@ -4446,7 +4446,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 				'body'      => array(
 					'edd_action' => $edd_action,
 					'license'    => trim( $license ),
-					'url'        => home_url(),
+					'url'        => network_home_url(),
 				),
 			);
 
@@ -5926,12 +5926,12 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 
 				if ( isset( $form['feeds']['gravityflow'] ) ) {
 					$this->import_gravityflow_feeds( $form['feeds']['gravityflow'], $form['id'] );
+					$gravityflow_feeds_imported = ! empty( $form['feeds']['gravityflow'] ) ? true : $gravityflow_feeds_imported;
 					unset( $form['feeds']['gravityflow'] );
 					if ( empty( $form['feeds'] ) ) {
 						unset( $form['feeds'] );
 					}
 					GFAPI::update_form( $form );
-					$gravityflow_feeds_imported = true;
 				}
 			}
 
