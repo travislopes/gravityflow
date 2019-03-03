@@ -1,0 +1,1 @@
+- Fixed an issue where importing a form without workflow steps would incorrectly display Gravity Flow notice.
