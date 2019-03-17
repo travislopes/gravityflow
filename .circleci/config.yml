@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  core:
     machine: true
     parallelism: 4
     working_directory: ~/gravityflow
@@ -21,6 +21,7 @@ jobs:
           path: ~/gravityflow/tests/acceptance-tests/_output
       - store_test_results:
           path: ~/gravityflow/tests/acceptance-tests/_output
+
   extensions:
     docker:
       - image: buildpack-deps:trusty
@@ -36,3 +37,12 @@ jobs:
 
             printf "\n\nBuild triggered\n\n"
             printf "Follow the progress of the build on \nhttps://circleci.com/gh/gravityflow/gravityflowformconnector/tree/master"
+
+workflows:
+  version: 2
+  core_plus_extensions:
+    jobs:
+      - core
+      - extensions:
+          requires:
+            - core
