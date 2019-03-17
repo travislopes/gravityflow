@@ -16,7 +16,9 @@ matrix:
   - php: 5.3
     dist: precise
   - php: 7.2
+    dist: trusty
   - php: 7.3
+    dist: trusty
 env:
   matrix:
   - WP_VERSION=latest WP_MULTISITE=0
@@ -100,6 +102,7 @@ notifications:
 jobs:
   include:
   - stage: Extensions
+    env: WP_TRAVISCI=none
     script: |
       echo "TRAVIS_BRANCH=$TRAVIS_BRANCH TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST"
       if [[ ($TRAVIS_BRANCH == master) &&
