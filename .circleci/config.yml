@@ -22,6 +22,8 @@ jobs:
       - store_test_results:
           path: ~/gravityflow/tests/acceptance-tests/_output
   extensions:
+    docker:
+      - image: buildpack-deps:trusty
     steps:
       - run:
           name: Trigger the Build Job for the Form Connnector Extension
