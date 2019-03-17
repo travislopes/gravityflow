@@ -102,3 +102,13 @@ notifications:
   webhooks:
     urls:
       secure: gEfRUPngUkfJIke6ZBxED14AHlcDLoKyX+j7UJR9hHWiI9ydoBVU7X+td8sgx0oBgckDvbXdHgZl+LR7ftV5CIAhyeWTgJPny5+YsECU3+SSnL6NvwL3SGGavhhgt495NkW0fyvW2m92TqBSgcQMnDkd7Klxb+7euxOIwEKsVtVWd0UAQgr2Pkg4T35ZHtvqPFsIOdOqUB8l93H6cTl4Z1/bHHlPKWKaGMNkGca/VEP/+NIyi2uYVqcbsGR439vvOw/tJI+pn6202K0glPF7zZDjCvzZ4litSgzHh3n6C4qOciVFqvCWmC2JSFVfii5ZhrLORsvHRmph7iuiXvsrdJ+U/RydB1kP5K0ONGf9NR79ulLT07s+FNd4tRO+YHjfKtPfxpbkRMQG7IMyay2tym2cI55nw2Zm3xkgXmU33NHNczDbQujY+qs7vKnnFX4ExyPKUWFrKQMNaD3102kIf2O5jeyNOnLxokYu4yyC0thPenCsBwLysD0VLDG4Mu/Gw9kVLp7BtR4tBqzRzwf0fcXMpkmuzQlaCExJScwyk6TwpFvW/GQ4DIKAHVFagMNme2Ka3piQG88mJJuGDqcFMiWsvyBVGPb24U0SvALB8EWcceWVyJ7QDshjE1zkUjBnSTlaOzQbAxTf/19Ipd/rQnbN02mE90HN/2CV2AHlF9U=
+jobs:
+  include:
+    - stage: from connector
+      script: |
+        echo "TRAVIS_BRANCH=$TRAVIS_BRANCH TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST"
+        if [[ ($TRAVIS_BRANCH == master) &&
+              ($TRAVIS_PULL_REQUEST == false) ]] ; then
+          curl -LO --retry 3 https://raw.github.com/mernst/plume-lib/master/bin/trigger-travis.sh
+          sh trigger-travis.sh --pro gravityflow gravityflowformconnector $TRAVIS_ACCESS_TOKEN
+        fi
