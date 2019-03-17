@@ -22,7 +22,7 @@ jobs:
       - store_test_results:
           path: ~/gravityflow/tests/acceptance-tests/_output
 
-  extensions:
+  form_connector:
     docker:
       - image: buildpack-deps:trusty
     steps:
@@ -37,6 +37,11 @@ jobs:
 
             printf "\n\nBuild triggered\n\n"
             printf "Follow the progress of the build on \nhttps://circleci.com/gh/gravityflow/gravityflowformconnector/tree/master"
+
+  incoming_webhook:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
       - run:
           name: Trigger the Build Job for the Incoming Webhook Extension
           command: |
@@ -54,6 +59,9 @@ workflows:
   core_plus_extensions:
     jobs:
       - core
-      - extensions:
+      - form_connector:
+          requires:
+            - core
+      - incoming_webhook:
           requires:
             - core
