@@ -21,6 +21,8 @@ jobs:
           path: ~/gravityflow/tests/acceptance-tests/_output
       - store_test_results:
           path: ~/gravityflow/tests/acceptance-tests/_output
+  extensions:
+    steps:
       - run:
           name: Trigger the Build Job for the Form Connnector Extension
           command: |
