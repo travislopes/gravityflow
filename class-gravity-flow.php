@@ -555,10 +555,12 @@ PRIMARY KEY  (id)
 		 * @return array
 		 */
 		public function scripts() {
-			$form_id        = absint( rgget( 'id' ) );
-			$form           = GFAPI::get_form( $form_id );
-			$routing_fields = ! empty( $form ) ? GFCommon::get_field_filter_settings( $form ) : array();
-			$input_fields   = array();
+			$form_id           = absint( rgget( 'id' ) );
+			$form              = GFAPI::get_form( $form_id );
+			$routing_fields    = ! empty( $form ) ? GFCommon::get_field_filter_settings( $form ) : array();
+			$input_fields      = array();
+			$has_start_step    = false;
+			$has_complete_step = false;
 			if ( is_array( $form['fields'] ) ) {
 				foreach ( $form['fields'] as $field ) {
 					/* @var GF_Field $field */
@@ -566,6 +568,15 @@ PRIMARY KEY  (id)
 						'key'  => absint( $field->id ),
 						'text' => esc_html( $field->get_field_label( false, null ) ),
 					);
+				}
+
+				if ( $this->is_form_settings( 'gravityflow' ) && $this->is_feed_list_page() ) {
+					if ( $this->get_workflow_start_step( $form_id ) ) {
+						$has_start_step = true;
+					}
+					if ( $this->get_workflow_complete_step( $form_id ) ) {
+						$has_complete_step = true;
+					}
 				}
 			}
 
@@ -684,6 +695,10 @@ PRIMARY KEY  (id)
 					'version' => $this->_version,
 					'enqueue' => array(
 						array( 'query' => 'page=gf_edit_forms&view=settings&subview=gravityflow' ),
+					),
+					'strings' => array(
+						'hasStartStep'    => $has_start_step,
+						'hasCompleteStep' => $has_complete_step,
 					),
 				),
 				array(
@@ -1226,9 +1241,47 @@ PRIMARY KEY  (id)
 		public function feed_settings_fields() {
 			$current_step_id = $this->get_current_feed_id();
 
+			$steps = array();
+
+			$is_start_step     = false;
+			$is_complete_step  = false;
+			$has_start_step    = false;
+			$has_complete_step = false;
+
+			if ( $current_step_id ) {
+				$step = $this->get_step( $current_step_id );
+				$step_type = $step->get_type();
+			} else {
+				$step_type = $this->get_setting( 'step_type' );
+			}
+
+			if ( $step_type === 'workflow_start' ) {
+				$is_start_step = true;
+			} elseif ( $step_type === 'workflow_complete' ) {
+				$is_complete_step = true;
+			}
+
+			if ( $is_start_step ) {
+				$has_start_step = true;
+			} elseif ( $is_complete_step ) {
+				$has_complete_step = true;
+			}
+
+			if ( ! ( $has_start_step && $has_complete_step ) ) {
+				// Workflows created before 2.5 don't have start or complete steps - they can be added manually.
+				$form_id = absint( rgget( 'id' ) );
+				$steps   = $this->get_steps( $form_id );
+				$has_start_step = $this->get_workflow_start_step( $form_id ) ? true : false;
+				$has_complete_step = $this->get_workflow_complete_step( $form_id ) ? true : false;
+			}
+
 			$step_type_choices = array();
 
 			$step_classes = Gravity_Flow_Steps::get_all();
+
+			$start_step_choice = false;
+
+			$complete_step_choice = false;
 
 			foreach ( $step_classes as $key => $step_class ) {
 				$step_type_choice = array( 'label' => $step_class->get_label(), 'value' => $step_class->get_type() );
@@ -1238,10 +1291,28 @@ PRIMARY KEY  (id)
 					$step_type_choice['div_class'] = 'gravityflow-disabled';
 				}
 				if ( $step_class->is_supported() ) {
-					$step_type_choices[] = $step_type_choice;
+					if ( $step_class->get_type() == 'workflow_start' ) {
+						if ( $is_start_step || ( $steps && ! $has_start_step ) ) {
+							$start_step_choice = $step_type_choice;
+						}
+					} elseif ( $step_class->get_type() == 'workflow_complete' ) {
+						if ( $is_complete_step || ( $steps && ! $has_complete_step ) ) {
+							$complete_step_choice = $step_type_choice;
+						}
+					} else {
+						$step_type_choices[] = $step_type_choice;
+					}
 				} else {
 					unset( $step_classes[ $key ] );
 				}
+			}
+
+			if ( $start_step_choice ) {
+				array_unshift( $step_type_choices, $start_step_choice );
+			}
+
+			if ( $complete_step_choice ) {
+				array_push( $step_type_choices, $complete_step_choice );
 			}
 
 			$settings = array();
@@ -1279,12 +1350,62 @@ PRIMARY KEY  (id)
 						'type'  => 'textarea',
 					),
 					$step_type_setting,
+				),
+			);
+
+			if ( $is_start_step ) {
+				$standard_fields = array(
 					array(
-						'name'                => 'step_highlight',
-						'label'               => esc_html__( 'Highlight', 'gravityflow' ),
-						'type'                => 'step_highlight',
-						'required'            => false,
-						'tooltip'             => esc_html__( 'Highlighted steps will stand out in both the workflow inbox and the step list. Use highlighting to bring attention to important tasks and to help organise complex workflows.', 'gravityflow' ),
+						'name'           => 'condition',
+						'tooltip'        => esc_html__( "Build the conditional logic that should be applied to this workflow before it's allowed to be processed. If an entry does not meet the conditions then the workflow will not be processed.", 'gravityflow' ),
+						'label'          => esc_html__( 'Workflow Condition', 'gravityflow' ),
+						'type'           => 'feed_condition',
+						'checkbox_label' => esc_html__( 'Enable Condition for this workflow', 'gravityflow' ),
+						'instructions'   => esc_html__( 'Process this workflow if', 'gravityflow' ),
+					),
+					array(
+						'name'             => 'scheduled',
+						'label'            => esc_html__( 'Workflow Schedule', 'gravityflow' ),
+						'type'             => 'schedule',
+						'checkbox_label'   => esc_html__( 'Schedule this workflow', 'gravityflow' ),
+						'date_label'       => esc_html__( 'Start this workflow on %s', 'gravityflow' ),
+						'date_field_label' => esc_html__( 'Start this workflow %1$s %2$s %3$s %4$s', 'gravityflow' ),
+						'delay_label'      => esc_html__( 'Start this workflow %1$s %2$s after the form submission.', 'gravityflow' ),
+						'tooltip'          => esc_html__( 'Scheduling the workflow will queue entries and prevent them from starting the workflow until the specified date or until the delay period has elapsed.', 'gravityflow' )
+						                      . ' ' . esc_html__( 'Note: the schedule setting requires the WordPress Cron which is included and enabled by default unless your host has deactivated it.', 'gravityflow' ),
+
+					),
+				);
+				$settings[0]['fields'] = array_merge( $settings[0]['fields'], $standard_fields );
+			} elseif ( $is_complete_step ) {
+				$standard_fields = array(
+					array(
+						'name'     => 'step_highlight',
+						'default_value' => '0',
+						'type'     => 'hidden',
+						'required' => false,
+						'tooltip'  => esc_html__( 'Highlighted steps will stand out in both the workflow inbox and the step list. Use highlighting to bring attention to important tasks and to help organise complex workflows.', 'gravityflow' ),
+					),
+					array(
+						'name'  => 'feed_condition_conditional_logic',
+						'default_value' => '0',
+						'type'  => 'hidden',
+					),
+					array(
+						'name'             => 'scheduled',
+						'label'            => esc_html__( 'Workflow Schedule', 'gravityflow' ),
+						'type'             => 'hidden',
+					),
+				);
+				$settings[0]['fields'] = array_merge( $settings[0]['fields'], $standard_fields );
+			} elseif ( ! $is_complete_step ) {
+				$standard_fields = array(
+					array(
+						'name'     => 'step_highlight',
+						'label'    => esc_html__( 'Highlight', 'gravityflow' ),
+						'type'     => 'step_highlight',
+						'required' => false,
+						'tooltip'  => esc_html__( 'Highlighted steps will stand out in both the workflow inbox and the step list. Use highlighting to bring attention to important tasks and to help organise complex workflows.', 'gravityflow' ),
 					),
 					array(
 						'name'           => 'condition',
@@ -1295,15 +1416,16 @@ PRIMARY KEY  (id)
 						'instructions'   => esc_html__( 'Perform this step if', 'gravityflow' ),
 					),
 					array(
-						'name' => 'scheduled',
-						'label' => esc_html__( 'Schedule', 'gravityflow' ),
-						'type' => 'schedule',
+						'name'    => 'scheduled',
+						'label'   => esc_html__( 'Schedule', 'gravityflow' ),
+						'type'    => 'schedule',
 						'tooltip' => esc_html__( 'Scheduling a step will queue entries and prevent them from starting this step until the specified date or until the delay period has elapsed.', 'gravityflow' )
 						             . ' ' . esc_html__( 'Note: the schedule setting requires the WordPress Cron which is included and enabled by default unless your host has deactivated it.', 'gravityflow' ),
 
 					),
-				),
-			);
+				);
+				$settings[0]['fields'] = array_merge( $settings[0]['fields'], $standard_fields );
+			}
 
 			foreach ( $step_classes as $step_class ) {
 				$type = $step_class->get_type();
@@ -1326,10 +1448,10 @@ PRIMARY KEY  (id)
 					$final_status_choices[] = array( 'label' => esc_html__( 'Expired', 'gravityflow' ), 'value' => 'expired' );
 
 					$step_settings['fields'][] = array(
-						'name' => 'expiration',
-						'label' => esc_html__( 'Expiration', 'gravityflow' ),
-						'tooltip' => esc_html__( 'Enable the expiration setting to allow this step to expire. Once expired, the entry will automatically proceed to the step configured in the Next Step setting(s) below.', 'gravityflow' ),
-						'type'       => 'expiration',
+						'name'           => 'expiration',
+						'label'          => esc_html__( 'Expiration', 'gravityflow' ),
+						'tooltip'        => esc_html__( 'Enable the expiration setting to allow this step to expire. Once expired, the entry will automatically proceed to the step configured in the Next Step setting(s) below.', 'gravityflow' ),
+						'type'           => 'expiration',
 						'status_choices' => $final_status_choices,
 					);
 				}
@@ -1338,9 +1460,9 @@ PRIMARY KEY  (id)
 					$setting_label = isset( $status_option['destination_setting_label'] ) ?  $status_option['destination_setting_label'] : esc_html__( 'Next step if', 'gravityflow' ) . ' ' . $status_option['status_label'];
 					$default_destination = isset( $status_option['default_destination'] ) ? $status_option['default_destination'] : 'next';
 					$step_settings['fields'][] = array(
-						'name' => 'destination_' . $status_option['status'],
-						'label' => $setting_label,
-						'type'       => 'step_selector',
+						'name'          => 'destination_' . $status_option['status'],
+						'label'         => $setting_label,
+						'type'          => 'step_selector',
 						'default_value' => $default_destination,
 					);
 				}
@@ -1439,6 +1561,59 @@ PRIMARY KEY  (id)
 			}
 
 			return true;
+		}
+
+		/**
+		 * Saves the feed settings. Adds the feeds for the start and complete settings if they don't already exist when the first step is added.
+		 *
+		 * @since 2.5
+		 *
+		 * @param $feed_id
+		 * @param $form_id
+		 * @param $settings
+		 *
+		 * @return int
+		 */
+		public function save_feed_settings( $feed_id, $form_id, $settings ) {
+
+			// Get all feeds from the parent method. This includes the start and complete steps which are stripped from $this->get_feeds() if there are no other steps.
+			$feeds = parent::get_feeds( $form_id );
+
+			if ( empty( $feeds ) ) {
+				$start_step_meta = array (
+					'step_name' => __( 'Start', 'gravityflow' ),
+					'description' => '',
+					'step_type' => 'workflow_start',
+					'feed_condition_conditional_logic' => '0',
+					'feed_condition_conditional_logic_object' =>
+						array (
+						),
+					'scheduled' => '0',
+					'schedule_type' => 'delay',
+					'schedule_date' => '',
+					'schedule_delay_offset' => '',
+					'schedule_delay_unit' => 'hours',
+					'schedule_date_field_before_after' => 'after',
+					'schedule_date_field_offset' => '0',
+					'schedule_date_field_offset_unit' => 'hours',
+					'instructionsEnable' => '0',
+					'instructionsValue' => '',
+					'display_fields_mode' => 'all_fields',
+					'destination_complete' => 'next',
+				);
+				$this->insert_feed( $form_id, true, $start_step_meta );
+
+				$complete_step_meta = array (
+					'step_name' => __( 'Complete', 'gravityflow' ),
+					'description' => '',
+					'step_type' => 'workflow_complete',
+					'feed_condition_conditional_logic' => '0',
+					'scheduled' => '0',
+				);
+				$this->insert_feed( $form_id, true, $complete_step_meta );
+
+			}
+			return parent::save_feed_settings( $feed_id, $form_id, $settings );
 		}
 
 		/**
@@ -1696,6 +1871,8 @@ PRIMARY KEY  (id)
 		/**
 		 * Get the feeds for the specified form and sort them if applicable.
 		 *
+		 * This method strips out the start and complete feeds if there are no other feeds.
+		 *
 		 * @param null|int $form_id Null or the form ID.
 		 *
 		 * @return array
@@ -1714,7 +1891,30 @@ PRIMARY KEY  (id)
 				$this->step_order = $ordered_ids;
 
 				usort( $feeds, array( $this, 'sort_feeds' ) );
+			}
 
+			$start_feed = false;
+
+			$complete_feed = false;
+
+			foreach ( $feeds as $key => $feed ) {
+				if ( $feed['meta']['step_type'] == 'workflow_start' ) {
+					$start_feed = $feed;
+					unset( $feeds[ $key ] );
+				} elseif ( $feed['meta']['step_type'] == 'workflow_complete' ) {
+					$complete_feed = $feed;
+					unset( $feeds[ $key ] );
+				}
+			}
+
+			if ( ! empty( $feeds ) ) {
+				if ( $start_feed ) {
+					array_unshift( $feeds, $start_feed );
+				}
+
+				if ( $complete_feed ) {
+					array_push( $feeds, $complete_feed );
+				}
 			}
 
 			return $feeds;
@@ -1722,6 +1922,8 @@ PRIMARY KEY  (id)
 
 		/**
 		 * Get the workflow steps.
+		 *
+		 * The virtual Workflow Complete step is not returned.
 		 *
 		 * @param null|int   $form_id Null or the form ID.
 		 * @param null|array $entry   Null or the entry to initialize the steps for.
@@ -1735,7 +1937,7 @@ PRIMARY KEY  (id)
 
 			foreach ( $feeds as $feed ) {
 				$step = Gravity_Flow_Steps::create( $feed, $entry );
-				if ( $step ) {
+				if ( $step && $step->get_type() != 'workflow_complete' ) {
 					$steps[] = $step;
 				}
 			}
@@ -1765,6 +1967,55 @@ PRIMARY KEY  (id)
 			} else {
 				return $a - $b;
 			}
+		}
+
+		/**
+		 * Returns the virtual workflow complete step or false.
+		 *
+		 * @since 2.5
+		 *
+		 * @param null|int   $form_id Null or the form ID.
+		 * @param null|array $entry   Null or the entry to initialize the step for.
+		 *
+		 * @return false|Gravity_Flow_Step_Workflow_Complete
+		 */
+		public function get_workflow_complete_step( $form_id = null, $entry = null ) {
+			$feeds = $this->get_feeds( $form_id );
+
+			$workflow_complete_step = false;
+
+			foreach ( $feeds as $feed ) {
+				$step = Gravity_Flow_Steps::create( $feed, $entry );
+				if ( $step && $step->get_type() == 'workflow_complete' ) {
+					$workflow_complete_step = $step;
+					break;
+				}
+			}
+
+			return $workflow_complete_step;
+		}
+
+		/**
+		 * Returns the start step or false.
+		 *
+		 * @since 2.5
+		 *
+		 * @param null|int   $form_id Null or the form ID.
+		 * @param null|array $entry   Null or the entry to initialize the step for.
+		 *
+		 * @return false|Gravity_Flow_Step_Workflow_Start
+		 */
+		public function get_workflow_start_step( $form_id = null, $entry = null ) {
+			$steps = $this->get_steps( $form_id, $entry );
+
+			$start_step = false;
+
+			if ( ! empty( $steps ) && $steps[0]->get_type() == 'workflow_start' ) {
+				// The start step is always first in the list.
+				$start_step = $steps[0];
+			}
+
+			return $start_step;
 		}
 
 		/**
@@ -1845,12 +2096,14 @@ PRIMARY KEY  (id)
 
 			$form = $this->get_current_form();
 
+			$checkbox_label = isset( $field['checkbox_label'] ) ? $field['checkbox_label'] : esc_html__( 'Schedule this step', 'gravityflow' );
+
 			$scheduled = array(
 				'name' => 'scheduled',
 				'type' => 'checkbox',
 				'choices' => array(
 					array(
-						'label' => esc_html__( 'Schedule this step', 'gravityflow' ),
+						'label' => $checkbox_label,
 						'name' => 'scheduled',
 					),
 				),
@@ -1950,31 +2203,27 @@ PRIMARY KEY  (id)
 				</div>
 				<div class="gravityflow-schedule-date-container" <?php echo $schedule_date_style ?> >
 					<?php
-					esc_html_e( 'Start this step on', 'gravityflow' );
-					echo '&nbsp;';
-					$this->settings_text( $schedule_date );
+					$delay_label = isset( $field['date_label'] ) ?  $field['date_label'] : esc_html__( 'Start this step on %s', 'gravityflow' );
+					printf( $delay_label, $this->settings_text( $schedule_date, false ) );
 					?>
 					<input type="hidden" id="gforms_calendar_icon_schedule_date" class="gform_hidden" value="<?php echo GFCommon::get_base_url() . '/images/calendar.png'; ?>" />
 				</div>
 				<div class="gravityflow-schedule-delay-container" <?php echo $schedule_delay_style ?>>
 					<?php
-					esc_html_e( 'Start this step', 'gravityflow' );
-					echo '&nbsp;';
-					$this->settings_text( $delay_offset_field );
-					$this->settings_select( $unit_field );
-					echo '&nbsp;';
-					esc_html_e( 'after the workflow step is triggered.', 'gravityflow' );
+					/* translators: 1. textbox input for the number of days/weeks etc. 2. select input with options for minutes/hours/days/weeks  */
+					$delay_label = isset( $field['delay_label'] ) ?  $field['delay_label'] : esc_html__( 'Start this step %1$s %2$s after the workflow step is triggered.', 'gravityflow' );
+					printf( $delay_label, $this->settings_text( $delay_offset_field, false ), $this->settings_select( $unit_field, false ) );
 					?>
 				</div>
 				<div class="gravityflow-schedule-date-field-container" <?php echo $schedule_date_fields_style ?>>
 					<?php
-					esc_html_e( 'Start this step', 'gravityflow' );
-					echo '&nbsp;';
+					/* translators: 1. textbox input for the number of days/weeks etc. 2. select input with options for minutes/hours/days/weeks 3. select input before/after 4. select input with list of date fields */
+					$date_field_label = isset( $field['date_field_label'] ) ?  $field['delay_label'] : esc_html__( 'Start this step %1$s %2$s %3$s %4$s', 'gravityflow' );
+
 					$delay_offset_field['name'] = 'schedule_date_field_offset';
 					$delay_offset_field['default_value'] = '0';
-					$this->settings_text( $delay_offset_field );
+
 					$unit_field['name'] = 'schedule_date_field_offset_unit';
-					$this->settings_select( $unit_field );
 					echo '&nbsp;';
 					$before_after_field = array(
 						'name' => 'schedule_date_field_before_after',
@@ -1991,9 +2240,9 @@ PRIMARY KEY  (id)
 							),
 						),
 					);
-					$this->settings_select( $before_after_field );
 
-					$this->settings_select( $schedule_date_fields );
+					printf( $date_field_label, $this->settings_text( $delay_offset_field, false ), $this->settings_select( $unit_field, false ), $this->settings_select( $before_after_field ), $this->settings_select( $schedule_date_fields ) );
+
 					?>
 				</div>
 			</div>
@@ -2688,12 +2937,12 @@ PRIMARY KEY  (id)
 			}
 
 			$step_selector_field = array(
-				'name'       => $field['name'],
-				'label'      => $field['label'],
-				'type'       => 'select',
+				'name'          => $field['name'],
+				'label'         => $field['label'],
+				'type'          => 'select',
 				'default_value' => isset( $field['default_value'] ) ? $field['default_value'] : 'next',
-				'horizontal' => true,
-				'choices'    => $step_choices,
+				'horizontal'    => true,
+				'choices'       => $step_choices,
 			);
 
 			$this->settings_select( $step_selector_field );
@@ -2904,6 +3153,22 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			$form_id = rgget( 'id' );
 			$form_id = absint( $form_id );
 			$step = $this->get_step( $item['id'] );
+
+			if ( ! $step ) {
+				return '';
+			}
+
+			if ( $step->get_type() == "workflow_start" ) {
+				// Display the count only if there are scheduled entries.
+				$count = $step->entry_count();
+				return $count = $count ? $count : '';
+			}
+
+			if ( $step->get_type() == "workflow_complete" ) {
+				// There's currently no way to filter accurately on Gravity Forms entry list.
+				return '';
+			}
+
 			$step_id = $step ? $step->get_id() : 0;
 			$count = $step ? $step->entry_count() : 0;
 			$url = admin_url( 'admin.php?page=gf_entries&view=entries&id='. $form_id . '&field_id=workflow_step&operator=is&s=' . $step_id );
@@ -2955,10 +3220,10 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			$feed_id       = '_id_';
 			$edit_url      = add_query_arg( array( 'fid' => $feed_id ) );
 			$links         = array(
-				'edit'      => '<a title="' . esc_attr__( 'Edit this feed', 'gravityforms' ) . '" href="' . esc_url( $edit_url ) . '">' . esc_html__( 'Edit', 'gravityforms' ) . '</a>',
-				'duplicate' => '<a title="' . esc_attr__( 'Duplicate this feed', 'gravityforms' ) . '" href="#" onclick="gaddon.duplicateFeed(\'' . esc_js( $feed_id ) . '\');" onkeypress="gaddon.duplicateFeed(\'' . esc_js( $feed_id ) . '\');">' . esc_html__( 'Duplicate', 'gravityforms' ) . '</a>',
-				'delete'    => '<a title="' . esc_attr__( 'Delete this feed', 'gravityforms' ) . '" class="submitdelete" onclick="javascript: if(confirm(\'' . esc_js( __( 'WARNING: You are about to delete this item.', 'gravityforms' ) ) . esc_js( __( "'Cancel' to stop, 'OK' to delete.", 'gravityforms' ) ) . '\')){ gaddon.deleteFeed(\'' . esc_js( $feed_id ) . '\'); }" onkeypress="javascript: if(confirm(\'' . esc_js( __( 'WARNING: You are about to delete this item.', 'gravityforms' ) ) . esc_js( __( "'Cancel' to stop, 'OK' to delete.", 'gravityforms' ) ) . '\')){ gaddon.deleteFeed(\'' . esc_js( $feed_id ) . '\'); }" style="cursor:pointer;">' . esc_html__( 'Delete', 'gravityforms' ) . '</a>',
-				'step_id'   => 'Step ID# ' . $feed_id,
+				'edit'      => '<a href="' . esc_url( $edit_url ) . '">' . esc_html__( 'Edit', 'gravityforms' ) . '</a>',
+				'duplicate' => '<a href="#" onclick="gaddon.duplicateFeed(\'' . esc_js( $feed_id ) . '\');" onkeypress="gaddon.duplicateFeed(\'' . esc_js( $feed_id ) . '\');">' . esc_html__( 'Duplicate', 'gravityforms' ) . '</a>',
+				'delete'    => '<a class="submitdelete" onclick="javascript: if(confirm(\'' . esc_js( __( 'WARNING: You are about to delete this item.', 'gravityforms' ) ) . esc_js( __( "'Cancel' to stop, 'OK' to delete.", 'gravityforms' ) ) . '\')){ gaddon.deleteFeed(\'' . esc_js( $feed_id ) . '\'); }" onkeypress="javascript: if(confirm(\'' . esc_js( __( 'WARNING: You are about to delete this item.', 'gravityforms' ) ) . esc_js( __( "'Cancel' to stop, 'OK' to delete.", 'gravityforms' ) ) . '\')){ gaddon.deleteFeed(\'' . esc_js( $feed_id ) . '\'); }" style="cursor:pointer;">' . esc_html__( 'Delete', 'gravityforms' ) . '</a>',
+				'step_id'   => 'ID: ' . $feed_id,
 			);
 
 			return $links;
@@ -3446,9 +3711,11 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			if ( count( $steps ) > 1 ) {
 				$choices = array();
 				foreach ( $steps as $step ) {
+
 					if ( ! $step->is_active() ) {
 						continue;
 					}
+
 					$step_id = $step->get_id();
 					if ( ! $current_step || ( $current_step && $current_step->get_id() != $step_id ) ) {
 						$choices[] = array(
@@ -3567,18 +3834,20 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 				if ( $next_step_id == 'complete' ) {
 					$step = false;
 					$keep_looking = false;
-				}
-
-				if ( $next_step_id == 'next' ) {
+				} elseif ( $next_step_id == 'next' ) {
 					$step = $this->get_next_step_in_list( $form, $step, $entry, $steps );
 					$keep_looking = false;
-				}
-
-				if ( ! in_array( $next_step_id, array( 'complete', 'next' ) ) ) {
+				} else {
 					$step = $this->get_step( $next_step_id, $entry );
 
 					if ( empty( $step ) ) {
 						$keep_looking = false;
+					} elseif ( $step->get_type() == 'workflow_start' ) {
+						if ( $step->is_condition_met( $form ) ) {
+							$keep_looking = false;
+						} else {
+							$step = false;
+						}
 					} elseif ( ! $step->is_active() || ! $step->is_condition_met( $form ) ) {
 						$step = $this->get_next_step_in_list( $form, $step, $entry, $steps );
 						if ( ! empty( $step ) ) {
@@ -3647,6 +3916,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			$next_step = false;
 			foreach ( $steps as $step ) {
 				if ( $next_step ) {
+
 					if ( $step->is_active() && $step->is_condition_met( $form ) ) {
 						return $step;
 					}
@@ -5315,6 +5585,13 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			$form  = GFAPI::get_form( $form_id );
 			$steps = $this->get_steps( $form_id, $entry );
 			foreach ( $steps as $step ) {
+				if ( $step->get_type() == 'workflow_start' && $step->is_active() ) {
+					if ( $step->is_condition_met( $form ) ) {
+						return $step;
+					} else {
+						break;
+					}
+				}
 				if ( $step->is_active() && $step->is_condition_met( $form ) ) {
 					return $step;
 				}
