@@ -4838,7 +4838,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 						'name'  => 'shortcodes',
 						'label' => esc_html__( 'Shortcode Security', 'gravityflow' ),
 						'type'        => 'checkbox',
-						'description' => esc_html__( 'Important: Do not enable any of these settings unless all page authors are authorized.', 'gravityflow' ),
+						'description' => esc_html__( 'Important: Do not enable any of these settings unless all page editors are authorized.', 'gravityflow' ),
 						'choices'     => array(
 							array(
 								'label'   => esc_html__( 'Allow the Status shortcode to display all entries to all registered users.', 'gravityflow' ),
