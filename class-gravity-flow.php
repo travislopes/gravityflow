@@ -4876,9 +4876,9 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 								'tooltip' => esc_html__( 'This setting allows the allow_anonymous attribute to be used in the shortcode.', 'gravityflow' ),
 							),
 							array(
-								'label'   => esc_html__( 'Allow the inbox and status tables to display field values.', 'gravityflow' ),
+								'label'   => esc_html__( 'Allow the Inbox and Status shortcodes to display field values.', 'gravityflow' ),
 								'name'    => 'allow_field_ids',
-								'tooltip' => esc_html__( 'This setting allows the field_ids attribute to be used in the shortcode.', 'gravityflow' ),
+								'tooltip' => esc_html__( 'This setting allows the fields attribute to be used in the shortcode.', 'gravityflow' ),
 							),
 						),
 					),
