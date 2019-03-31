@@ -249,13 +249,29 @@ class Gravity_Flow_Step_Update_User extends Gravity_Flow_Step {
 	}
 
 	/**
+	 * Get required capabilities for the step.
+	 *
+	 * @since 2.5
+	 *
+	 * @return array
+	 */
+	public function get_required_capabilities() {
+		$required_capabilities = parent::get_required_capabilities();
+
+		// To update user, we require the workflow admin having the "edit_users" cap.
+		array_push( $required_capabilities, 'edit_users' );
+
+		return $required_capabilities;
+	}
+
+	/**
 	 * Processes the step and updates the user profile if the user can be found.
 	 *
 	 * @since 2.5
 	 *
 	 * @return bool
 	 */
-	function process() {
+	public function process() {
 		$this->log_debug( __METHOD__ . '(): starting' );
 
 
@@ -286,9 +302,13 @@ class Gravity_Flow_Step_Update_User extends Gravity_Flow_Step {
 
 		if ( ! $user ) {
 			$this->log_debug( __METHOD__ . '(): user not found. Bailing.' );
+			$this->add_note( sprintf( esc_html__( '%s: User not found.', 'gravityflow' ), $this->get_name() ) );
+		} elseif ( is_multisite() && ! is_user_member_of_blog( $user->ID, get_current_blog_id() ) ) {
+			$this->log_debug( __METHOD__ . '(): user is not a member of the current site. Bailing.' );
+			$this->add_note( sprintf( esc_html__( '%s: User is not a member of the current site.', 'gravityflow' ), $this->get_name() ) );
+		} else {
+			$this->set_user_properties( $user );
 		}
-
-		$this->set_user_properties( $user );
 
 		return true;
 	}

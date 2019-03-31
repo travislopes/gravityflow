@@ -1548,6 +1548,9 @@ PRIMARY KEY  (id)
 
 		/**
 		 * Sets the _assignee_settings_md5 class property on feed validation, if there are entries on this step.
+         *
+         * @since 2.5     Add new checks for step required capabilities.
+         * @since unknown
 		 *
 		 * @param array  $field         The field properties.
 		 * @param string $field_setting The field value.
@@ -1562,6 +1565,19 @@ PRIMARY KEY  (id)
 			if ( $current_step_id ) {
 				$current_step = $this->get_step( $current_step_id );
 				$entry_count = $current_step->entry_count();
+			}
+
+			if ( $current_step ) {
+				$required_capabilities = $current_step->get_required_capabilities();
+				// Checking ALL required capabilities, one by one.
+                // In this way, we can also match the "gform_full_access" cap with other Gravity Form or Gravity Flow caps.
+				foreach ( $required_capabilities as $cap ) {
+					if ( ! $this->current_user_can_any( $cap ) ) {
+						GFCommon::add_error_message( esc_html__( "You don't have sufficient permissions to update the step settings.", 'gravityflow' ) );
+
+						return false;
+					}
+				}
 			}
 
 			$assignee_settings = array();
