@@ -142,6 +142,11 @@ class Gravity_Flow_Partial_Entries {
 	 * @return bool
 	 */
 	public function is_workflow_enabled( $form_id ) {
+
+		if ( ! $this->is_supported() ) {
+			return false;
+		}
+
 		if ( is_null( $this->_workflow_enabled ) ) {
 			$add_on        = GF_Partial_Entries::get_instance();
 			$feed_settings = $add_on->get_feed_settings( $form_id );
