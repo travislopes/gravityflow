@@ -66,7 +66,7 @@ class Gravity_Flow_Step_Feed_Dropbox extends Gravity_Flow_Step_Feed_Add_On {
 	/**
 	 * Process the feed; remove the feed from the processed feeds list;
 	 *
-	 * @since 2,5,2 Fixed the workflow stalling when there are no files to process.
+	 * @since 2.5.2 Fixed the workflow stalling when there are no files to process.
 	 * @since 1.3.3
 	 *
 	 * @param array $feed The feed to be processed.
