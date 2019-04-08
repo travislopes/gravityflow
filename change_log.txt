@@ -1,0 +1,1 @@
+- Fixed the workflow stalling on the Dropbox step when there are no files to process.
