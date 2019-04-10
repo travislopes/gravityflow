@@ -1899,13 +1899,15 @@ abstract class Gravity_Flow_Step extends stdClass {
 
 	/**
 	 * Returns TRUE if this step is past the defined due date.
+	 * 
+	 * @since 2.5
 	 *
 	 * @return bool
 	 */
 	public function is_overdue() {
 		$step_due_date = $this->get_due_date_timestamp();
 		$step_timestamp = $this->get_step_timestamp();
-		if ( (int) $step_due_date < (int) $step_timestamp ) {
+		if ( (int) $step_due_date < (int) time() ) {
 			return true;
 		}
 		return false;
