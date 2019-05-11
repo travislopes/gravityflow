@@ -5073,7 +5073,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 					$this->toolbar();
 				endif;
 				require_once( $this->get_base_path() . '/includes/pages/class-submit.php' );
-				if ( is_array( $form_ids ) && ! empty ( $form_ids )) {
+				if ( is_array( $form_ids ) && ! empty ( $form_ids ) ) {
 					$published_form_ids = $form_ids;
 				} else {
 					$published_form_ids = gravity_flow()->get_published_form_ids();
