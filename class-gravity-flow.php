@@ -1106,18 +1106,80 @@ PRIMARY KEY  (id)
 		public function get_users_as_choices() {
 			static $choices;
 
-			$default_args = array( 'orderby' => array( 'display_name', 'user_login' ), 'fields' => array( 'ID', 'display_name', 'user_login' ) );
-			$args = wp_parse_args( apply_filters( 'gravityflow_get_users_args', $default_args ), $default_args );
+			$args            = Gravity_Flow_Common::get_users_args();
+			$total_accounts  = Gravity_Flow_Common::get_total_accounts();
+			$account_choices = array();
+
+			if ( $total_accounts > $args['number'] ) {
+				$settings            = $this->get_feed( rgget( 'fid' ) );
+				$feed_meta           = rgar( $settings, 'meta' );
+				$notification_types  = array(
+					'workflow',
+					'assignee',
+					'rejection',
+					'approval',
+					'in_progress',
+					'complete',
+					'revert'
+				);
+				$current_users       = array();
+				$exclude_account_ids = array();
+				// Get all types of notification users and assignees.
+				foreach ( $notification_types as $type ) {
+					$_type = ( $type === 'assignee' ) ? 'type' : $type . '_notification_type';
+
+					if ( rgar( $feed_meta, $_type ) === 'select' ) {
+						$key   = ( $type === 'assignee' ) ? 'assignees' : $type . '_notification_users';
+						$value = rgar( $feed_meta, $key );
+						if ( ! empty( $value ) ) {
+							$current_users = array_merge( $current_users, $value );
+						}
+					} else {
+						$key                   = ( $type === 'assignee' ) ? 'routing' : $type . '_notification_routing';
+						$current_users_routing = rgar( $feed_meta, $key );
+						if ( ! empty( $current_users_routing ) ) {
+							$_current_users = array();
+							foreach ( $current_users_routing as $_routing ) {
+								$_current_users[] = $_routing['assignee'];
+							}
+
+							$current_users = array_merge( $current_users, $_current_users );
+						}
+					}
+				}
+
+				if ( ! empty( $current_users ) ) {
+					foreach ( $current_users as $current_user ) {
+						list( $string, $user_id ) = explode( '|', $current_user );
+						$account = get_user_by( 'id', $user_id );
+						if ( $account ) {
+							$name                  = $account->display_name ? $account->display_name : $account->user_login;
+							$account_choices[]     = array( 'value' => 'user_id|' . $account->ID, 'label' => $name );
+							$exclude_account_ids[] = $user_id;
+						}
+					}
+
+					if ( ! empty( $exclude_account_ids ) ) {
+						// Exclude current assignees when get_users().
+						$args['exclude'] = $exclude_account_ids;
+					}
+				}
+			}
+
 			$key  = md5( get_current_blog_id() . '_' . serialize( $args ) );
 
 			if ( ! isset( $choices[ $key ] ) ) {
 				$role_choices = Gravity_Flow_Common::get_roles_as_choices( true, true );
 
-				$accounts        = get_users( $args );
-				$account_choices = array();
+				// Get a user list.
+				$accounts = get_users( $args );
 				foreach ( $accounts as $account ) {
-					$name = $account->display_name ? $account->display_name : $account->user_login;
+					$name              = $account->display_name ? $account->display_name : $account->user_login;
 					$account_choices[] = array( 'value' => 'user_id|' . $account->ID, 'label' => $name );
+				}
+
+				if ( isset( $args['exclude'] ) ) {
+					usort( $account_choices, array( $this, 'sort_account_choices' ) );
 				}
 
 				$choices[ $key ] = array(
@@ -1176,6 +1238,20 @@ PRIMARY KEY  (id)
 			}
 
 			return $choices[ $key ];
+		}
+
+		/**
+		 * The usort() callback for sorting account choices.
+		 *
+		 * @since 2.5.3
+		 *
+		 * @param array $a The first account choice to compare.
+		 * @param array $b The second first account choice to compare.
+		 *
+		 * @return int
+		 */
+		public function sort_account_choices( $a, $b ) {
+			return $a['label'] > $b['label'];
 		}
 
 		/**
@@ -3183,9 +3259,11 @@ PRIMARY KEY  (id)
 			$name = $field['name'];
 			$id = isset( $field['id'] ) ?  $field['id'] : 'gform_user_routing_setting_' . $name;
 
-			echo '<div class="gravityflow-user-routing" id="' . $id . '" data-field_name="_gaddon_setting_' . $name . 'user_routing" data-field_id="' . $name . '" ></div>';
+			$html  = '<div class="gravityflow-user-routing" id="' . $id . '" data-field_name="_gaddon_setting_' . $name . 'user_routing" data-field_id="' . $name . '" ></div>';
+			$html .= ( $name === 'workflow_notification_routing' ) ? '' : rgar( $field, 'description' );
+			$html .= $this->settings_hidden( $field, false );
 
-			$this->settings_hidden( $field );
+			echo $html;
 		}
 
 		/**

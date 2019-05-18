@@ -10,3 +10,4 @@
 - Fixed validation issue in Assignee, User and Multi-User fields.
 - Fixed an issue with the confirmation page for users with the gravityflow_status_view_all capability when transitioning steps.
 - Fixed a PHP notice when loading feed message with AJAX.
+- Added support for displaying the first 2,000 users in assignees and notification users fields.
