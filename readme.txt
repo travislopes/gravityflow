@@ -57,12 +57,13 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 = 2.5.3 =
 - Added security enhancements.
+- Added support for Gravity Flow editor blocks - coming soon!
 - Added filter gravityflow_assignee_email_reminder_repeat_days and added deprecation notice for gravityflow_assignee_eamil_reminder_repeat_days.
 - Added support for the forms attribute in the submit shortcode so the workflow forms can be filtered. e.g. [gravityflow page="submit" forms="1,2,3"]
 - Added support for the back_link back_link_text and back_link_url attributes in the status shortcode.
 - Added support for multiple forms in the status shortcode e.g. [gravityflow page="status" form="1,2,3"]
 - Added support for displaying the first 2,000 users in assignee settings.
-- Update translations.
+- Updated translations.
 - Updated the submit shortcode to display only the published workflows or the forms specified in the forms attribute.
 - Fixed an issue with notification step not identifying all users in a multi-user field for notification.
 - Fixed an issue when Sliced Invoices status was manually updated to paid, entries weren't released from Sliced Invoices steps.
