@@ -57,6 +57,7 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 = 2.5.4 =
 - Added the gravityflow_can_render_form filter.
+- Updated translations.
 - Fixed a rare fatal error on the status page when steps are missing.
 
 = 2.5.3 =
