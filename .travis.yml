@@ -4,8 +4,6 @@ cache:
   directories:
   - node_modules
 php:
-  - 5.4
-  - 5.5
   - 5.6
   - 7.0
   - 7.1
@@ -98,8 +96,14 @@ jobs:
   include:
   - php: 5.2
     dist: precise
+    env: WP_VERSION=5.1 WP_MULTISITE=0
   - php: 5.3
     dist: precise
+    env: WP_VERSION=5.1 WP_MULTISITE=0
+  - php: 5.4
+    env: WP_VERSION=5.1 WP_MULTISITE=0
+  - php: 5.5
+    env: WP_VERSION=5.1 WP_MULTISITE=0
   - php: 7.2
   - php: 7.3
   - stage: Extensions
