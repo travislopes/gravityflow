@@ -1,10 +1,10 @@
 <?php
 /**
- * Gravity Flow Reports
+ * Gravity Flow Welcome
  *
  * @package     GravityFlow
- * @subpackage  Classes/Gravity_Flow_Reports
- * @copyright   Copyright (c) 2015-2018, Steven Henty S.L.
+ * @subpackage  Classes/Gravity_Flow_Welcome
+ * @copyright   Copyright (c) 2015-2019, Steven Henty S.L.
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -27,7 +27,7 @@ class Gravity_Flow_Welcome {
 
 		?>
 
-		<h2>This is content from the welcome class</h2>
+		<h3>This is content from the welcome class</h3>
 		<?php
 
 	}

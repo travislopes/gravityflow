@@ -5483,9 +5483,9 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 		}
 
 		/**
-		 * Renders the reports page.
+		 * Renders the welcome page.
 		 *
-		 * @param array $args The reports page arguments.
+		 * @param array $args The welcome page arguments.
 		 */
 		 public function welcome_page( $args = array() ) {
 			$defaults = array(
@@ -5493,67 +5493,27 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			);
 			$args = array_merge( $defaults, $args );
 			?>
-			<div class="wrap gf_entry_wrap gravityflow_workflow_wrap gravityflow_workflow_reports">
+			<div class="wrap about-wrap gf_entry_wrap full-width-layout gravityflow_workflow_wrap gravityflow_workflow_welcome">
 
 				<?php if ( $args['display_header'] ) : ?>
-					<h2 class="gf_admin_page_title">
-						<img width="45" height="22" src="<?php echo esc_url( gravity_flow()->get_base_url() ); ?>/images/gravity-flow-icon-cropped.svg" style="margin-right:5px;"/>
-						<span><?php esc_html_e( 'Welcome to Gravity Flow', 'gravityflow' ); ?> (v<?php esc_html_e( $this->_version ); ?>)
-</span>
-					</h2>
+					<h1 class="gf_admin_page_title">
+						<span><?php esc_html_e( 'Welcome to Gravity Flow', 'gravityflow' ); ?></span>
+					</h1>
+					<p class="about-text">Congratulations on updating to Gravity Flow <?php esc_html_e( $this->_version ); ?>.
+					A minimum of two lines of text that introduce what the general target for this version is. The wp-badge CSS 
+					would be updated to be the GFlow logo.</p>
+					<div class="wp-badge">Version <?php esc_html_e( $this->_version ); ?></div>
+				<?php endif; ?>
 
-					<?php GFCommon::display_admin_message(); ?>
+				<?php GFCommon::display_admin_message(); ?>
 
-					<div id="gf_form_toolbar">
-						<ul id="gf_form_toolbar_links">
-						<?php $menu_items = array();
-
-						$active_class = 'gf_toolbar_active';
-						$not_active_class = '';
-
-						$menu_items['start'] = array(
-							'label'        => esc_html( $this->translate_navigation_label( 'welcome' ) ),
-							'icon'         => '<i class="fa fa-hand-o-right fa-lg"></i>',
-							'title'        => __( 'Getting Started', 'gravityflow' ),
-							'url'          => '?page=gravityflow-welcome&tab=start',
-							'menu_class'   => 'gf_form_toolbar_editor',
-							'link_class'   => ( rgget( 'page' ) == 'gravityflow-welcome' ) && ( rgget( 'tab' ) == 'start' || rgget( 'tab' ) == '' ) ? $active_class : $not_active_class,
-							'capabilities' => 'gravityflow_inbox',
-							'priority'     => 1000,
-						);
-
-						$menu_items['changes'] = array(
-							'label'          => __( 'List of Changes', 'gravityflow' ),
-							'icon'           => '<i class="fa fa-pencil fa-lg"></i>',
-							'title'          => __( 'Recent updates to Gravity Flow', 'gravityflow' ),
-							'url'            => '?page=gravityflow-welcome&tab=changes',
-							'menu_class'     => 'gf_form_toolbar_settings',
-							'link_class'   => ( rgget( 'page' ) == 'gravityflow-welcome' ) && rgget( 'tab' ) == 'changes' ? $active_class : $not_active_class,
-							'capabilities'   => 'gravityflow_inbox',
-							'priority'       => 800,
-						);
-
-						$menu_items['credits'] = array(
-							'label'          => __( 'Credits', 'gravityflow' ),
-							'icon'           => '<i class="fa fa fa-trophy fa-lg"></i>',
-							'title'          => __( 'Open Source FTW', 'gravityflow' ),
-							'url'            => '?page=gravityflow-welcome&tab=credits',
-							'menu_class'     => 'gf_form_toolbar_settings',
-							'link_class'   => ( rgget( 'page' ) == 'gravityflow-welcome' ) && rgget( 'tab' ) == 'credits' ? $active_class : $not_active_class,
-							'capabilities'   => 'gravityflow_reports',
-							'priority'       => 700,
-						);
-
-						echo GFForms::format_toolbar_menu_items( $menu_items );
-
-						?>
-						</ul>
-					</div>
-			
+				<nav class="nav-tab-wrapper wp-clearfix" aria-label="Secondary menu">
+					<a href="?page=gravityflow-welcome" class="nav-tab nav-tab-active" aria-current="page">Getting Started</a>
+					<a href="?page=gravityflow-welcome&tab=changes" class="nav-tab">What's New</a>
+					<a href="?page=gravityflow-welcome&tab=contributors" class="nav-tab">Contributors</a>
+				</nav>		
 					
-					<?php
-				endif;
-
+				<?php
 				require_once( $this->get_base_path() . '/includes/pages/class-welcome.php' );
 				Gravity_Flow_Welcome::display( $args );
 				?>
