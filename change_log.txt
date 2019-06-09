@@ -1,0 +1,1 @@
+- Fixed an issue with the user input step where the product order summary table does is not displayed unless a product field is included in the display fields.
