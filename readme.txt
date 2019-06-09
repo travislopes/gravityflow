@@ -55,6 +55,13 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+
+= 2.5.5 =
+- Added security enhancements.
+- Added translations for French, Portuguese, Italian, Swedish, Dutch, Turkish, German and Spanish.
+- Fixed an issue with the User Input step where the product order summary table does is not displayed unless a product field is included in the display fields.
+- Fixed an issue with the workflow entry detail page where see all fields are displayed to admins instead of only the display fields.
+
 = 2.5.4 =
 - Added the gravityflow_can_render_form filter.
 - Updated translations.

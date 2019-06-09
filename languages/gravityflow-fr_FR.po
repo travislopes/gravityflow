@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Flow\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2019-05-18 14:00:20+00:00\n"
-"PO-Revision-Date: 2019-05-18 15:16+0000\n"
+"POT-Creation-Date: 2019-05-21 11:09:58+00:00\n"
+"PO-Revision-Date: 2019-05-21 16:38+0000\n"
 "Last-Translator: FX Bénard <fxb@wp-translations.org>\n"
 "Language-Team: French (France) (http://www.transifex.com/gravityflow/gravityflow/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgstr "Type d’étape"
 #: class-gravity-flow.php:1412 includes/pages/class-activity.php:65
 #: includes/pages/class-activity.php:123 includes/pages/class-inbox.php:162
 #: includes/pages/class-reports.php:265 includes/pages/class-reports.php:579
-#: includes/pages/class-status.php:1227
+#: includes/pages/class-status.php:1237
 msgid "Step"
 msgstr "Étape"
 
@@ -233,7 +233,7 @@ msgid ""
 "status pages too."
 msgstr "Activer la date d’échéance pour autoriser les entrées à être mise en évidence quand leurs date d’échéance est dépassée. Une colonne facultative peut-être aussi définie dans les pages boîte de réception / état."
 
-#: class-gravity-flow.php:1552 class-gravity-flow.php:7712
+#: class-gravity-flow.php:1552 class-gravity-flow.php:7732
 msgid "Expired"
 msgstr "Expiré"
 
@@ -293,7 +293,7 @@ msgstr "Vous n’avez pas les autorisations nécessaires pour modifier les régl
 msgid "Start"
 msgstr "Début"
 
-#: class-gravity-flow.php:1727 class-gravity-flow.php:7703
+#: class-gravity-flow.php:1727 class-gravity-flow.php:7723
 #: includes/steps/class-step-user-input.php:840
 #: includes/steps/class-step-user-input.php:936
 #: includes/steps/class-step-workflow-complete.php:39
@@ -314,7 +314,7 @@ msgstr "Délai"
 
 #: class-gravity-flow.php:2243 class-gravity-flow.php:2429
 #: class-gravity-flow.php:2655 includes/pages/class-activity.php:60
-#: includes/pages/class-activity.php:85 includes/pages/class-status.php:1218
+#: includes/pages/class-activity.php:85 includes/pages/class-status.php:1228
 msgid "Date"
 msgstr "Date"
 
@@ -386,7 +386,7 @@ msgstr "Champ de date d’échéance"
 #: class-gravity-flow.php:2461 class-gravity-flow.php:2471
 #: class-gravity-flow.php:2477 class-gravity-flow.php:2561
 #: class-gravity-flow.php:3914 includes/pages/class-inbox.php:173
-#: includes/pages/class-status.php:1253
+#: includes/pages/class-status.php:1263
 msgid "Due Date"
 msgstr "Date d’échéance"
 
@@ -453,7 +453,7 @@ msgstr "Activer"
 msgid "You must provide a color value for the active highlight to apply."
 msgstr "Vous devez fournir une valeur de couleur à appliquer pour la mise en évidence active."
 
-#: class-gravity-flow.php:3281 class-gravity-flow.php:5701
+#: class-gravity-flow.php:3281 class-gravity-flow.php:5721
 msgid "Workflow Complete"
 msgstr "Workflow terminé"
 
@@ -506,8 +506,8 @@ msgstr "Supprimer"
 msgid "You don't have any steps configured. Let's go %screate one%s!"
 msgstr "Vous n’avez configuré aucune étape. %sCréez-en une %s !"
 
-#: class-gravity-flow.php:3642 includes/pages/class-status.php:1873
-#: includes/pages/class-status.php:1878
+#: class-gravity-flow.php:3642 includes/pages/class-status.php:1883
+#: includes/pages/class-status.php:1888
 msgid "Status:"
 msgstr "État :"
 
@@ -530,18 +530,18 @@ msgid "Submitted by"
 msgstr "Envoyée par"
 
 #: class-gravity-flow.php:3907 class-gravity-flow.php:4918
-#: class-gravity-flow.php:7669 includes/class-connected-apps.php:791
-#: includes/pages/class-status.php:1231
+#: class-gravity-flow.php:7689 includes/class-connected-apps.php:791
+#: includes/pages/class-status.php:1241
 #: includes/steps/class-step-feed-slicedinvoices.php:227
 #: includes/wizard/steps/class-iw-step-pages.php:81
 msgid "Status"
 msgstr "État"
 
-#: class-gravity-flow.php:3921 includes/pages/class-status.php:1012
+#: class-gravity-flow.php:3921 includes/pages/class-status.php:1020
 msgid "Expires"
 msgstr "Expire"
 
-#: class-gravity-flow.php:3967 includes/pages/class-status.php:1005
+#: class-gravity-flow.php:3967 includes/pages/class-status.php:1013
 #: includes/steps/class-step-approval.php:731
 #: includes/steps/class-step-partial-entry-submission.php:204
 #: includes/steps/class-step-user-input.php:842
@@ -553,7 +553,7 @@ msgid "Scheduled"
 msgstr "Programmé"
 
 #: class-gravity-flow.php:3996 class-gravity-flow.php:3997
-#: class-gravity-flow.php:6877 class-gravity-flow.php:6879
+#: class-gravity-flow.php:6897 class-gravity-flow.php:6899
 msgid "Step expired"
 msgstr "Étape expirée"
 
@@ -602,7 +602,7 @@ msgstr "Afficher"
 msgid "General"
 msgstr "Général"
 
-#: class-gravity-flow.php:4365 class-gravity-flow.php:6952
+#: class-gravity-flow.php:4365 class-gravity-flow.php:6972
 msgid "Gravity Flow Settings"
 msgstr "Réglages de Gravity Flow"
 
@@ -614,20 +614,20 @@ msgstr "Libellés"
 msgid "Connected Apps"
 msgstr "Apps connectées"
 
-#: class-gravity-flow.php:4390 class-gravity-flow.php:8580
+#: class-gravity-flow.php:4390 class-gravity-flow.php:8600
 msgid "Uninstall"
 msgstr "Désinstaller"
 
-#: class-gravity-flow.php:4455 class-gravity-flow.php:7700
-#: class-gravity-flow.php:8149
+#: class-gravity-flow.php:4455 class-gravity-flow.php:7720
+#: class-gravity-flow.php:8169
 #: includes/merge-tags/class-merge-tag-current-step.php:98
 #: includes/steps/class-step-partial-entry-submission.php:201
 #: includes/steps/class-step.php:329
 msgid "Pending"
 msgstr "En attente"
 
-#: class-gravity-flow.php:4456 class-gravity-flow.php:7715
-#: class-gravity-flow.php:8145
+#: class-gravity-flow.php:4456 class-gravity-flow.php:7735
+#: class-gravity-flow.php:8165
 msgid "Cancelled"
 msgstr "Annulé"
 
@@ -795,13 +795,13 @@ msgid ""
 "specified."
 msgstr "Sélectionnez les pages contenant les codes courts gravityflow suivants. Par exemple, la page de boîte de réception ci-dessous sera utilisée pendant la préparation de la fusion des balises comme {workflow_inbox_link} quand l’attribut de page_id n’est pas spécifié."
 
-#: class-gravity-flow.php:4913 class-gravity-flow.php:7667
+#: class-gravity-flow.php:4913 class-gravity-flow.php:7687
 #: includes/merge-tags/class-merge-tag-workflow-url.php:62
 #: includes/wizard/steps/class-iw-step-pages.php:61
 msgid "Inbox"
 msgstr "Boîte de réception"
 
-#: class-gravity-flow.php:4923 class-gravity-flow.php:7668
+#: class-gravity-flow.php:4923 class-gravity-flow.php:7688
 #: includes/steps/class-step-user-input.php:997
 #: includes/steps/class-step-user-input.php:1022
 #: includes/wizard/steps/class-iw-step-pages.php:97
@@ -860,382 +860,382 @@ msgstr "Sélectionner la page"
 msgid "Submit a Workflow Form"
 msgstr "Envoyer un formulaire de workflow"
 
-#: class-gravity-flow.php:5194
+#: class-gravity-flow.php:5214
 msgid ""
 "Important: Gravity Flow (Development Version) is missing some important "
 "files that were not included in the installation package. Consult the "
 "readme.md file for further details."
 msgstr "Important : la version de développement de Gravity Flow ne contient pas l’intégralité des fichiers importants qui sont inclus dans l’installation classique. Veuillez consulter le fichier readme.md pour plus de détails."
 
-#: class-gravity-flow.php:5257 class-gravity-flow.php:6150
+#: class-gravity-flow.php:5277 class-gravity-flow.php:6170
 #: includes/pages/class-entry-detail.php:167
 msgid "Return to list"
 msgstr "Retourner à la liste"
 
-#: class-gravity-flow.php:5276
+#: class-gravity-flow.php:5296
 msgid "Oops! We could not locate your entry."
 msgstr "Aïe ! Nous ne trouvons votre entrée."
 
-#: class-gravity-flow.php:5300 includes/steps/class-step-approval.php:959
+#: class-gravity-flow.php:5320 includes/steps/class-step-approval.php:959
 msgid "Error: incorrect entry."
 msgstr "Erreur : entrée incorrecte."
 
-#: class-gravity-flow.php:5306
+#: class-gravity-flow.php:5326
 msgid "Workflow Cancelled"
 msgstr "Workflow annulé"
 
-#: class-gravity-flow.php:5329
+#: class-gravity-flow.php:5349
 msgid "Error: This URL is no longer valid."
 msgstr "Erreur : cette URL n’est plus valide."
 
-#: class-gravity-flow.php:5398
+#: class-gravity-flow.php:5418
 #: includes/wizard/steps/class-iw-step-pages.php:209
 msgid "Workflow Inbox"
 msgstr "Boite de réception de workflow"
 
-#: class-gravity-flow.php:5445
+#: class-gravity-flow.php:5465
 #: includes/wizard/steps/class-iw-step-pages.php:210
 msgid "Workflow Status"
 msgstr "État du workflow"
 
-#: class-gravity-flow.php:5490
+#: class-gravity-flow.php:5510
 msgid "Workflow Activity"
 msgstr "Activité du workflow"
 
-#: class-gravity-flow.php:5536
+#: class-gravity-flow.php:5556
 msgid "Workflow Reports"
 msgstr "Rapports de workflow"
 
-#: class-gravity-flow.php:5588
+#: class-gravity-flow.php:5608
 msgid "Your inbox of pending tasks"
 msgstr "Boite de réception des tâches en attente"
 
-#: class-gravity-flow.php:5602
+#: class-gravity-flow.php:5622
 msgid "Submit a Workflow"
 msgstr "Envoyer un workflow"
 
-#: class-gravity-flow.php:5614
+#: class-gravity-flow.php:5634
 msgid "Your workflows"
 msgstr "Mes workflows"
 
-#: class-gravity-flow.php:5625 class-gravity-flow.php:7671
+#: class-gravity-flow.php:5645 class-gravity-flow.php:7691
 msgid "Reports"
 msgstr "Rapports"
 
-#: class-gravity-flow.php:5636 class-gravity-flow.php:7672
+#: class-gravity-flow.php:5656 class-gravity-flow.php:7692
 msgid "Activity"
 msgstr "Activité"
 
-#: class-gravity-flow.php:5667 includes/class-api.php:129
+#: class-gravity-flow.php:5687 includes/class-api.php:129
 msgid "Workflow cancelled."
 msgstr "Workflow annulé."
 
-#: class-gravity-flow.php:5671 class-gravity-flow.php:5683
+#: class-gravity-flow.php:5691 class-gravity-flow.php:5703
 msgid "The entry does not currently have an active step."
 msgstr "Cette entrée n’a actuellement aucune étape d’activée."
 
-#: class-gravity-flow.php:5680 includes/class-api.php:154
+#: class-gravity-flow.php:5700 includes/class-api.php:154
 msgid "Workflow Step restarted."
 msgstr "L’étape du workflow est relancée."
 
-#: class-gravity-flow.php:5691 includes/class-api.php:192
-#: includes/pages/class-status.php:1996
+#: class-gravity-flow.php:5711 includes/class-api.php:192
+#: includes/pages/class-status.php:2006
 msgid "Workflow restarted."
 msgstr "Workflow relancé."
 
-#: class-gravity-flow.php:5701 includes/class-api.php:233
+#: class-gravity-flow.php:5721 includes/class-api.php:233
 msgid "Sent to step: %s"
 msgstr "Envoyez à l’étape : %s"
 
-#: class-gravity-flow.php:5727
+#: class-gravity-flow.php:5747
 msgid "Workflow: approved or rejected"
 msgstr "Workflow : approuvé ou rejeté"
 
-#: class-gravity-flow.php:5728
+#: class-gravity-flow.php:5748
 msgid "Workflow: user input"
 msgstr "Workflow : entrée utilisateur"
 
-#: class-gravity-flow.php:5729
+#: class-gravity-flow.php:5749
 msgid "Workflow: complete"
 msgstr "Workflow : terminé"
 
-#: class-gravity-flow.php:5730
+#: class-gravity-flow.php:5750
 msgid "Workflow: cancelled"
 msgstr "Workflow : annulé"
 
-#: class-gravity-flow.php:6646
+#: class-gravity-flow.php:6666
 msgid ""
 "Gravity Flow Steps imported. IMPORTANT: Check the assignees for each step. "
 "If the form was imported from a different installation with different user "
 "IDs then steps may need to be reassigned."
 msgstr "Étapes de Gravity Flow importées. IMPORTANT : vérifiez les assignées de chaque étapes. Si le formulaire a été importé depuis une autre installation, les ID des utilisateurs peuvent être différents et donc les étapes devront être réassignées."
 
-#: class-gravity-flow.php:6961
+#: class-gravity-flow.php:6981
 msgid ""
 "%sThis operation deletes ALL Gravity Flow settings%s. If you continue, you "
 "will NOT be able to retrieve these settings."
 msgstr "%sCette opération supprime TOUS les réglages de Gravity Flow%s. Si vous continuez, vous ne serez PLUS en mesure de les récupérer."
 
-#: class-gravity-flow.php:6970
+#: class-gravity-flow.php:6990
 msgid ""
 "Warning! ALL Gravity Flow settings will be deleted. This cannot be undone. "
 "'OK' to delete, 'Cancel' to stop"
 msgstr "Avertissement ! TOUS les réglages de Gravity Flow seront supprimés. Cela ne peut pas être annulé. « OK » pour supprimer, « Annuler » pour arrêter."
 
-#: class-gravity-flow.php:7476
+#: class-gravity-flow.php:7496
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d année"
 msgstr[1] "%d années"
 
-#: class-gravity-flow.php:7480
+#: class-gravity-flow.php:7500
 msgid "%d month"
 msgid_plural "%d months"
 msgstr[0] "%d mois"
 msgstr[1] "%d mois"
 
-#: class-gravity-flow.php:7484
+#: class-gravity-flow.php:7504
 msgid "%dd"
 msgstr "%dd"
 
-#: class-gravity-flow.php:7501
+#: class-gravity-flow.php:7521
 msgid "%dh"
 msgstr "%dh"
 
-#: class-gravity-flow.php:7506
+#: class-gravity-flow.php:7526
 msgid "%dm"
 msgstr "%dm"
 
-#: class-gravity-flow.php:7510
+#: class-gravity-flow.php:7530
 msgid "%ds"
 msgstr "%ds"
 
-#: class-gravity-flow.php:7554
+#: class-gravity-flow.php:7574
 msgid "Every Fifteen Minutes"
 msgstr "Toutes les 15 minutes"
 
-#: class-gravity-flow.php:7579 class-gravity-flow.php:7604
+#: class-gravity-flow.php:7599 class-gravity-flow.php:7624
 msgid "Not authorized"
 msgstr "Non autorisé"
 
-#: class-gravity-flow.php:7666 class-gravity-flow.php:8371
+#: class-gravity-flow.php:7686 class-gravity-flow.php:8391
 msgid "Workflow"
 msgstr "Workflow"
 
-#: class-gravity-flow.php:7670
+#: class-gravity-flow.php:7690
 msgid "Support"
 msgstr "Support"
 
-#: class-gravity-flow.php:7706 includes/steps/class-step-approval.php:50
+#: class-gravity-flow.php:7726 includes/steps/class-step-approval.php:50
 #: includes/steps/class-step-approval.php:727
 msgid "Approved"
 msgstr "Approuvé"
 
-#: class-gravity-flow.php:7709 includes/steps/class-step-approval.php:44
+#: class-gravity-flow.php:7729 includes/steps/class-step-approval.php:44
 #: includes/steps/class-step-approval.php:729
 msgid "Rejected"
 msgstr "Rejeté"
 
-#: class-gravity-flow.php:7771
+#: class-gravity-flow.php:7791
 msgid "Oops! We couldn't find your lead. Please try again"
 msgstr "Aïe ! Nous ne trouvons votre entrée. Veuillez réessayer."
 
-#: class-gravity-flow.php:7813 includes/pages/class-entry-detail.php:200
+#: class-gravity-flow.php:7833 includes/pages/class-entry-detail.php:200
 msgid "Would you like to delete this file? 'Cancel' to stop. 'OK' to delete"
 msgstr "Voulez-vous supprimer ce fichier ? « OK » pour supprimer, « Annuler » pour arrêter."
 
-#: class-gravity-flow.php:7917
+#: class-gravity-flow.php:7937
 msgid "Display all fields"
 msgstr "Afficher tous les champs"
 
-#: class-gravity-flow.php:7921
+#: class-gravity-flow.php:7941
 msgid "Display all fields except selected"
 msgstr "Afficher tous les champs sauf ceux sélectionnés"
 
-#: class-gravity-flow.php:7925
+#: class-gravity-flow.php:7945
 msgid "Hide all fields except selected"
 msgstr "Masquer tous les champs sauf ceux sélectionnés"
 
-#: class-gravity-flow.php:7964
+#: class-gravity-flow.php:7984
 msgid "Except"
 msgstr "Extrait"
 
-#: class-gravity-flow.php:7983
+#: class-gravity-flow.php:8003
 msgid "Order Summary"
 msgstr "Résumé de la commande"
 
-#: class-gravity-flow.php:8070 includes/class-common.php:88
+#: class-gravity-flow.php:8090 includes/class-common.php:88
 #: includes/steps/class-step-webhook.php:1050
 msgid "User IP"
 msgstr "IP de l’utilisateur"
 
-#: class-gravity-flow.php:8076
+#: class-gravity-flow.php:8096
 msgid "Source URL"
 msgstr "URL source"
 
-#: class-gravity-flow.php:8082 includes/class-common.php:94
+#: class-gravity-flow.php:8102 includes/class-common.php:94
 msgid "Payment Status"
 msgstr "État du paiement"
 
-#: class-gravity-flow.php:8089 includes/class-common.php:103
+#: class-gravity-flow.php:8109 includes/class-common.php:103
 msgid "Payment Amount"
 msgstr "Montant du paiement"
 
-#: class-gravity-flow.php:8095 includes/class-common.php:97
+#: class-gravity-flow.php:8115 includes/class-common.php:97
 msgid "Transaction ID"
 msgstr "ID de la transaction"
 
-#: class-gravity-flow.php:8101 includes/steps/class-step-webhook.php:1052
+#: class-gravity-flow.php:8121 includes/steps/class-step-webhook.php:1052
 msgid "Created By"
 msgstr "Créé par"
 
-#: class-gravity-flow.php:8125
+#: class-gravity-flow.php:8145
 msgid "Authorized"
 msgstr "Autorisé"
 
-#: class-gravity-flow.php:8129
+#: class-gravity-flow.php:8149
 msgid "Paid"
 msgstr "Payé"
 
-#: class-gravity-flow.php:8133
+#: class-gravity-flow.php:8153
 msgid "Processing"
 msgstr "En cours"
 
-#: class-gravity-flow.php:8137
+#: class-gravity-flow.php:8157
 msgid "Failed"
 msgstr "Échoué"
 
-#: class-gravity-flow.php:8141
+#: class-gravity-flow.php:8161
 msgid "Active"
 msgstr "Actif"
 
-#: class-gravity-flow.php:8153
+#: class-gravity-flow.php:8173
 msgid "Refunded"
 msgstr "Remboursé"
 
-#: class-gravity-flow.php:8157
+#: class-gravity-flow.php:8177
 msgid "Voided"
 msgstr "Annulé"
 
-#: class-gravity-flow.php:8372
+#: class-gravity-flow.php:8392
 msgid "Entry Link"
 msgstr "Lien de l’entrée"
 
-#: class-gravity-flow.php:8373
+#: class-gravity-flow.php:8393
 msgid "Entry URL"
 msgstr "URL de l’entrée"
 
-#: class-gravity-flow.php:8374
+#: class-gravity-flow.php:8394
 msgid "Inbox Link"
 msgstr "Lien de la boîte de réception"
 
-#: class-gravity-flow.php:8375
+#: class-gravity-flow.php:8395
 msgid "Inbox URL"
 msgstr "URL de la boîte de réception"
 
-#: class-gravity-flow.php:8376
+#: class-gravity-flow.php:8396
 msgid "Cancel Link"
 msgstr "Annuler le lien"
 
-#: class-gravity-flow.php:8377
+#: class-gravity-flow.php:8397
 msgid "Cancel URL"
 msgstr "URL d’annulation"
 
-#: class-gravity-flow.php:8378 includes/pages/class-inbox.php:396
+#: class-gravity-flow.php:8398 includes/pages/class-inbox.php:396
 #: includes/steps/class-step-approval.php:796
 #: includes/steps/class-step-user-input.php:1073
 #: includes/steps/class-step.php:1967
 msgid "Note"
 msgstr "Note"
 
-#: class-gravity-flow.php:8379 includes/pages/class-entry-detail.php:546
+#: class-gravity-flow.php:8399 includes/pages/class-entry-detail.php:546
 msgid "Timeline"
 msgstr "Chronologie"
 
-#: class-gravity-flow.php:8380 includes/fields/class-fields.php:103
+#: class-gravity-flow.php:8400 includes/fields/class-fields.php:103
 msgid "Assignees"
 msgstr "Assignés"
 
-#: class-gravity-flow.php:8381
+#: class-gravity-flow.php:8401
 msgid "Approve Link"
 msgstr "Approuver le lien"
 
-#: class-gravity-flow.php:8382
+#: class-gravity-flow.php:8402
 msgid "Approve URL"
 msgstr "Approuver l’URL"
 
-#: class-gravity-flow.php:8383
+#: class-gravity-flow.php:8403
 msgid "Approve Token"
 msgstr "Approuver le jeton"
 
-#: class-gravity-flow.php:8384
+#: class-gravity-flow.php:8404
 msgid "Reject Link"
 msgstr "Rejeter le lien"
 
-#: class-gravity-flow.php:8385
+#: class-gravity-flow.php:8405
 msgid "Reject URL"
 msgstr "Rejeter l’URL"
 
-#: class-gravity-flow.php:8386
+#: class-gravity-flow.php:8406
 msgid "Reject Token"
 msgstr "Rejeter le jeton"
 
-#: class-gravity-flow.php:8433 includes/steps/class-step-update-user.php:78
+#: class-gravity-flow.php:8453 includes/steps/class-step-update-user.php:78
 msgid "Current User"
 msgstr "Utilisateur actuel"
 
-#: class-gravity-flow.php:8439
+#: class-gravity-flow.php:8459
 msgid "Workflow Assignee"
 msgstr "Assigné au workflow"
 
-#: class-gravity-flow.php:8573
+#: class-gravity-flow.php:8593
 msgid "Entry Detail Admin Actions"
 msgstr "Détail de l’entrée des actions de l’admin"
 
-#: class-gravity-flow.php:8576
+#: class-gravity-flow.php:8596
 msgid "View All"
 msgstr "Afficher tout"
 
-#: class-gravity-flow.php:8579
+#: class-gravity-flow.php:8599
 msgid "Manage Settings"
 msgstr "Gestion des réglages"
 
-#: class-gravity-flow.php:8581
+#: class-gravity-flow.php:8601
 msgid "Manage Form Steps"
 msgstr "Gestion des étapes du formulaire"
 
 #. translators: %s is the title of the plugin
-#: class-gravity-flow.php:8722
+#: class-gravity-flow.php:8742
 msgid "Your %s license has expired."
 msgstr "Votre licence de %s a expiré."
 
 #. translators: %s is the title of the plugin
 #. translators: %s is the title of the Gravity Flow Extension
-#: class-gravity-flow.php:8727 includes/class-extension.php:490
+#: class-gravity-flow.php:8747 includes/class-extension.php:490
 #: includes/class-feed-extension.php:497
 msgid "Your %s license is invalid."
 msgstr "Votre licence de %s n’est pas valide."
 
 #. translators: %s is the title of the plugin
 #. translators: %s is the title of the Gravity Flow Extension
-#: class-gravity-flow.php:8731 includes/class-extension.php:494
+#: class-gravity-flow.php:8751 includes/class-extension.php:494
 #: includes/class-feed-extension.php:501
 msgid "Your %s license is inactive."
 msgstr "Votre licence de %s est inactive."
 
 #. translators: %s is the title of the plugin
 #. translators: %s is the title of the Gravity Flow Extension
-#: class-gravity-flow.php:8741 includes/class-extension.php:504
+#: class-gravity-flow.php:8761 includes/class-extension.php:504
 #: includes/class-feed-extension.php:511
 msgid "Your %s license has not been activated."
 msgstr "Votre licence de %s n’a pas été activée."
 
-#: class-gravity-flow.php:8745 includes/class-extension.php:508
+#: class-gravity-flow.php:8765 includes/class-extension.php:508
 #: includes/class-feed-extension.php:515
 msgid "This means you're missing out on security fixes, updates and support."
 msgstr "Ceci signifie que vous ne bénéficiez plus des correctifs de sécurité, des mises à jour et du support."
 
-#: class-gravity-flow.php:8751 includes/class-extension.php:518
+#: class-gravity-flow.php:8771 includes/class-extension.php:518
 #: includes/class-feed-extension.php:525
 msgid "%sActivate your license%s or %sget a license here%s"
 msgstr "%sActiver votre licence%s ou %sObtenir une licence ici%s"
@@ -1592,7 +1592,7 @@ msgstr "ID de l’évènement"
 
 #: includes/pages/class-activity.php:61 includes/pages/class-activity.php:90
 #: includes/pages/class-inbox.php:154 includes/pages/class-reports.php:145
-#: includes/pages/class-status.php:1220
+#: includes/pages/class-status.php:1230
 msgid "Form"
 msgstr "Formulaire"
 
@@ -1601,13 +1601,13 @@ msgstr "Formulaire"
 msgid "Event"
 msgstr "Évènement"
 
-#: includes/pages/class-activity.php:66 includes/pages/class-status.php:1911
-#: includes/pages/class-status.php:2037
+#: includes/pages/class-activity.php:66 includes/pages/class-status.php:1921
+#: includes/pages/class-status.php:2047
 msgid "Duration"
 msgstr "Durée"
 
 #: includes/pages/class-activity.php:80 includes/pages/class-inbox.php:146
-#: includes/pages/class-status.php:1216
+#: includes/pages/class-status.php:1226
 msgid "ID"
 msgstr "ID"
 
@@ -1675,11 +1675,11 @@ msgstr "Aide"
 msgid "No pending tasks"
 msgstr "Aucune tâche en attente"
 
-#: includes/pages/class-inbox.php:158 includes/pages/class-status.php:1223
+#: includes/pages/class-inbox.php:158 includes/pages/class-status.php:1233
 msgid "Submitter"
 msgstr "Créateur"
 
-#: includes/pages/class-inbox.php:169 includes/pages/class-status.php:1249
+#: includes/pages/class-inbox.php:169 includes/pages/class-status.php:1259
 msgid "Last Updated"
 msgstr "Dernière mise à jour"
 
@@ -1819,21 +1819,26 @@ msgstr "Inclure la chronologie"
 msgid "Add page break between entries"
 msgstr "Ajouter des sauts de page entre les entrées"
 
-#: includes/pages/class-status.php:929 includes/pages/class-status.php:2061
+#: includes/pages/class-status.php:929 includes/pages/class-status.php:2071
 msgid "(deleted)"
 msgstr "(supprimé)"
 
-#: includes/pages/class-status.php:1214
+#. translators: %s: The step ID
+#: includes/pages/class-status.php:985
+msgid "Step %s (deleted)"
+msgstr ""
+
+#: includes/pages/class-status.php:1224
 msgid "Checkbox"
 msgstr "Case à cocher"
 
-#: includes/pages/class-status.php:1626
+#: includes/pages/class-status.php:1636
 #: includes/steps/class-common-step-settings.php:77
 #: includes/steps/class-common-step-settings.php:144
 msgid "Select"
 msgstr "Sélectionner"
 
-#: includes/pages/class-status.php:2005
+#: includes/pages/class-status.php:2015
 msgid "Workflows restarted."
 msgstr "Workflows relancés."
 
