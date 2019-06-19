@@ -1,0 +1,1 @@
+- Fixed the Post Creation step creating duplicate posts when the workflow or step is restarted.
