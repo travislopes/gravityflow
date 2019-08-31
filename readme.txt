@@ -62,10 +62,10 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 - Added the filter gravityflow_step_is_condition_met to enable complex conditional logic for start (or not) a given step.
 - Fixed the Post Creation step creating duplicate posts when the workflow or step is restarted.
 - Fixed back link display on entry detail page to use css with class gravityflow-back-link-container instead of line breaks for spacing.
-- Fixed PHP 7.3 compatability warning related to entry detail screen display.
+- Fixed PHP 7.3 compatibility warning related to entry detail screen display.
 - Fixed number field display on user input steps when the field contained 0 value.
 - Fixed delayed Zapier steps send duplicate content from the first entry in queue.
-- Fixed when gravityflow_form_ids_status executes to ensure entry counts + pagination counts match filtering form IDs.
+- Fixed an issue when gravityflow_form_ids_status runs to ensure entry counts + pagination counts match filtering form IDs.
 
 
 = 2.5.5 =
