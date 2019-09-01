@@ -1,0 +1,1 @@
+- Fixed an issue with user input steps involving Display Fields set to show all not showing html fields based on conditional logic.

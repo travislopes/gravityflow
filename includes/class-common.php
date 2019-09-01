@@ -423,7 +423,11 @@ class Gravity_Flow_Common {
 					$display_field = false;
 				}
 			} elseif ( GFFormsModel::is_field_hidden( $form, $field, array(), $entry ) || $is_product_field ) {
-				$display_field = false;
+				if ( $field->type == 'html' && ! empty( $field->conditionalLogic ) ) {
+					$display_field = true;
+				} else {
+					$display_field = false;
+				}
 			}
 		}
 
