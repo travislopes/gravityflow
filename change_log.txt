@@ -1,1 +1,1 @@
-- Fixed an issue with user input steps involving Display Fields set to show all not showing html fields based on conditional logic.
+- Fixed an issue with html fields being shown/hidden based on combinations of field conditional display settings and step display field settings.

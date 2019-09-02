@@ -421,12 +421,30 @@ class Gravity_Flow_Common {
 
 				if ( ! $is_selected_field && $display_fields_mode === 'selected_fields' || $is_selected_field && $display_fields_mode === 'all_fields_except' ) {
 					$display_field = false;
+				} else {
+					if ( $field->type === 'html' && ! empty( $field->conditionalLogic ) && $current_step->get_type() === 'approval' ) {
+						if ( gravity_flow()->evaluate_conditional_logic( $field->conditionalLogic, $form, $entry, $current_step ) ) {
+							$display_field = true;
+						} else {
+							$display_field = false;
+						}
+					}
 				}
 			} elseif ( GFFormsModel::is_field_hidden( $form, $field, array(), $entry ) || $is_product_field ) {
-				if ( $field->type == 'html' && ! empty( $field->conditionalLogic ) ) {
-					$display_field = true;
-				} else {
-					$display_field = false;
+				$display_field = false;
+				if ( $current_step ) {
+					if ( $field->type === 'html' && ! empty( $field->conditionalLogic ) ) {
+						switch ( $current_step->get_type() ) {
+							case 'approval':
+								if ( gravity_flow()->evaluate_conditional_logic( $field->conditionalLogic, $form, $entry, $current_step ) ) {
+									$display_field = true;
+								}
+								break;
+							case 'user_input':
+								$display_field = true;
+								break;
+						}
+					}
 				}
 			}
 		}
