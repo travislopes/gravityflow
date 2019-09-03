@@ -55,6 +55,9 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+= 2.5.7 =
+- Fixed issue where status page filters show a search box.
+
 = 2.5.6 =
 - Added filter gravityflow_entry_url_inbox_table to allow customization of the link from inbox.
 - Added filter gravityflow_approval_revert_step_id to allow customization of the revert step.
