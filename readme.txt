@@ -55,8 +55,18 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+= 2.5.8 =
+- Added support for the delayed payment enhancements in Gravity Forms 2.4.13. Workflow processing can now be delayed when using PayPal Standard, Stripe (Checkout), and other payment add-ons which support the Post Payment Action setting.
+- Added the filter gravityflow_timeline_note_add to support customizing the potential note to add to timeline.
+- Added the filter gravityflow_timeline_notes to support customizing the display of timeline notes.
+- Added support for CC: field to all Gravity Flow notification types.
+- Fixed the "view more" link for the Discussion field being output when merge tags are processed for posts created by the Advanced Post Creation Add-On.
+- Fixed the notification tab for Revert Email on Approval step to have the workflow merge tags options.
+
+
 = 2.5.7 =
 - Fixed issue where status page filters show a search box.
+
 
 = 2.5.6 =
 - Added filter gravityflow_entry_url_inbox_table to allow customization of the link from inbox.
