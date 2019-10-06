@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Flow\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2019-06-09 14:00:17+00:00\n"
+"POT-Creation-Date: 2019-08-31 19:46:43+00:00\n"
 "PO-Revision-Date: 2019-05-21 16:38+0000\n"
 "Last-Translator: FX Bénard <fxb@wp-translations.org>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/gravityflow/gravityflow/language/tr_TR/)\n"
@@ -294,8 +294,8 @@ msgid "Start"
 msgstr "Başla"
 
 #: class-gravity-flow.php:1727 class-gravity-flow.php:7723
-#: includes/steps/class-step-user-input.php:840
-#: includes/steps/class-step-user-input.php:936
+#: includes/steps/class-step-user-input.php:839
+#: includes/steps/class-step-user-input.php:935
 #: includes/steps/class-step-workflow-complete.php:39
 #: includes/steps/class-step-workflow-complete.php:85
 #: includes/steps/class-step-workflow-start.php:75
@@ -506,8 +506,8 @@ msgstr "Sil"
 msgid "You don't have any steps configured. Let's go %screate one%s!"
 msgstr "Yapılandırılmış herhangi bir adım yok. Yeni bir adım %soluşturalım%s!"
 
-#: class-gravity-flow.php:3642 includes/pages/class-status.php:1883
-#: includes/pages/class-status.php:1888
+#: class-gravity-flow.php:3642 includes/pages/class-status.php:1895
+#: includes/pages/class-status.php:1900
 msgid "Status:"
 msgstr "Durum:"
 
@@ -542,9 +542,9 @@ msgid "Expires"
 msgstr "Bitiş"
 
 #: class-gravity-flow.php:3967 includes/pages/class-status.php:1013
-#: includes/steps/class-step-approval.php:731
+#: includes/steps/class-step-approval.php:746
 #: includes/steps/class-step-partial-entry-submission.php:204
-#: includes/steps/class-step-user-input.php:842
+#: includes/steps/class-step-user-input.php:841
 msgid "Queued"
 msgstr "Sıraya alındı"
 
@@ -641,7 +641,7 @@ msgstr "Durum etiketleri"
 
 #: class-gravity-flow.php:4509
 #: includes/steps/class-step-feed-user-registration.php:141
-#: includes/steps/class-step-user-input.php:1022
+#: includes/steps/class-step-user-input.php:1021
 msgid "Update"
 msgstr "Güncelle"
 
@@ -802,8 +802,8 @@ msgid "Inbox"
 msgstr "Gelen kutusu"
 
 #: class-gravity-flow.php:4923 class-gravity-flow.php:7688
-#: includes/steps/class-step-user-input.php:997
-#: includes/steps/class-step-user-input.php:1022
+#: includes/steps/class-step-user-input.php:996
+#: includes/steps/class-step-user-input.php:1021
 #: includes/wizard/steps/class-iw-step-pages.php:97
 msgid "Submit"
 msgstr "Gönder"
@@ -876,7 +876,7 @@ msgstr "Listeye dön"
 msgid "Oops! We could not locate your entry."
 msgstr "Tüh! Kaydınız bulunamadı."
 
-#: class-gravity-flow.php:5320 includes/steps/class-step-approval.php:959
+#: class-gravity-flow.php:5320 includes/steps/class-step-approval.php:974
 msgid "Error: incorrect entry."
 msgstr "Hata: yanlış girdi."
 
@@ -939,7 +939,7 @@ msgid "Workflow Step restarted."
 msgstr "İş akışı adım yeniden başlatıldı."
 
 #: class-gravity-flow.php:5711 includes/class-api.php:192
-#: includes/pages/class-status.php:2006
+#: includes/pages/class-status.php:2018
 msgid "Workflow restarted."
 msgstr "İş akışı yeniden başlatıldı."
 
@@ -1027,12 +1027,12 @@ msgid "Support"
 msgstr "Destek"
 
 #: class-gravity-flow.php:7726 includes/steps/class-step-approval.php:50
-#: includes/steps/class-step-approval.php:727
+#: includes/steps/class-step-approval.php:742
 msgid "Approved"
 msgstr "Onaylandı"
 
 #: class-gravity-flow.php:7729 includes/steps/class-step-approval.php:44
-#: includes/steps/class-step-approval.php:729
+#: includes/steps/class-step-approval.php:744
 msgid "Rejected"
 msgstr "Reddedildi"
 
@@ -1141,10 +1141,10 @@ msgstr "İptal bağlantısı"
 msgid "Cancel URL"
 msgstr "İptal URL"
 
-#: class-gravity-flow.php:8398 includes/pages/class-inbox.php:396
-#: includes/steps/class-step-approval.php:796
-#: includes/steps/class-step-user-input.php:1073
-#: includes/steps/class-step.php:1967
+#: class-gravity-flow.php:8398 includes/pages/class-inbox.php:412
+#: includes/steps/class-step-approval.php:811
+#: includes/steps/class-step-user-input.php:1072
+#: includes/steps/class-step.php:1982
 msgid "Note"
 msgstr "Not"
 
@@ -1564,13 +1564,13 @@ msgstr "Zamanı geçmiş"
 
 #: includes/merge-tags/class-merge-tag-workflow-approve.php:60
 #: includes/steps/class-step-approval.php:67
-#: includes/steps/class-step-approval.php:830
+#: includes/steps/class-step-approval.php:845
 msgid "Approve"
 msgstr "Onayla"
 
 #: includes/merge-tags/class-merge-tag-workflow-reject.php:60
 #: includes/steps/class-step-approval.php:78
-#: includes/steps/class-step-approval.php:847
+#: includes/steps/class-step-approval.php:862
 msgid "Reject"
 msgstr "Reddet"
 
@@ -1601,8 +1601,8 @@ msgstr "Form"
 msgid "Event"
 msgstr "Etkinlik"
 
-#: includes/pages/class-activity.php:66 includes/pages/class-status.php:1921
-#: includes/pages/class-status.php:2047
+#: includes/pages/class-activity.php:66 includes/pages/class-status.php:1933
+#: includes/pages/class-status.php:2059
 msgid "Duration"
 msgstr "Süre"
 
@@ -1819,7 +1819,7 @@ msgstr "Zaman çizelgeleri dahil"
 msgid "Add page break between entries"
 msgstr "Kayıtlar arasında sayfa ayrımı ekle"
 
-#: includes/pages/class-status.php:929 includes/pages/class-status.php:2071
+#: includes/pages/class-status.php:929 includes/pages/class-status.php:2083
 msgid "(deleted)"
 msgstr "(silinmiş)"
 
@@ -1832,13 +1832,13 @@ msgstr ""
 msgid "Checkbox"
 msgstr "Onay kutusu"
 
-#: includes/pages/class-status.php:1636
+#: includes/pages/class-status.php:1647
 #: includes/steps/class-common-step-settings.php:77
 #: includes/steps/class-common-step-settings.php:144
 msgid "Select"
 msgstr "Seç"
 
-#: includes/pages/class-status.php:2015
+#: includes/pages/class-status.php:2027
 msgid "Workflows restarted."
 msgstr "İş akışı yeniden başlatıldı."
 
@@ -2197,24 +2197,24 @@ msgid ""
 msgstr "Geri çevirme ayarı Onay veya Ret seçeneklerine ek üçüncü bir seçenek daha ekler. Bu durumda görevli kaydın durumunu değiştirmeden doğrudan Kullanıcı Girişi adımına gönderir. Geri Döndür düğmesini göstermek için bu ayarı etkinleştirin."
 
 #: includes/steps/class-step-approval.php:287
-#: includes/steps/class-step-user-input.php:246
+#: includes/steps/class-step-user-input.php:245
 msgid "Workflow Note"
 msgstr "İş akışı notu"
 
 #: includes/steps/class-step-approval.php:289
-#: includes/steps/class-step-user-input.php:248
+#: includes/steps/class-step-user-input.php:247
 msgid ""
 "The text entered in the Note box will be added to the timeline. Use this "
 "setting to select the options for the Note box."
 msgstr "Not kutusuna girilen metin zaman çizelgesine eklenir. Not kutusu seçeneklerini belirlemek için bu ayarı kullanın."
 
 #: includes/steps/class-step-approval.php:292
-#: includes/steps/class-step-user-input.php:251
+#: includes/steps/class-step-user-input.php:250
 msgid "Hidden"
 msgstr "Gizli"
 
 #: includes/steps/class-step-approval.php:293
-#: includes/steps/class-step-user-input.php:252
+#: includes/steps/class-step-user-input.php:251
 msgid "Not required"
 msgstr "Gerekli değil"
 
@@ -2281,39 +2281,39 @@ msgstr "Onaylandığı takdirde sonrası:"
 msgid "Publish Post"
 msgstr "Yazıyı yayınla"
 
-#: includes/steps/class-step-approval.php:593
+#: includes/steps/class-step-approval.php:608
 msgid "Reverted to step"
 msgstr "Adıma döndürüldü"
 
-#: includes/steps/class-step-approval.php:602
+#: includes/steps/class-step-approval.php:617
 msgid "Reverted to step:"
 msgstr "Şu adıma döndürüldü:"
 
-#: includes/steps/class-step-approval.php:619
+#: includes/steps/class-step-approval.php:634
 msgid "Approved."
 msgstr "Onaylandı."
 
-#: includes/steps/class-step-approval.php:621
+#: includes/steps/class-step-approval.php:636
 msgid "Rejected."
 msgstr "Reddedildi."
 
-#: includes/steps/class-step-approval.php:639
+#: includes/steps/class-step-approval.php:654
 msgid "Entry Approved"
 msgstr "Kayıt onaylandı"
 
-#: includes/steps/class-step-approval.php:641
+#: includes/steps/class-step-approval.php:656
 msgid "Entry Rejected"
 msgstr "Kayıt reddedildi"
 
-#: includes/steps/class-step-approval.php:722
+#: includes/steps/class-step-approval.php:737
 msgid "Pending Approval"
 msgstr "Onay bekleyen"
 
-#: includes/steps/class-step-approval.php:865
+#: includes/steps/class-step-approval.php:880
 msgid "Revert"
 msgstr "Geri al"
 
-#: includes/steps/class-step-approval.php:964
+#: includes/steps/class-step-approval.php:979
 msgid "Error: step already processed."
 msgstr "Hata: adım önceden işlenmiş."
 
@@ -2713,7 +2713,6 @@ msgid "Only when the page loads"
 msgstr "Sadece sayfa yüklendiğinde"
 
 #: includes/steps/class-step-user-input.php:150
-#: includes/steps/class-step-user-input.php:226
 msgid ""
 "Fields and Sections support dynamic conditional logic. Pages do not support "
 "dynamic conditional logic so they will only be shown or hidden when the page"
@@ -2772,77 +2771,77 @@ msgstr "Yeşil üçgen"
 msgid "Green Background"
 msgstr "Yeşil arka plan"
 
-#: includes/steps/class-step-user-input.php:234
+#: includes/steps/class-step-user-input.php:233
 msgid "Save Progress"
 msgstr "İlerlemeyi kaydet"
 
-#: includes/steps/class-step-user-input.php:235
+#: includes/steps/class-step-user-input.php:234
 msgid ""
 "This setting allows the assignee to save the field values without submitting"
 " the form as complete. Select Disabled to hide the \"in progress\" option or"
 " select the default value for the radio buttons."
 msgstr "Bu ayar görevli kişinin formun tamamını göndermeden alanlara girdiği değerleri kaydetmesini sağlar.  “Sürüyor” seçeneğini gizlemek için devre dışı bırakın yada radyo düğmelerini göstermek için varsayılan değeri seçin."
 
-#: includes/steps/class-step-user-input.php:238
+#: includes/steps/class-step-user-input.php:237
 #: includes/wizard/steps/class-iw-step-gravity-forms.php:199
 #: includes/wizard/steps/class-iw-step-updates.php:141
 msgid "Disabled"
 msgstr "Devre dışı"
 
-#: includes/steps/class-step-user-input.php:239
+#: includes/steps/class-step-user-input.php:238
 msgid "Radio buttons (default: In progress)"
 msgstr "Radyo düğmeleri (varsayılan: işlem sürüyor)"
 
-#: includes/steps/class-step-user-input.php:240
+#: includes/steps/class-step-user-input.php:239
 msgid "Radio buttons (default: Complete)"
 msgstr "Radyo düğmeleri (varsayılan: Tamamlandı)"
 
-#: includes/steps/class-step-user-input.php:241
+#: includes/steps/class-step-user-input.php:240
 msgid "Submit buttons (Save and Submit)"
 msgstr "Gönderim tuşları (Kaydet ve Gönder)"
 
-#: includes/steps/class-step-user-input.php:253
+#: includes/steps/class-step-user-input.php:252
 msgid "Always Required"
 msgstr "Her zaman gerekli"
 
-#: includes/steps/class-step-user-input.php:256
+#: includes/steps/class-step-user-input.php:255
 msgid "Required if in progress"
 msgstr "İşlem sürüyorsa gerekli"
 
-#: includes/steps/class-step-user-input.php:260
+#: includes/steps/class-step-user-input.php:259
 msgid "Required if complete"
 msgstr "İşlem tamamlanmışsa gerekli"
 
-#: includes/steps/class-step-user-input.php:265
+#: includes/steps/class-step-user-input.php:264
 msgid "Thank you."
 msgstr "Teşekkürler."
 
-#: includes/steps/class-step-user-input.php:448
+#: includes/steps/class-step-user-input.php:447
 msgid "There was a problem while updating the assignee status."
 msgstr "Atanan durumu güncellenirken bir sorun oluştu."
 
-#: includes/steps/class-step-user-input.php:553
+#: includes/steps/class-step-user-input.php:552
 msgid "Entry updated and marked complete."
 msgstr "Kayıt güncellendi ve bitmiş olarak işaretlendi."
 
-#: includes/steps/class-step-user-input.php:564
+#: includes/steps/class-step-user-input.php:563
 msgid "Entry updated - in progress."
 msgstr "Kayıt güncellendi - işleniyor."
 
-#: includes/steps/class-step-user-input.php:667
-#: includes/steps/class-step-user-input.php:691
+#: includes/steps/class-step-user-input.php:666
+#: includes/steps/class-step-user-input.php:690
 msgid "This field is required."
 msgstr "Bu alan zorunludur."
 
-#: includes/steps/class-step-user-input.php:836
+#: includes/steps/class-step-user-input.php:835
 msgid "Pending Input"
 msgstr "Bekleyen giriş"
 
-#: includes/steps/class-step-user-input.php:926
+#: includes/steps/class-step-user-input.php:925
 msgid "In progress"
 msgstr "İşlem sürüyor"
 
-#: includes/steps/class-step-user-input.php:973
+#: includes/steps/class-step-user-input.php:972
 msgid "Save"
 msgstr "Kaydet"
 
@@ -3127,15 +3126,15 @@ msgstr "%s: Hiç görevli yok"
 msgid "Sent Notification: "
 msgstr "Gönderilen bildirim: "
 
-#: includes/steps/class-step.php:2152
+#: includes/steps/class-step.php:2167
 msgid "Processed"
 msgstr "İşlenmiş"
 
-#: includes/steps/class-step.php:2236
+#: includes/steps/class-step.php:2251
 msgid "A note is required"
 msgstr "Bir not gereklidir"
 
-#: includes/steps/class-step.php:2281
+#: includes/steps/class-step.php:2296
 msgid "There was a problem while updating your form."
 msgstr "Formunuzu güncelleştirilirken bir sorun oluştu."
 

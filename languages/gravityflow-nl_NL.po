@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Flow\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2019-06-09 14:00:17+00:00\n"
+"POT-Creation-Date: 2019-08-31 19:46:43+00:00\n"
 "PO-Revision-Date: 2019-05-21 16:38+0000\n"
 "Last-Translator: FX Bénard <fxb@wp-translations.org>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/gravityflow/gravityflow/language/nl_NL/)\n"
@@ -296,8 +296,8 @@ msgid "Start"
 msgstr "Start"
 
 #: class-gravity-flow.php:1727 class-gravity-flow.php:7723
-#: includes/steps/class-step-user-input.php:840
-#: includes/steps/class-step-user-input.php:936
+#: includes/steps/class-step-user-input.php:839
+#: includes/steps/class-step-user-input.php:935
 #: includes/steps/class-step-workflow-complete.php:39
 #: includes/steps/class-step-workflow-complete.php:85
 #: includes/steps/class-step-workflow-start.php:75
@@ -508,8 +508,8 @@ msgstr "Verwijderen"
 msgid "You don't have any steps configured. Let's go %screate one%s!"
 msgstr "U heeft nog geen stap ingesteld. %sMaak een stap%s!"
 
-#: class-gravity-flow.php:3642 includes/pages/class-status.php:1883
-#: includes/pages/class-status.php:1888
+#: class-gravity-flow.php:3642 includes/pages/class-status.php:1895
+#: includes/pages/class-status.php:1900
 msgid "Status:"
 msgstr "Status:"
 
@@ -544,9 +544,9 @@ msgid "Expires"
 msgstr "Verloopt"
 
 #: class-gravity-flow.php:3967 includes/pages/class-status.php:1013
-#: includes/steps/class-step-approval.php:731
+#: includes/steps/class-step-approval.php:746
 #: includes/steps/class-step-partial-entry-submission.php:204
-#: includes/steps/class-step-user-input.php:842
+#: includes/steps/class-step-user-input.php:841
 msgid "Queued"
 msgstr "In de wachtrij"
 
@@ -643,7 +643,7 @@ msgstr "Statuslabels"
 
 #: class-gravity-flow.php:4509
 #: includes/steps/class-step-feed-user-registration.php:141
-#: includes/steps/class-step-user-input.php:1022
+#: includes/steps/class-step-user-input.php:1021
 msgid "Update"
 msgstr "Bijwerken"
 
@@ -804,8 +804,8 @@ msgid "Inbox"
 msgstr "Inbox"
 
 #: class-gravity-flow.php:4923 class-gravity-flow.php:7688
-#: includes/steps/class-step-user-input.php:997
-#: includes/steps/class-step-user-input.php:1022
+#: includes/steps/class-step-user-input.php:996
+#: includes/steps/class-step-user-input.php:1021
 #: includes/wizard/steps/class-iw-step-pages.php:97
 msgid "Submit"
 msgstr "Versturen"
@@ -878,7 +878,7 @@ msgstr "Ga terug naar de lijst"
 msgid "Oops! We could not locate your entry."
 msgstr "Oeps! We konden je inzending niet vinden."
 
-#: class-gravity-flow.php:5320 includes/steps/class-step-approval.php:959
+#: class-gravity-flow.php:5320 includes/steps/class-step-approval.php:974
 msgid "Error: incorrect entry."
 msgstr "Fout: onjuiste inzending."
 
@@ -941,7 +941,7 @@ msgid "Workflow Step restarted."
 msgstr "Workflow stap opnieuw gestart."
 
 #: class-gravity-flow.php:5711 includes/class-api.php:192
-#: includes/pages/class-status.php:2006
+#: includes/pages/class-status.php:2018
 msgid "Workflow restarted."
 msgstr "Workflow opnieuw gestart."
 
@@ -1029,12 +1029,12 @@ msgid "Support"
 msgstr "Ondersteuning"
 
 #: class-gravity-flow.php:7726 includes/steps/class-step-approval.php:50
-#: includes/steps/class-step-approval.php:727
+#: includes/steps/class-step-approval.php:742
 msgid "Approved"
 msgstr "Goedgekeurd"
 
 #: class-gravity-flow.php:7729 includes/steps/class-step-approval.php:44
-#: includes/steps/class-step-approval.php:729
+#: includes/steps/class-step-approval.php:744
 msgid "Rejected"
 msgstr "Afgewezen"
 
@@ -1143,10 +1143,10 @@ msgstr "Annuleren-link"
 msgid "Cancel URL"
 msgstr "Annuleren URL"
 
-#: class-gravity-flow.php:8398 includes/pages/class-inbox.php:396
-#: includes/steps/class-step-approval.php:796
-#: includes/steps/class-step-user-input.php:1073
-#: includes/steps/class-step.php:1967
+#: class-gravity-flow.php:8398 includes/pages/class-inbox.php:412
+#: includes/steps/class-step-approval.php:811
+#: includes/steps/class-step-user-input.php:1072
+#: includes/steps/class-step.php:1982
 msgid "Note"
 msgstr "Notitie"
 
@@ -1566,13 +1566,13 @@ msgstr "Achterstallig"
 
 #: includes/merge-tags/class-merge-tag-workflow-approve.php:60
 #: includes/steps/class-step-approval.php:67
-#: includes/steps/class-step-approval.php:830
+#: includes/steps/class-step-approval.php:845
 msgid "Approve"
 msgstr "Goedkeuren"
 
 #: includes/merge-tags/class-merge-tag-workflow-reject.php:60
 #: includes/steps/class-step-approval.php:78
-#: includes/steps/class-step-approval.php:847
+#: includes/steps/class-step-approval.php:862
 msgid "Reject"
 msgstr "Afwijzen"
 
@@ -1603,8 +1603,8 @@ msgstr "Formulier"
 msgid "Event"
 msgstr "Gebeurtenis"
 
-#: includes/pages/class-activity.php:66 includes/pages/class-status.php:1921
-#: includes/pages/class-status.php:2047
+#: includes/pages/class-activity.php:66 includes/pages/class-status.php:1933
+#: includes/pages/class-status.php:2059
 msgid "Duration"
 msgstr "Duur"
 
@@ -1821,7 +1821,7 @@ msgstr "Inclusief tijdlijnen"
 msgid "Add page break between entries"
 msgstr "Voeg pagina einde toe tussen inzendingen"
 
-#: includes/pages/class-status.php:929 includes/pages/class-status.php:2071
+#: includes/pages/class-status.php:929 includes/pages/class-status.php:2083
 msgid "(deleted)"
 msgstr "(verwijderd)"
 
@@ -1834,13 +1834,13 @@ msgstr ""
 msgid "Checkbox"
 msgstr "Aankruisvakje"
 
-#: includes/pages/class-status.php:1636
+#: includes/pages/class-status.php:1647
 #: includes/steps/class-common-step-settings.php:77
 #: includes/steps/class-common-step-settings.php:144
 msgid "Select"
 msgstr "Selecteren"
 
-#: includes/pages/class-status.php:2015
+#: includes/pages/class-status.php:2027
 msgid "Workflows restarted."
 msgstr "Workflows opnieuw gestart."
 
@@ -2199,24 +2199,24 @@ msgid ""
 msgstr "De terugdraaien-instelling schakelt een derde optie in naast goedkeuren en afwijzen, waardoor het voor de toegewezen medewerker mogelijk is om de inzending direct naar een gebruikersinvoer-stap te versturen zonder de status te wijzigen. Schakel deze instelling in om de terugdraaien-knop te tonen naast de goedkeuren- en afwijzen-knop en specificeer de gebruikersinvoer-stap waar de inzending naar verstuurd zal worden."
 
 #: includes/steps/class-step-approval.php:287
-#: includes/steps/class-step-user-input.php:246
+#: includes/steps/class-step-user-input.php:245
 msgid "Workflow Note"
 msgstr "Workflow notitie"
 
 #: includes/steps/class-step-approval.php:289
-#: includes/steps/class-step-user-input.php:248
+#: includes/steps/class-step-user-input.php:247
 msgid ""
 "The text entered in the Note box will be added to the timeline. Use this "
 "setting to select the options for the Note box."
 msgstr "De ingevulde tekst in het Notitie-tekstblok zal aan de tijdlijn worden toegevoegd. Gebruik deze instelling om de opties voor het Notitie-tekstblok te selecteren."
 
 #: includes/steps/class-step-approval.php:292
-#: includes/steps/class-step-user-input.php:251
+#: includes/steps/class-step-user-input.php:250
 msgid "Hidden"
 msgstr "Verborgen"
 
 #: includes/steps/class-step-approval.php:293
-#: includes/steps/class-step-user-input.php:252
+#: includes/steps/class-step-user-input.php:251
 msgid "Not required"
 msgstr "Niet vereist"
 
@@ -2283,39 +2283,39 @@ msgstr "Berichtactie bij goedkeuring:"
 msgid "Publish Post"
 msgstr "Bericht publiceren"
 
-#: includes/steps/class-step-approval.php:593
+#: includes/steps/class-step-approval.php:608
 msgid "Reverted to step"
 msgstr "Teruggaan naar stap"
 
-#: includes/steps/class-step-approval.php:602
+#: includes/steps/class-step-approval.php:617
 msgid "Reverted to step:"
 msgstr "Teruggegaan naar stap: "
 
-#: includes/steps/class-step-approval.php:619
+#: includes/steps/class-step-approval.php:634
 msgid "Approved."
 msgstr "Goedgekeurd."
 
-#: includes/steps/class-step-approval.php:621
+#: includes/steps/class-step-approval.php:636
 msgid "Rejected."
 msgstr "Afgewezen."
 
-#: includes/steps/class-step-approval.php:639
+#: includes/steps/class-step-approval.php:654
 msgid "Entry Approved"
 msgstr "Inzending goedgekeurd"
 
-#: includes/steps/class-step-approval.php:641
+#: includes/steps/class-step-approval.php:656
 msgid "Entry Rejected"
 msgstr "Inzending afgewezen"
 
-#: includes/steps/class-step-approval.php:722
+#: includes/steps/class-step-approval.php:737
 msgid "Pending Approval"
 msgstr "Wacht op goedkeuring"
 
-#: includes/steps/class-step-approval.php:865
+#: includes/steps/class-step-approval.php:880
 msgid "Revert"
 msgstr "Terugdraaien"
 
-#: includes/steps/class-step-approval.php:964
+#: includes/steps/class-step-approval.php:979
 msgid "Error: step already processed."
 msgstr "Fout: stap al verwerkt."
 
@@ -2715,7 +2715,6 @@ msgid "Only when the page loads"
 msgstr "Alleen als de pagina laadt"
 
 #: includes/steps/class-step-user-input.php:150
-#: includes/steps/class-step-user-input.php:226
 msgid ""
 "Fields and Sections support dynamic conditional logic. Pages do not support "
 "dynamic conditional logic so they will only be shown or hidden when the page"
@@ -2774,77 +2773,77 @@ msgstr "Groene driehoek"
 msgid "Green Background"
 msgstr "Groene achtergrond"
 
-#: includes/steps/class-step-user-input.php:234
+#: includes/steps/class-step-user-input.php:233
 msgid "Save Progress"
 msgstr "Voortgang opslaan"
 
-#: includes/steps/class-step-user-input.php:235
+#: includes/steps/class-step-user-input.php:234
 msgid ""
 "This setting allows the assignee to save the field values without submitting"
 " the form as complete. Select Disabled to hide the \"in progress\" option or"
 " select the default value for the radio buttons."
 msgstr "Deze instelling maakt het mogelijk voor de toegewezen medewerker om de veldwaarden op te slaan zonder het formulier als voltooid te versturen. Selecteer Uitgeschakeld om de \"in behandeling\"-optie te verbergen of selecteer de standaardwaarde voor de keuzerondjes."
 
-#: includes/steps/class-step-user-input.php:238
+#: includes/steps/class-step-user-input.php:237
 #: includes/wizard/steps/class-iw-step-gravity-forms.php:199
 #: includes/wizard/steps/class-iw-step-updates.php:141
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-#: includes/steps/class-step-user-input.php:239
+#: includes/steps/class-step-user-input.php:238
 msgid "Radio buttons (default: In progress)"
 msgstr "Keuzerondjes (standaard: In behandeling)"
 
-#: includes/steps/class-step-user-input.php:240
+#: includes/steps/class-step-user-input.php:239
 msgid "Radio buttons (default: Complete)"
 msgstr "Keuzerondjes (standaard: Voltooid)"
 
-#: includes/steps/class-step-user-input.php:241
+#: includes/steps/class-step-user-input.php:240
 msgid "Submit buttons (Save and Submit)"
 msgstr "Verstuur-knoppen (opslaan en versturen)"
 
-#: includes/steps/class-step-user-input.php:253
+#: includes/steps/class-step-user-input.php:252
 msgid "Always Required"
 msgstr "Altijd vereist"
 
-#: includes/steps/class-step-user-input.php:256
+#: includes/steps/class-step-user-input.php:255
 msgid "Required if in progress"
 msgstr "Vereist wanneer in behandeling"
 
-#: includes/steps/class-step-user-input.php:260
+#: includes/steps/class-step-user-input.php:259
 msgid "Required if complete"
 msgstr "Vereist wanneer voltooid"
 
-#: includes/steps/class-step-user-input.php:265
+#: includes/steps/class-step-user-input.php:264
 msgid "Thank you."
 msgstr "Bedankt."
 
-#: includes/steps/class-step-user-input.php:448
+#: includes/steps/class-step-user-input.php:447
 msgid "There was a problem while updating the assignee status."
 msgstr "Er was een probleem bij het bijwerken van de status geselecteerde gebruiker."
 
-#: includes/steps/class-step-user-input.php:553
+#: includes/steps/class-step-user-input.php:552
 msgid "Entry updated and marked complete."
 msgstr "Inzending bijgewerkt en als voltooid gemarkeerd."
 
-#: includes/steps/class-step-user-input.php:564
+#: includes/steps/class-step-user-input.php:563
 msgid "Entry updated - in progress."
 msgstr "Inzending bijgewerkt - in behandeling."
 
-#: includes/steps/class-step-user-input.php:667
-#: includes/steps/class-step-user-input.php:691
+#: includes/steps/class-step-user-input.php:666
+#: includes/steps/class-step-user-input.php:690
 msgid "This field is required."
 msgstr "Dit veld is vereist."
 
-#: includes/steps/class-step-user-input.php:836
+#: includes/steps/class-step-user-input.php:835
 msgid "Pending Input"
 msgstr "Wacht op bijdrage"
 
-#: includes/steps/class-step-user-input.php:926
+#: includes/steps/class-step-user-input.php:925
 msgid "In progress"
 msgstr "In behandeling"
 
-#: includes/steps/class-step-user-input.php:973
+#: includes/steps/class-step-user-input.php:972
 msgid "Save"
 msgstr "Opslaan"
 
@@ -3129,15 +3128,15 @@ msgstr "%s: geen toegewezen medewerkers"
 msgid "Sent Notification: "
 msgstr "Verstuurde melding:"
 
-#: includes/steps/class-step.php:2152
+#: includes/steps/class-step.php:2167
 msgid "Processed"
 msgstr "Verwerkt"
 
-#: includes/steps/class-step.php:2236
+#: includes/steps/class-step.php:2251
 msgid "A note is required"
 msgstr "Een notitie is vereist"
 
-#: includes/steps/class-step.php:2281
+#: includes/steps/class-step.php:2296
 msgid "There was a problem while updating your form."
 msgstr "Er was een probleem bij het bijwerken van je formulier."
 

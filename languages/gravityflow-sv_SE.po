@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Flow\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2019-06-09 14:00:17+00:00\n"
+"POT-Creation-Date: 2019-08-31 19:46:43+00:00\n"
 "PO-Revision-Date: 2019-05-21 16:38+0000\n"
 "Last-Translator: FX Bénard <fxb@wp-translations.org>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/gravityflow/gravityflow/language/sv_SE/)\n"
@@ -297,8 +297,8 @@ msgid "Start"
 msgstr "Start"
 
 #: class-gravity-flow.php:1727 class-gravity-flow.php:7723
-#: includes/steps/class-step-user-input.php:840
-#: includes/steps/class-step-user-input.php:936
+#: includes/steps/class-step-user-input.php:839
+#: includes/steps/class-step-user-input.php:935
 #: includes/steps/class-step-workflow-complete.php:39
 #: includes/steps/class-step-workflow-complete.php:85
 #: includes/steps/class-step-workflow-start.php:75
@@ -509,8 +509,8 @@ msgstr "Radera"
 msgid "You don't have any steps configured. Let's go %screate one%s!"
 msgstr "Du har inte konfigurerat några steg. Vi kan väl %sskapa ett%s!"
 
-#: class-gravity-flow.php:3642 includes/pages/class-status.php:1883
-#: includes/pages/class-status.php:1888
+#: class-gravity-flow.php:3642 includes/pages/class-status.php:1895
+#: includes/pages/class-status.php:1900
 msgid "Status:"
 msgstr "Status:"
 
@@ -545,9 +545,9 @@ msgid "Expires"
 msgstr "Löper ut"
 
 #: class-gravity-flow.php:3967 includes/pages/class-status.php:1013
-#: includes/steps/class-step-approval.php:731
+#: includes/steps/class-step-approval.php:746
 #: includes/steps/class-step-partial-entry-submission.php:204
-#: includes/steps/class-step-user-input.php:842
+#: includes/steps/class-step-user-input.php:841
 msgid "Queued"
 msgstr "Lagt i kö"
 
@@ -644,7 +644,7 @@ msgstr "Statusetiketter"
 
 #: class-gravity-flow.php:4509
 #: includes/steps/class-step-feed-user-registration.php:141
-#: includes/steps/class-step-user-input.php:1022
+#: includes/steps/class-step-user-input.php:1021
 msgid "Update"
 msgstr "Uppdatera"
 
@@ -805,8 +805,8 @@ msgid "Inbox"
 msgstr "Inkorg"
 
 #: class-gravity-flow.php:4923 class-gravity-flow.php:7688
-#: includes/steps/class-step-user-input.php:997
-#: includes/steps/class-step-user-input.php:1022
+#: includes/steps/class-step-user-input.php:996
+#: includes/steps/class-step-user-input.php:1021
 #: includes/wizard/steps/class-iw-step-pages.php:97
 msgid "Submit"
 msgstr "Skicka"
@@ -879,7 +879,7 @@ msgstr "Återgå till listan"
 msgid "Oops! We could not locate your entry."
 msgstr "Aj då! Vi hittar inte ditt ärende."
 
-#: class-gravity-flow.php:5320 includes/steps/class-step-approval.php:959
+#: class-gravity-flow.php:5320 includes/steps/class-step-approval.php:974
 msgid "Error: incorrect entry."
 msgstr "Fel: Felaktigt ärende."
 
@@ -942,7 +942,7 @@ msgid "Workflow Step restarted."
 msgstr "Steget i arbetsflödet har återstartats."
 
 #: class-gravity-flow.php:5711 includes/class-api.php:192
-#: includes/pages/class-status.php:2006
+#: includes/pages/class-status.php:2018
 msgid "Workflow restarted."
 msgstr "Arbetsflödet har återstartats."
 
@@ -1030,12 +1030,12 @@ msgid "Support"
 msgstr "Support"
 
 #: class-gravity-flow.php:7726 includes/steps/class-step-approval.php:50
-#: includes/steps/class-step-approval.php:727
+#: includes/steps/class-step-approval.php:742
 msgid "Approved"
 msgstr "Godkänt"
 
 #: class-gravity-flow.php:7729 includes/steps/class-step-approval.php:44
-#: includes/steps/class-step-approval.php:729
+#: includes/steps/class-step-approval.php:744
 msgid "Rejected"
 msgstr "Avslaget"
 
@@ -1144,10 +1144,10 @@ msgstr "Länk för avbryt"
 msgid "Cancel URL"
 msgstr "URL för Avbryt"
 
-#: class-gravity-flow.php:8398 includes/pages/class-inbox.php:396
-#: includes/steps/class-step-approval.php:796
-#: includes/steps/class-step-user-input.php:1073
-#: includes/steps/class-step.php:1967
+#: class-gravity-flow.php:8398 includes/pages/class-inbox.php:412
+#: includes/steps/class-step-approval.php:811
+#: includes/steps/class-step-user-input.php:1072
+#: includes/steps/class-step.php:1982
 msgid "Note"
 msgstr "Anteckning"
 
@@ -1567,13 +1567,13 @@ msgstr "Förfallen"
 
 #: includes/merge-tags/class-merge-tag-workflow-approve.php:60
 #: includes/steps/class-step-approval.php:67
-#: includes/steps/class-step-approval.php:830
+#: includes/steps/class-step-approval.php:845
 msgid "Approve"
 msgstr "Godkänn"
 
 #: includes/merge-tags/class-merge-tag-workflow-reject.php:60
 #: includes/steps/class-step-approval.php:78
-#: includes/steps/class-step-approval.php:847
+#: includes/steps/class-step-approval.php:862
 msgid "Reject"
 msgstr "Avvisa"
 
@@ -1604,8 +1604,8 @@ msgstr "Formulär"
 msgid "Event"
 msgstr "Händelse"
 
-#: includes/pages/class-activity.php:66 includes/pages/class-status.php:1921
-#: includes/pages/class-status.php:2047
+#: includes/pages/class-activity.php:66 includes/pages/class-status.php:1933
+#: includes/pages/class-status.php:2059
 msgid "Duration"
 msgstr "Varaktighet"
 
@@ -1822,7 +1822,7 @@ msgstr "Inkludera tidslinjer"
 msgid "Add page break between entries"
 msgstr "Börja varje ärende på ny sida"
 
-#: includes/pages/class-status.php:929 includes/pages/class-status.php:2071
+#: includes/pages/class-status.php:929 includes/pages/class-status.php:2083
 msgid "(deleted)"
 msgstr "(raderat)"
 
@@ -1835,13 +1835,13 @@ msgstr ""
 msgid "Checkbox"
 msgstr "Kryssruta"
 
-#: includes/pages/class-status.php:1636
+#: includes/pages/class-status.php:1647
 #: includes/steps/class-common-step-settings.php:77
 #: includes/steps/class-common-step-settings.php:144
 msgid "Select"
 msgstr "Välj"
 
-#: includes/pages/class-status.php:2015
+#: includes/pages/class-status.php:2027
 msgid "Workflows restarted."
 msgstr "Arbetsflöden återstartade."
 
@@ -2200,24 +2200,24 @@ msgid ""
 msgstr "Inställningen Återsänd ger möjlighet till ett tredje val utöver Godkänn och Avvisa, där den ansvariga personen kan skicka ärendet direkt till ett steg för användarinmatning utan att statusen ändras. Aktivera denna inställning för att knappen Återsänd ska visas intill knapparna Godkänn och Avvisa och ange till vilket steg för användarinmatning ärendet ska återsändas."
 
 #: includes/steps/class-step-approval.php:287
-#: includes/steps/class-step-user-input.php:246
+#: includes/steps/class-step-user-input.php:245
 msgid "Workflow Note"
 msgstr "Arbetsflödesanteckning"
 
 #: includes/steps/class-step-approval.php:289
-#: includes/steps/class-step-user-input.php:248
+#: includes/steps/class-step-user-input.php:247
 msgid ""
 "The text entered in the Note box will be added to the timeline. Use this "
 "setting to select the options for the Note box."
 msgstr "Texten i rutan för anteckningar kommer att läggas till i tidslinjen. Använd detta alternativ för att välja inställningar för anteckningsrutan."
 
 #: includes/steps/class-step-approval.php:292
-#: includes/steps/class-step-user-input.php:251
+#: includes/steps/class-step-user-input.php:250
 msgid "Hidden"
 msgstr "Dolt"
 
 #: includes/steps/class-step-approval.php:293
-#: includes/steps/class-step-user-input.php:252
+#: includes/steps/class-step-user-input.php:251
 msgid "Not required"
 msgstr "Krävs inte"
 
@@ -2284,39 +2284,39 @@ msgstr "Inläggsåtgärd om ärendet är godkänt:"
 msgid "Publish Post"
 msgstr "Publicera inlägg"
 
-#: includes/steps/class-step-approval.php:593
+#: includes/steps/class-step-approval.php:608
 msgid "Reverted to step"
 msgstr "Återsänt till steg"
 
-#: includes/steps/class-step-approval.php:602
+#: includes/steps/class-step-approval.php:617
 msgid "Reverted to step:"
 msgstr "Återsänt till steg:"
 
-#: includes/steps/class-step-approval.php:619
+#: includes/steps/class-step-approval.php:634
 msgid "Approved."
 msgstr "Godkänt."
 
-#: includes/steps/class-step-approval.php:621
+#: includes/steps/class-step-approval.php:636
 msgid "Rejected."
 msgstr "Avslaget."
 
-#: includes/steps/class-step-approval.php:639
+#: includes/steps/class-step-approval.php:654
 msgid "Entry Approved"
 msgstr "Ärende godkänt"
 
-#: includes/steps/class-step-approval.php:641
+#: includes/steps/class-step-approval.php:656
 msgid "Entry Rejected"
 msgstr "Ärendet har fått avslag"
 
-#: includes/steps/class-step-approval.php:722
+#: includes/steps/class-step-approval.php:737
 msgid "Pending Approval"
 msgstr "Väntar på godkännande"
 
-#: includes/steps/class-step-approval.php:865
+#: includes/steps/class-step-approval.php:880
 msgid "Revert"
 msgstr "Återsänd"
 
-#: includes/steps/class-step-approval.php:964
+#: includes/steps/class-step-approval.php:979
 msgid "Error: step already processed."
 msgstr "Fel: steget har redan behandlats."
 
@@ -2716,7 +2716,6 @@ msgid "Only when the page loads"
 msgstr "Endast medan sidan laddas"
 
 #: includes/steps/class-step-user-input.php:150
-#: includes/steps/class-step-user-input.php:226
 msgid ""
 "Fields and Sections support dynamic conditional logic. Pages do not support "
 "dynamic conditional logic so they will only be shown or hidden when the page"
@@ -2775,77 +2774,77 @@ msgstr "Grön triangel"
 msgid "Green Background"
 msgstr "Grön bakgrund"
 
-#: includes/steps/class-step-user-input.php:234
+#: includes/steps/class-step-user-input.php:233
 msgid "Save Progress"
 msgstr "Spara ärendestatus"
 
-#: includes/steps/class-step-user-input.php:235
+#: includes/steps/class-step-user-input.php:234
 msgid ""
 "This setting allows the assignee to save the field values without submitting"
 " the form as complete. Select Disabled to hide the \"in progress\" option or"
 " select the default value for the radio buttons."
 msgstr "Denna inställning låter en ansvariga person spara fältvärdena utan att skicka formuläret vidare som avslutat. Välj Inaktiverat för att dölja alternativet ”under behandling” eller välj standardvärde för radioknapparna."
 
-#: includes/steps/class-step-user-input.php:238
+#: includes/steps/class-step-user-input.php:237
 #: includes/wizard/steps/class-iw-step-gravity-forms.php:199
 #: includes/wizard/steps/class-iw-step-updates.php:141
 msgid "Disabled"
 msgstr "Inaktiverad"
 
-#: includes/steps/class-step-user-input.php:239
+#: includes/steps/class-step-user-input.php:238
 msgid "Radio buttons (default: In progress)"
 msgstr "Radioknappar (standardvärde: under behandling)"
 
-#: includes/steps/class-step-user-input.php:240
+#: includes/steps/class-step-user-input.php:239
 msgid "Radio buttons (default: Complete)"
 msgstr "Radioknappar (standardvärde: färdigt)"
 
-#: includes/steps/class-step-user-input.php:241
+#: includes/steps/class-step-user-input.php:240
 msgid "Submit buttons (Save and Submit)"
 msgstr "Skicka-knappar (spara och skicka)"
 
-#: includes/steps/class-step-user-input.php:253
+#: includes/steps/class-step-user-input.php:252
 msgid "Always Required"
 msgstr "Krävs alltid"
 
-#: includes/steps/class-step-user-input.php:256
+#: includes/steps/class-step-user-input.php:255
 msgid "Required if in progress"
 msgstr "Krävs vid status under behandling"
 
-#: includes/steps/class-step-user-input.php:260
+#: includes/steps/class-step-user-input.php:259
 msgid "Required if complete"
 msgstr "Krävs vid status färdigt"
 
-#: includes/steps/class-step-user-input.php:265
+#: includes/steps/class-step-user-input.php:264
 msgid "Thank you."
 msgstr "Tack."
 
-#: includes/steps/class-step-user-input.php:448
+#: includes/steps/class-step-user-input.php:447
 msgid "There was a problem while updating the assignee status."
 msgstr "Ett problem inträffade när ansvariges status skulle uppdateras."
 
-#: includes/steps/class-step-user-input.php:553
+#: includes/steps/class-step-user-input.php:552
 msgid "Entry updated and marked complete."
 msgstr "Ärendet har uppdaterats och markerats som avslutat."
 
-#: includes/steps/class-step-user-input.php:564
+#: includes/steps/class-step-user-input.php:563
 msgid "Entry updated - in progress."
 msgstr "Ärendet har uppdaterats – under behandling."
 
-#: includes/steps/class-step-user-input.php:667
-#: includes/steps/class-step-user-input.php:691
+#: includes/steps/class-step-user-input.php:666
+#: includes/steps/class-step-user-input.php:690
 msgid "This field is required."
 msgstr "Detta fält är obligatoriskt."
 
-#: includes/steps/class-step-user-input.php:836
+#: includes/steps/class-step-user-input.php:835
 msgid "Pending Input"
 msgstr "Väntar på inmatning"
 
-#: includes/steps/class-step-user-input.php:926
+#: includes/steps/class-step-user-input.php:925
 msgid "In progress"
 msgstr "Pågår"
 
-#: includes/steps/class-step-user-input.php:973
+#: includes/steps/class-step-user-input.php:972
 msgid "Save"
 msgstr "Spara"
 
@@ -3130,15 +3129,15 @@ msgstr "%s: ansvarig person saknas"
 msgid "Sent Notification: "
 msgstr "Skickad notifiering: "
 
-#: includes/steps/class-step.php:2152
+#: includes/steps/class-step.php:2167
 msgid "Processed"
 msgstr "Har behandlats"
 
-#: includes/steps/class-step.php:2236
+#: includes/steps/class-step.php:2251
 msgid "A note is required"
 msgstr "En anteckning krävs"
 
-#: includes/steps/class-step.php:2281
+#: includes/steps/class-step.php:2296
 msgid "There was a problem while updating your form."
 msgstr "Ett problem inträffade när ditt formulär skulle uppdateras."
 
