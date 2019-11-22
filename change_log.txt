@@ -5,5 +5,6 @@
 - Fixed an issue where a multi-select on User Input step settings pages would shrink to a very small width on smaller window resolutions.
 - Fixed a PHP notice which can occur when conditional logic is evaluated and the rule is not based on a form field.
 - Fixed an issue where workflow merge tags would not be available in the merge tag dropdown for notification content fields in certain steps.
+- Fixed an issue where revert notifications would not include the latest workflow note.
 - Updated the Members integration to include the missing Status page Admin Actions capability.
 - Updated some acceptance tests to make them work with WordPress 5.3 and the TwentyTwenty default theme.
