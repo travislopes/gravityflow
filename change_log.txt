@@ -8,3 +8,4 @@
 - Fixed an issue where revert notifications would not include the latest workflow note.
 - Updated the Members integration to include the missing Status page Admin Actions capability.
 - Updated some acceptance tests to make them work with WordPress 5.3 and the TwentyTwenty default theme.
+- Updated the hook used in the WP E-Signature Step to allow all signatures to be collected before continuing workflow.
