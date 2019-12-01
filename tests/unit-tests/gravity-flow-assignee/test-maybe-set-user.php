@@ -3,6 +3,8 @@
 /**
  * Testing Gravity_Flow_Assignee::maybe_set_user().
  *
+ * @requires PHPUnit >= 4
+ *
  * @group testsuite
  */
 class Tests_Gravity_Flow_Assignee_Maybe_Set_User extends GF_UnitTestCase {

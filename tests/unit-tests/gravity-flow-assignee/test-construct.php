@@ -3,6 +3,8 @@
 /**
  * Testing the Gravity_Flow_Assignee constructor.
  *
+ * @requires PHPUnit >= 4
+ *
  * @group testsuite
  */
 class Tests_Gravity_Flow_Assignee_Construct extends GF_UnitTestCase {
