@@ -8,7 +8,7 @@
 class Tests_Gravity_Flow_Assignee_Maybe_Set_User extends GF_UnitTestCase {
 
 	public function test_type_user_id() {
-		$assignee = $this->createMock( 'Gravity_Flow_Assignee' );
+		$assignee = $this->getMockBuilder( 'Gravity_Flow_Assignee' )->getMock();
 		$assignee->method( 'get_type' )->willReturn( 'user_id' );
 		$assignee->method( 'get_id' )->willReturn( 1 );
 
@@ -19,7 +19,7 @@ class Tests_Gravity_Flow_Assignee_Maybe_Set_User extends GF_UnitTestCase {
 	}
 
 	public function test_type_email() {
-		$assignee = $this->createMock( 'Gravity_Flow_Assignee' );
+		$assignee = $this->getMockBuilder( 'Gravity_Flow_Assignee' )->getMock();
 		$assignee->method( 'get_type' )->willReturn( 'email' );
 		$assignee->method( 'get_id' )->willReturn( 'admin@example.org' );
 
@@ -30,7 +30,7 @@ class Tests_Gravity_Flow_Assignee_Maybe_Set_User extends GF_UnitTestCase {
 	}
 
 	public function test_type_other() {
-		$assignee = $this->createMock( 'Gravity_Flow_Assignee' );
+		$assignee = $this->getMockBuilder( 'Gravity_Flow_Assignee' )->getMock();
 		$assignee->method( 'get_type' )->willReturn( 'other' );
 
 		// Shouldn't be called for this type.
@@ -41,7 +41,7 @@ class Tests_Gravity_Flow_Assignee_Maybe_Set_User extends GF_UnitTestCase {
 	}
 
 	public function test_get_user() {
-		$assignee = $this->createMock( 'Gravity_Flow_Assignee' );
+		$assignee = $this->getMockBuilder( 'Gravity_Flow_Assignee' )->getMock();
 		$assignee->method( 'get_user' )->willReturn( 'the user' );
 
 		// Shouldn't be called since get_user returned a value.

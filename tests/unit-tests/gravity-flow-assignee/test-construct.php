@@ -29,7 +29,7 @@ class Tests_Gravity_Flow_Assignee_Construct extends GF_UnitTestCase {
 	 */
 	public function test_case( $entry, $assignee_args, $expected_id, $expected_type, $expected_key ) {
 		if ( ! empty( $entry ) ) {
-			$step = $this->createMock( 'Gravity_Flow_Step' );
+			$step = $this->getMockBuilder( 'Gravity_Flow_Step' )->getMock();
 			$step->method( 'get_entry' )->willReturn( $entry );
 		} else {
 			$step = false;
