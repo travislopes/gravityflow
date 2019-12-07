@@ -2,7 +2,7 @@
 Contributors: stevehenty
 Tags: workflow, approvals, gravity forms
 Requires at least: 4.4
-Tested up to: 5.2
+Tested up to: 5.3
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,7 +67,7 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 - Fixed an issue where PHP fatal error is thrown from workflow detail link integration with Gravity View 2.5. Credit: the GravityView Team.
 - Updated the Members integration to include the missing Status page Admin Actions capability.
 - Updated the hook used in the WP E-Signature Step to allow all signatures to be collected before continuing workflow.
-
+- Updated the translations for Catalan and Arabic.
 
 = 2.5.8 =
 - Added support for the delayed payment enhancements in Gravity Forms 2.4.13. Workflow processing can now be delayed when using PayPal Standard, Stripe (Checkout), and other payment add-ons which support the Post Payment Action setting.
