@@ -8702,7 +8702,7 @@ AND m.meta_value='queued'";
 					</ul>
 
 					<div id="gform_tab_container" class="gform_tab_container">
-						<div class="gform_tab_content" id="tab_<?php echo $current_tab ?>">
+						<div class="gform_tab_content" id="tab_<?php esc_attr_e( $current_tab ); ?>">
 
 		<?php
 		}
