@@ -10,3 +10,4 @@
 - Fixed an issue with the User Input Step where the Coupon usage count is not updated.
 - Fixed a PHP notice which occurs when the shortcode is processed and WordPress isn't able to provide the current post object.
 - Fixed a PHP warning on the inbox page when a step is configured with a delay based due date and the offset setting contains non-numeric characters.
+- Fixed notices with PHP 7.4.
