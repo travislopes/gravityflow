@@ -14,3 +14,4 @@
 - Fixed a PHP warning on the inbox page when a step is configured with a delay based due date and the offset setting contains non-numeric characters.
 - Fixed notices with PHP 7.4.
 - Fixed an issue where the Dropbox step does not complete with Dropbox Add-On 2.4.1+.
+- Fixed an issue where the report data for assignees by month is incorrect.
