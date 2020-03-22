@@ -4965,6 +4965,11 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 								'name'    => 'allow_field_ids',
 								'tooltip' => esc_html__( 'This setting allows the fields attribute to be used in the shortcode.', 'gravityflow' ),
 							),
+							array(
+								'label'   => esc_html__( 'Allow the Reports shortcode to display workflow reports to all registered and anonymous users.', 'gravityflow' ),
+								'name'    => 'allow_display_reports',
+								'tooltip' => esc_html__( 'This setting allows the Reports shortcode to display workflow reports to all registered and anonymous users.', 'gravityflow' ),
+							),
 						),
 					),
 				),
@@ -6391,9 +6396,12 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			wp_enqueue_script( 'google_charts', 'https://www.google.com/jsapi',  array(), $this->_version );
 			wp_enqueue_script( 'gravityflow_reports', $this->get_base_url() . "/js/reports{$min}.js",  array( 'jquery', 'google_charts' ), $this->_version );
 
+			$app_settings  = $this->get_app_settings();
+			$allow_reports = rgar( $app_settings, 'allow_display_reports' );
+
 			$args = array(
-				'display_header' => false,
-				'base_url'       => remove_query_arg( array(
+				'display_header'        => false,
+				'base_url'              => remove_query_arg( array(
 					'page',
 					'range',
 					'form-id',
@@ -6401,11 +6409,12 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 					'step-id',
 					'assignee',
 				) ),
-				'form_id'        => $a['form'],
-				'range'          => $a['range'],
-				'category'       => $a['category'],
-				'step_id'        => $a['step_id'],
-				'assignee'       => $a['assignee'],
+				'form_id'               => $a['form'],
+				'range'                 => $a['range'],
+				'category'              => $a['category'],
+				'step_id'               => $a['step_id'],
+				'assignee'              => $a['assignee'],
+				'check_permissions'     => ! $allow_reports,
 			);
 
 			ob_start();
