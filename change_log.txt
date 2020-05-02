@@ -23,4 +23,5 @@
 - Fixed an issue where the scripts and styles are not enqueued when using the shortcode or block in a reusable block.
 - Fixed an issue in the step settings page where duplicate Workflow step icons appear for the Gravity Forms HubSpot Add-on and third-party HubSpot Add-on. IMPORTANT: check that your HubSpot workflow steps are correct after updating to this version.
 - Fixed a bug with 'Schedule expiration' on Workflow step. 'Next Step if Expired' option should only appear when 'Status after expiration' is set as 'Expired'.
+- Fixed the field filter not appearing on the status page when the form_id constraint is set to an array using the gravityflow_status_filter hook.
 - Added support for Merge Tags on Workflow Step Conditions.
