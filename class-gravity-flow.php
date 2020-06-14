@@ -8492,7 +8492,9 @@ AND m.meta_value='queued'";
 				return $text;
 			}
 
+			remove_filter( 'gform_pre_replace_merge_tags', array( $this, 'replace_variables' ) );
 			$step = gravity_flow()->get_current_step( $form, $entry );
+			add_filter( 'gform_pre_replace_merge_tags', array( $this, 'replace_variables' ), 10, 7 );
 
 			$assignee = null;
 
