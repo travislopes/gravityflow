@@ -2,7 +2,7 @@
 Contributors: stevehenty
 Tags: workflow, approvals, gravity forms
 Requires at least: 4.4
-Tested up to: 5.4.1
+Tested up to: 5.4.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,12 @@ https://gravityflow.io/contact/
 Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.io/out/gravityforms).
 
 == ChangeLog ==
+
+= 2.5.11 =
+- Fixed issue with merge tag evaluation that caused a fatal error involving certain conditional logic setup. Update Form Connector add-on will also be required if installed.
+- Fixed an issue with second layer confirmation for Approval Step. When the Revert to User Input step option is enabled, the Revert button was not displaying the confirm box.
+- Fixed support for latest versions of Gravity View Advanced Filters. Credit: The team at GravityView.
+- Fixed an issue with the reports shortcode/page where the "Step Assignees" dropdown was missing when "Category" is set to "Step" and a step is chosen.
 
 = 2.5.10 =
 - Added security enhancements.

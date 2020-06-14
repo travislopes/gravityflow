@@ -1,4 +1,0 @@
-- Fixed issue with merge tag evaluation that caused a fatal error involving certain conditional logic setup. Update Form Connector add-on will also be required if installed.
-- Fixed an issue with second layer confirmation for Approval Step. When the Revert to User Input step option is enabled, the Revert button was not displaying the confirm box.
-- Fixed support for latest versions of Gravity View Advanced Filters. (Thanks Vlad/MrCasual)
-- Fixed an issue with the reports shortcode/page where the "Step Assignees" dropdown was missing when "Category" is set to "Step" and a step is chosen.
