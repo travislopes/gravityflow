@@ -81,6 +81,14 @@ class Gravity_Flow_Inbox {
 			</div>
 		<?php
 		}
+
+		if ( $total_count > $page_size ) {
+			?>
+			<form method="post">
+			<input type="submit" name="view-more" value="<?php esc_html_e( 'Show All', 'gravityflow' ); ?>" />
+			</form>
+			<?php
+		}
 	}
 
 	/**
@@ -96,6 +104,21 @@ class Gravity_Flow_Inbox {
 			'end_date'   => '',
 		) );
 
+		$current = $_SERVER['REQUEST_URI']; 
+		$referer_parts = parse_url( $_SERVER['HTTP_REFERER'] );
+		$previous = $referer_parts['path'];
+		if ( isset( $referer_parts['query'] ) ) {
+			$previous .= '?' . $referer_parts['query'];
+		}
+
+		if ( $current != $previous ) {
+			if ( isset( $_COOKIE['more-enabled'] ) )
+				unset( $_COOKIE['more-enabled'] );
+		}
+		else {
+			setcookie( 'more-enabled', true );
+		}	
+
 		return array(
 			'display_empty_fields' => true,
 			'id_column'            => true,
@@ -109,6 +132,7 @@ class Gravity_Flow_Inbox {
 			'last_updated'         => false,
 			'due_date'             => false,
 			'step_highlight'       => true,
+			'view_more'            => isset( $_COOKIE['more-enabled'] ) ? $_COOKIE['more-enabled'] : false,
 		);
 
 	}
