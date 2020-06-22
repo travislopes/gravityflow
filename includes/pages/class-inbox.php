@@ -104,7 +104,7 @@ class Gravity_Flow_Inbox {
 			'end_date'   => '',
 		) );
 
-		$current = $_SERVER['REQUEST_URI']; 
+		$current = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : ''; 
 		$referer_parts = parse_url( $_SERVER['HTTP_REFERER'] );
 		$previous = $referer_parts['path'];
 		if ( isset( $referer_parts['query'] ) ) {
@@ -112,11 +112,11 @@ class Gravity_Flow_Inbox {
 		}
 
 		if ( $current != $previous ) {
-			if ( isset( $_COOKIE['more-enabled'] ) )
-				unset( $_COOKIE['more-enabled'] );
+			if ( isset( $_COOKIE['gflow-inbox-view-more'] ) )
+				unset( $_COOKIE['gflow-inbox-view-more'] );
 		}
 		else {
-			setcookie( 'more-enabled', true );
+			setcookie( 'gflow-inbox-view-more', true );
 		}	
 
 		return array(
@@ -132,7 +132,7 @@ class Gravity_Flow_Inbox {
 			'last_updated'         => false,
 			'due_date'             => false,
 			'step_highlight'       => true,
-			'view_more'            => isset( $_COOKIE['more-enabled'] ) ? $_COOKIE['more-enabled'] : false,
+			'view_more'            => isset( $_COOKIE['gflow-inbox-view-more'] ) ? $_COOKIE['gflow-inbox-view-more'] : false,
 		);
 
 	}
