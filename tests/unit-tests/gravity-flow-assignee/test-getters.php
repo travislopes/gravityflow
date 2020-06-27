@@ -7,14 +7,6 @@
  */
 class Tests_Gravity_Flow_Assignee_Getters extends GF_UnitTestCase {
 
-	public function setUp() {
-		if ( version_compare( phpversion(), '5.3', '<' ) ) {
-			$this->markTestSkipped();
-		}
-
-		parent::setUp();
-	}
-
 	public function test_get_id() {
 		$assignee = new Gravity_Flow_Assignee( 'test-type|test-id' );
 		$this->assertSame( 'test-id', $assignee->get_id() );

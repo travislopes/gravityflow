@@ -7,14 +7,6 @@
  */
 class Tests_Gravity_Flow_Assignee_Remove extends GF_UnitTestCase {
 
-	public function setUp() {
-		if ( version_compare( phpversion(), '5.3', '<' ) ) {
-			$this->markTestSkipped();
-		}
-
-		parent::setUp();
-	}
-
 	public function test_status() {
 		$meta_key = 'workflow_test-type_test-id';
 		gform_add_meta( 5, $meta_key, 'testing', 1 );

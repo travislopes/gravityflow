@@ -28,10 +28,6 @@ class Tests_Gravity_Flow_Assignee_Construct extends GF_UnitTestCase {
 	 * @param $expected_key
 	 */
 	public function test_case( $entry, $assignee_args, $expected_id, $expected_type, $expected_key ) {
-		if ( version_compare( phpversion(), '5.3', '<' ) ) {
-			$this->markTestSkipped();
-		}
-
 		if ( ! empty( $entry ) ) {
 			$step = $this->getMockBuilder( 'Gravity_Flow_Step' )->getMock();
 			$step->method( 'get_entry' )->willReturn( $entry );
