@@ -104,11 +104,14 @@ class Gravity_Flow_Inbox {
 			'end_date'   => '',
 		) );
 
-		$current = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : ''; 
-		$referer_parts = parse_url( $_SERVER['HTTP_REFERER'] );
-		$previous = $referer_parts['path'];
-		if ( isset( $referer_parts['query'] ) ) {
-			$previous .= '?' . $referer_parts['query'];
+		$current = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
+		$previous = '';
+		if ( isset( $_SERVER['HTTP_REFERER'] )) {
+			$referer_parts = parse_url( $_SERVER['HTTP_REFERER'] );
+			$previous = $referer_parts['path'];
+			if ( isset( $referer_parts['query'] ) ) {
+				$previous .= '?' . $referer_parts['query'];
+			}
 		}
 
 		if ( $current != $previous ) {
