@@ -218,6 +218,8 @@ if ( class_exists( 'GFForms' ) ) {
 				)
 			);
 
+			add_filter( 'add_menu_classes', array( $this, 'show_inbox_count' ), 10 );
+
 			// GravityView Integration.
 			add_filter( 'gravityview/adv_filter/field_filters', array( $this, 'filter_gravityview_adv_filter_field_filters' ), 10, 2 );
 			add_filter( 'gravityview_search_criteria', array( $this, 'filter_gravityview_search_criteria' ), 999, 3 ); // Advanced Filter v1.0
@@ -5960,6 +5962,32 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 		}
 
 		/**
+		 * Add inbox notification count to Workflow Menu.
+		 *
+		 * @since 2.5.12
+		 * 
+		 * @param array $menu The current WP Dashboard Menu.
+		 */		
+		public function show_inbox_count( $menu ) {
+			$custom_labels = get_option( 'gravityflow_app_settings_labels', array() );
+			$custom_navigation_labels = rgar( $custom_labels, 'navigation' );
+			$custom_workflow_label = rgar( $custom_navigation_labels, 'workflow' );
+			$workflow_label = $custom_workflow_label ? $custom_workflow_label : 'Workflow';
+	
+			$workflow_menu_pos = -1;
+			foreach ( $menu as $menuitem ) {
+				if ( $menuitem[0] == $workflow_label ) {
+					$workflow_menu_pos = array_search( $menuitem, $menu, true );
+				}
+			}
+
+			$pending_count = $this->get_inbox_count();
+			$menu[ $workflow_menu_pos ][0] = sprintf( __( '%s %s' ), $workflow_label, "<span class='update-plugins count-$pending_count'><span class='plugin-count'>" . number_format_i18n($pending_count) . "</span></span>" );
+
+			return $menu;
+		}
+
+		/**
 		 * Starts or resumes workflow processing.
 		 *
 		 * @param array $form     The current form.
@@ -6506,6 +6534,23 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			}
 
 			return (array) $user->roles;
+		}
+
+		/**
+		 * Return the inbox entries count from transient.
+		 * 
+		 * @since 2.5.12
+		 * 
+		 * @return int
+		 */		
+		public function get_inbox_count() {
+			$count_value = get_transient( 'gflow_inbox_count_' . get_current_user_id()  );
+			if ( $count_value === false ) {
+				$count_value = Gravity_Flow_API::get_inbox_entries_count();
+				set_transient( 'gflow_inbox_count_' . get_current_user_id() , $count_value, MINUTE_IN_SECONDS );
+			}
+
+			return $count_value;
 		}
 
 		/**
