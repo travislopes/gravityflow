@@ -154,6 +154,6 @@ class Gravity_Flow_Installation_Wizard_Step_Updates extends Gravity_Flow_Install
 		$settings = $gravityflow->get_app_settings();
 		$settings['background_updates'] = $this->background_updates !== 'disabled';
 		gravity_flow()->update_app_settings( $settings );
-
+		$gravityflow->update_wp_auto_updates( $settings['background_updates'] );
 	}
 }
