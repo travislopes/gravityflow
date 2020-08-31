@@ -2,7 +2,7 @@
 Contributors: stevehenty
 Tags: workflow, approvals, gravity forms
 Requires at least: 4.4
-Tested up to: 5.4.2
+Tested up to: 5.5
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
