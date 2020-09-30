@@ -1565,9 +1565,9 @@ PRIMARY KEY  (id)
 			} elseif ( ! $is_complete_step ) {
 				$standard_fields = array(
 					array(
-						'name'     => 'step_highlight',
+						'name'     => 'highlight',
 						'label'    => esc_html__( 'Highlight', 'gravityflow' ),
-						'type'     => 'step_highlight',
+						'type'     => 'highlight',
 						'required' => false,
 						'tooltip'  => esc_html__( 'Highlighted steps will stand out in both the workflow inbox and the step list. Use highlighting to bring attention to important tasks and to help organise complex workflows.', 'gravityflow' ),
 					),
@@ -2981,14 +2981,14 @@ PRIMARY KEY  (id)
 		 * The container will be displayed or hidden depending on the value of the step_highlight checkbox field.
 		 *
 		 * @since 1.9.2
-		 * @since 2.5.12    Added the $echo param.
+		 * @since 2.6   Renamed from settings_step_highlight_settings to support Gravity Forms 2.5
 		 *
 		 * @param array $field The field properties.
 		 * @param bool  $echo  Whether to output the setting.
 		 *
 		 * @return string
 		 */
-		public function settings_step_highlight( $field, $echo = true ) {
+		public function settings_highlight( $field, $echo = true ) {
 			$field = $this->prepare_settings_step_highlight( $field );
 
 			$html = $this->settings_step_highlight_container( $field, false );
@@ -3366,11 +3366,12 @@ PRIMARY KEY  (id)
 		 * Validate the sub-settings are of appropriate type and required status.
 		 *
 		 * @since 1.9.2
+		 * @since 2.6   Renamed from validate_step_highlight_settings to support Gravity Forms 2.5
 		 *
 		 * @param array $field    The field properties.
 		 * @param array $settings The settings to be potentially saved.
 		 */
-		public function validate_step_highlight_settings( $field, $settings ) {
+		public function validate_highlight_settings( $field, $settings ) {
 			$field = $this->prepare_settings_step_highlight( $field );
 
 			$checkbox_field = $field['settings']['step_highlight'];
