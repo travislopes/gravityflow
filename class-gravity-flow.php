@@ -5393,8 +5393,8 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 		/**
 		 * Renders the submit page.
 		 *
-		 * @since 2.6 Added the $form_ids parameter.
-		 * @since unknown
+		 * @since  unknown
+		 * @since  2.6   Added the $form_ids parameter.
 		 *
 		 * @param bool       $admin_ui Whether to display the admin UI.
 		 * @param null|array $form_ids An array of form IDs.
