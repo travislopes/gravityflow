@@ -6914,65 +6914,44 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 		 * @return bool
 		 */
 		public function maybe_auto_update( $update, $item ) {
-			if ( isset( $item->slug ) && $item->slug == 'gravityflow' ) {
-
-				$this->log_debug( __METHOD__ . '() - Starting auto-update for gravityflow.' );
-
-				$auto_update_disabled = self::is_auto_update_disabled();
-				$this->log_debug( __METHOD__ . '() - $auto_update_disabled: ' . var_export( $auto_update_disabled, true ) );
-
-				if ( $auto_update_disabled || version_compare( $this->_version, $item->new_version, '=>' ) ) {
-					$this->log_debug( __METHOD__ . '() - Aborting update.' );
-					return false;
-				}
-
-				$current_major = implode( '.', array_slice( preg_split( '/[.-]/', $this->_version ), 0, 1 ) );
-				$new_major     = implode( '.', array_slice( preg_split( '/[.-]/', $item->new_version ), 0, 1 ) );
-
-				$current_branch = implode( '.', array_slice( preg_split( '/[.-]/', $this->_version ), 0, 2 ) );
-				$new_branch     = implode( '.', array_slice( preg_split( '/[.-]/', $item->new_version ), 0, 2 ) );
-
-				if ( $current_major == $new_major && $current_branch == $new_branch ) {
-					$this->log_debug( __METHOD__ . '() - OK to update.' );
-					return true;
-				}
-
-				$this->log_debug( __METHOD__ . '() - Skipping - not current branch.' );
+			if ( ! isset( $item->slug ) || $item->slug !== 'gravityflow-gravityflow' || is_null( $update ) ) {
+				return $update;
 			}
 
-			return $update;
+			if ( $this->is_auto_update_disabled( $update ) ) {
+				$this->log_debug( __METHOD__ . '() - Aborting; auto updates disabled.' );
+
+				return false;
+			}
+
+
+			if ( ! $this->should_update_to_version( $item->new_version ) ) {
+				$this->log_debug( __METHOD__ . sprintf( '() - Aborting; auto update from %s to %s is not supported.', $this->_version, $item->new_version ) );
+
+				return false;
+			}
+
+			$this->log_debug( __METHOD__ . sprintf( '() - OK to update from %s to %s.', $this->_version, $item->new_version ) );
+
+			return true;
 		}
 
 		/**
 		 * Determines if background automatic updates are disabled.
 		 *
-		 * Currently WordPress won't ask Gravity Flow to update if background updates are disabled.
-		 * Let's double check anyway.
+		 * @since 2.6 Added the enabled param.
+		 *
+		 * @param bool|null $enabled Indicates if auto updates are enabled.
 		 *
 		 * @return bool
 		 */
-		public function is_auto_update_disabled() {
+		public function is_auto_update_disabled( $enabled = null ) {
+			global $wp_version;
 
-			// WordPress background updates are disabled if you don't want file changes.
-			if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS ) {
-				return true;
+			if ( is_null( $enabled ) || version_compare( $wp_version, '5.5', '<' ) ) {
+				$enabled = $this->get_app_setting( 'background_updates' );
 			}
 
-			if ( defined( 'WP_INSTALLING' ) ) {
-				return true;
-			}
-
-			$wp_updates_disabled = defined( 'AUTOMATIC_UPDATER_DISABLED' ) && AUTOMATIC_UPDATER_DISABLED;
-
-			$wp_updates_disabled = apply_filters( 'automatic_updater_disabled', $wp_updates_disabled );
-
-			if ( $wp_updates_disabled ) {
-				$this->log_debug( __METHOD__ . '() - Background updates are disabled in WordPress.' );
-				return true;
-			}
-
-			// Now check Gravity Flow Background Update Settings.
-			$enabled = $this->get_app_setting( 'background_updates' );
 			$this->log_debug( __METHOD__ . ' - $enabled: ' . var_export( $enabled, true ) );
 
 			$disabled = apply_filters( 'gravityflow_disable_auto_update', ! $enabled );
@@ -6984,6 +6963,37 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			}
 
 			return $disabled;
+		}
+
+		/**
+		 * Determines if the current version should update to the offered version.
+		 *
+		 * @since 2.6
+		 *
+		 * @param string $offered_ver The version number to be compared against the installed version number.
+		 *
+		 * @return bool
+		 */
+		public function should_update_to_version( $offered_ver ) {
+			if ( version_compare( $this->_version, $offered_ver, '>=' ) ) {
+				return false;
+			}
+
+			/**
+			 * If major version updates are allowed we don't need to compare the branch version numbers.
+			 *
+			 * @since 2.6
+			 *
+			 * @param bool $allowed Indicates if Gravity Flow should update to major versions automatically. Default is true.
+			 */
+			if ( apply_filters( 'gravityflow_major_version_auto_updates_allowed', true ) ) {
+				return true;
+			}
+
+			$current_branch = implode( '.', array_slice( preg_split( '/[.-]/', $this->_version ), 0, 2 ) );
+			$new_branch     = implode( '.', array_slice( preg_split( '/[.-]/', $offered_ver ), 0, 2 ) );
+
+			return $current_branch == $new_branch;
 		}
 
 		/**
