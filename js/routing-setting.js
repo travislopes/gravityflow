@@ -250,7 +250,7 @@
              * @param str    selectedOperator The operator that is selected for the current condition.
              * @param int    index            The index of the current condition.
              *
-             * @since x.x.x
+             * @since 2.6.1
              */
             return gform.applyFilters( 'gravityflow_routing_values_markup', str, filter, selectedOperator, index );
         },
