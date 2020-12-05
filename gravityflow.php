@@ -192,6 +192,8 @@ function gravityflow_action_init() {
 		// Add a Gravity Flow menu item
 		add_action( 'admin_menu', 'gravityflow_create_menu_item' );
 	}
+
+	setcookie( 'gflow-inbox-view-more', false );
 }
 
 /**

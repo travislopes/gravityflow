@@ -40,7 +40,8 @@ class Gravity_Flow_Inbox {
 
 		$total_count = 0;
 		$entries     = Gravity_Flow_API::get_inbox_entries( $args, $total_count );
-
+		$page_size = 0;
+		
 		if ( sizeof( $entries ) > 0 ) {
 			$columns = self::get_columns( $args );
 			?>
@@ -119,7 +120,7 @@ class Gravity_Flow_Inbox {
 				unset( $_COOKIE['gflow-inbox-view-more'] );
 		}
 		else {
-			setcookie( 'gflow-inbox-view-more', true );
+			$_COOKIE['gflow-inbox-view-more'] = true;
 		}	
 
 		return array(
