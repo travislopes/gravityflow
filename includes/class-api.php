@@ -537,7 +537,7 @@ class Gravity_Flow_API {
 		}
 		else {
 			$paging = array(
-				'page_size' => 5,
+				'page_size' => 150,
 			);
 		}
 
