@@ -530,7 +530,7 @@ class Gravity_Flow_API {
 	 * @return array
 	 */
 	public static function get_inbox_paging( $args = array() ) {
-		if ( $args['view_more'] ) {
+		if ( rgar( $args, 'view_more' ) ) {
 			$paging = array(
 				'page_size' => Gravity_Flow_API::get_inbox_entries_count( $args ),
 			);
