@@ -21,11 +21,16 @@ jobs:
   # - Uploads ZIP file as an artifact.
   unit-tests:
     name: PHPUnit Tests - PHP ${{ matrix.php_versions }} - WP ${{ matrix.wp_versions }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        php_versions: [  '7.4', '7.3', '7.2', '7.1', '7.0' ]
-        wp_versions: [ 'latest','5.5', '5.4', '5.3', '5.2']
+        php_versions: [  '7.4', '7.3', '7.2' ]
+        wp_versions: [ 'latest','5.5', '5.4', '5.3' ]
+        os: [ubuntu-latest]
+        include:
+          - php_versions: 5.6
+            wp_versions: latest
+            os: ubuntu-16.04
 
     steps:
       - name: Setup Database
