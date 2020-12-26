@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php_versions: [  '7.4' ]
+        php_versions: [  '7.4', '7.3' ]
     steps:
       - name: Setup Database
         uses: mirromutth/mysql-action@v1.1
