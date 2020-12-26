@@ -74,6 +74,5 @@ jobs:
           git clone https://"$GHTOKEN"@github.com/gravityforms/gravityforms.git $PWD/tmp/gravityforms
           bash tests/bin/install.sh wordpress_unit_tests root root 127.0.0.1:3800
       - name: Run tests
-        path: gravityflow
         run: |
           vendor/bin/phpunit
