@@ -11,14 +11,15 @@ on:
       - '*.*'
 
 jobs:
-  # Sets up WordPress for testing or development use.
+  # Sets up and runs the unit tests.
   #
   # Performs the following steps:
+  # - Sets up the database. This is not a service because services are currently not supported by act see https://github.com/nektos/act/issues/173
   # - Checks out the repository.
-  # - Logs debug information about the runner container.
-  # - Builds WordPress to run from the `build` directory.
-  # - Creates a ZIP file of compiled WordPress
-  # - Uploads ZIP file as an artifact.
+  # - Sets up PHP.
+  # - Installs the appropriate version of PHPUnit for the current version of PHP.
+  # - Clones Gravity Forms and installs the tests.
+  # - Runs the tests.
   unit-tests:
     name: PHPUnit Tests - PHP ${{ matrix.php_versions }} - WP ${{ matrix.wp_versions }}
     runs-on: ${{ matrix.os }}
@@ -55,7 +56,7 @@ jobs:
 
       - name: Install PHPUnit
         run: |
-          # Install the specified version of PHPUnit depending on the PHP version:
+          # Install the specified version of PHPUnit depending on the PHP version. Installed glopbal to avoid conflicts with composer.json.
           echo "Install PHPUnit"
           case ${{ matrix.php_versions }} in
             7.3|7.4|7.0|5.6|5.5|5.4|nightly)
