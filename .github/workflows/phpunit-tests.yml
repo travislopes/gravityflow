@@ -48,23 +48,20 @@ jobs:
 
       - name: Install PHPUnit
         run: |
-          # Export Composer's global bin dir to PATH:
-          composer config --list --global
-          export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
           # Install the specified version of PHPUnit depending on the PHP version:
           echo "Install PHPUnit"
           case ${{ matrix.php_versions }} in
             7.3|7.4|7.0|5.6|5.5|5.4|nightly)
               # Use composer to install a compatible version of phpunit
-              composer require "phpunit/phpunit:>4.0 <6 || ^7.0"
+              composer global require "phpunit/phpunit:>4.0 <6 || ^7.0"
               ;;
             7.2)
               echo "Using PHPUnit 6.0"
-              composer require "phpunit/phpunit=6.0.*"
+              composer global require "phpunit/phpunit=6.0.*"
               ;;
             7.1)
               echo "Using PHPUnit 5.7"
-              composer require "phpunit/phpunit=5.7.*"
+              composer global require "phpunit/phpunit=5.7.*"
               ;;
             *)
               echo "No PHPUnit version handling for PHP version ${{ matrix.php_versions }}"
@@ -83,4 +80,7 @@ jobs:
           bash tests/bin/install.sh wordpress_unit_tests root root 127.0.0.1:3800
       - name: Run tests
         run: |
-          vendor/bin/phpunit
+          # Export Composer's global bin dir to PATH:
+          composer config --list --global
+          export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
+          phpunit
