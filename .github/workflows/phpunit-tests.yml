@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php_versions: [  '7.4', '7.3', '7.2', '7.1' ]
-        wp_versions: [ 'latest', '5.4', '5.3', '5.2', '5.0', '4.8', '4.6' ]
+        php_versions: [  '7.4', '7.3', '7.2', '7.1', '7.0' ]
+        wp_versions: [ 'latest','5.5', '5.4', '5.3', '5.2']
 
     steps:
       - name: Setup Database
@@ -82,9 +82,9 @@ jobs:
           bash tests/bin/install.sh wordpress_unit_tests root root 127.0.0.1:3800 ${{ matrix.wp_versions }}
       - name: Run tests
         run: |
-          php --version
-          phpunit --version
           # Export Composer's global bin dir to PATH:
           composer config --list --global
           export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
+          php --version
+          phpunit --version
           phpunit
