@@ -20,12 +20,13 @@ jobs:
   # - Creates a ZIP file of compiled WordPress
   # - Uploads ZIP file as an artifact.
   unit-tests:
-    name: PHPUnit Tests
+    name: PHPUnit Tests - PHP ${{ matrix.php_versions }} - WP ${{ matrix.wp_versions }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php_versions: [  '7.4', '7.3' ]
-        wp_versions: [ 'latest', '5.5' ]
+        php_versions: [  '7.4', '7.3', '7.2', '7.1' ]
+        wp_versions: [ 'latest', '5.4', '5.3', '5.2', '5.0', '4,8', '4,6' ]
+
     steps:
       - name: Setup Database
         uses: mirromutth/mysql-action@v1.1
