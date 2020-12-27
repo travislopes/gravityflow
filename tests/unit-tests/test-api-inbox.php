@@ -55,7 +55,7 @@ class Tests_Gravity_Flow_API_Inbox extends GF_UnitTestCase {
 	function test_get_filter_key_current_user() {
 		$this->_set_user();
 		$key = Gravity_Flow_API::get_inbox_filter_key();
-		$this->assertEquals( 'workflow_user_id_1xxx', $key );
+		$this->assertEquals( 'workflow_user_id_1', $key );
 	}
 
 	/**
