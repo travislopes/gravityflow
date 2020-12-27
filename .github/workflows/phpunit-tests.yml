@@ -100,13 +100,13 @@ jobs:
     needs: unit-tests
     steps:
       - name: Success
-          if: ${{ success() }}
-          uses: rtCamp/action-slack-notify@v2
-          env:
-            SLACK_ICON: https://github.com/gravityflow.png?size=48
-            SLACK_TITLE: Tests Passed
-            SLACK_USERNAME: GitHub
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_ICON: https://github.com/gravityflow.png?size=48
+          SLACK_TITLE: Tests Passed
+          SLACK_USERNAME: GitHub
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Failure
         if: ${{ failure() }}
