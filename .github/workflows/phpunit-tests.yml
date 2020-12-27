@@ -123,12 +123,6 @@ jobs:
           workflow: PHPUnit Tests
           repo: gravityflow/gravityflowincomingwebhook
           token: ${{ secrets.GHTOKEN }}
-      - name: Trigger unit tests for Incoming Webhook
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: PHPUnit Tests
-          repo: gravityflow/gravityflowincomingwebhook
-          token: ${{ secrets.GHTOKEN }}
       - name: Trigger unit tests for Form Connector
         uses: benc-uk/workflow-dispatch@v1
         with:
