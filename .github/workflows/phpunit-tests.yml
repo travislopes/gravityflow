@@ -21,17 +21,22 @@ jobs:
   # - Clones Gravity Forms and installs the tests.
   # - Runs the tests.
   unit-tests:
-    name: PHPUnit Tests - PHP ${{ matrix.php_versions }} - WP ${{ matrix.wp_versions }}
+    name: PHPUnit Tests - PHP ${{ matrix.php }} - WP ${{ matrix.wp }} - MySQL ${{ matrix.mysql }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        php_versions: [ '7.4', '7.3', '7.2' ]
-        wp_versions: [ 'latest','5.5', '5.4', '5.3' ]
+        php: [ '7.4', '7.3', '7.2' ]
+        wp: [ 'latest','5.5', '5.4', '5.3' ]
         os: [ubuntu-latest]
+        mysql: [ '5.7' ]
         include:
-          - php_versions: 5.6
-            wp_versions: latest
+          - php: 5.6
+            wp: latest
             os: ubuntu-16.04
+          - php: '7.4'
+            wp: latest
+            os: ubuntu-latest
+            mysql: '8.0'
 
     steps:
       - name: Setup Database
@@ -49,7 +54,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php_versions }}
+          php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, mysql, mysqli, pdo_mysql, bcmath, soap, gd, exif, iconv, imagick
           coverage: none
           tools: phpunit
@@ -58,7 +63,7 @@ jobs:
         run: |
           # Install the specified version of PHPUnit depending on the PHP version. Installed global to avoid conflicts with composer.json.
           echo "Install PHPUnit"
-          case ${{ matrix.php_versions }} in
+          case ${{ matrix.php }} in
             7.3|7.4|7.0|5.6|5.5|5.4|nightly)
               # Use composer to install a compatible version of phpunit
               composer global require "phpunit/phpunit:>4.0 <6 || ^7.0"
@@ -72,7 +77,7 @@ jobs:
               composer global require "phpunit/phpunit=5.7.*"
               ;;
             *)
-              echo "No PHPUnit version handling for PHP version ${{ matrix.php_versions }}"
+              echo "No PHPUnit version handling for PHP version ${{ matrix.php }}"
               exit 1
               ;;
           esac
@@ -85,7 +90,7 @@ jobs:
           git --version
           svn --version
           git clone https://"$GHTOKEN"@github.com/gravityforms/gravityforms.git $PWD/tmp/gravityforms
-          bash tests/bin/install.sh wordpress_unit_tests root root 127.0.0.1:3800 ${{ matrix.wp_versions }}
+          bash tests/bin/install.sh wordpress_unit_tests root root 127.0.0.1:3800 ${{ matrix.wp }}
       - name: Run tests
         run: |
           # Export Composer's global bin dir to PATH:
