@@ -106,7 +106,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
   success:
-    name: Slack notification & trigger tests in extensions
+    name: Trigger Extension Tests & Notify Slack
     runs-on: ubuntu-latest
     needs: unit-tests
     steps:
@@ -123,3 +123,15 @@ jobs:
           workflow: PHPUnit Tests
           repo: gravityflow/gravityflowincomingwebhook
           token: ${{ secrets.GHTOKEN }}
+      - name: Trigger unit tests for Incoming Webhook
+          uses: benc-uk/workflow-dispatch@v1
+          with:
+            workflow: PHPUnit Tests
+            repo: gravityflow/gravityflowincomingwebhook
+            token: ${{ secrets.GHTOKEN }}
+      - name: Trigger unit tests for Form Connector
+          uses: benc-uk/workflow-dispatch@v1
+          with:
+            workflow: PHPUnit Tests
+            repo: gravityflow/gravityflowformconnector
+            token: ${{ secrets.GHTOKEN }}
