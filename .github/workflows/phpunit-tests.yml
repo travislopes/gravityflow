@@ -21,7 +21,7 @@ jobs:
   # - Clones Gravity Forms and installs the tests.
   # - Runs the tests.
   unit-tests:
-    name: PHPUnit Tests - PHP ${{ matrix.php }} - WP ${{ matrix.wp }} - MySQL ${{ matrix.mysql }}
+    name: PHP ${{ matrix.php }} - WP ${{ matrix.wp }} - MySQL ${{ matrix.mysql }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
