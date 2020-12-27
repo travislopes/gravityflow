@@ -94,12 +94,13 @@ jobs:
           php --version
           phpunit --version
           phpunit
+
       - name: Success Notification
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_ICON: https://github.com/gravityflow.png?size=48
-          SLACK_TITLE: Tests Passed
+          SLACK_TITLE: Unit tests passed
           SLACK_USERNAME: GitHub
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
@@ -109,6 +110,6 @@ jobs:
         env:
           SLACK_COLOR: danger
           SLACK_ICON: https://github.com/gravityflow.png?size=48
-          SLACK_TITLE: Failed test
+          SLACK_TITLE: Failed unit tests
           SLACK_USERNAME: GitHub
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
