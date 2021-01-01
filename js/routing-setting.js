@@ -241,7 +241,7 @@
             } else {
                 str = '<input type="text" value="" class="gform-routing-value value_{0}" />'.format(index);
             }
-            
+
             return str;
         },
 
