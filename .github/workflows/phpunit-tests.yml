@@ -3,11 +3,11 @@ name: PHPUnit Tests
 on:
   push:
     branches:
-      - '*'
+      - '**'
 
   pull_request:
     branches:
-      - '*'
+      - '**'
 
 jobs:
   # Sets up and runs the unit tests.
@@ -112,6 +112,7 @@ jobs:
   success:
     name: Trigger Extension Tests & Notify Slack
     runs-on: ubuntu-latest
+    if: github.ref == 'ref/head/master'
     needs: unit-tests
     steps:
       - name: Slack Success Notification
