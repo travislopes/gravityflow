@@ -263,6 +263,9 @@ if ( class_exists( 'GFForms' ) ) {
 			}
 
 			add_action( 'admin_notices', array( $this, 'action_admin_notices' ) );
+			
+			wp_register_style( 'gravityflow_dashicons', plugins_url( 'gravityflow/css/gravityflow-icon.css' ) );
+            		wp_enqueue_style( 'gravityflow_dashicons' );
 		}
 
 		/**
@@ -6184,7 +6187,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 		function filter_form_settings_menu( $menu_items ) {
 			foreach ( $menu_items as &$menu_item ) {
 				if ( $menu_item['name'] == 'gravityflow' ) {
-					$menu_item['icon'] = esc_url( gravity_flow()->get_base_url() ) . '/images/gravity-flow-icon-cropped_gray.svg';
+					$menu_item['icon'] = 'dashicons-gravityflow-icon';
 				}
 			}
 
