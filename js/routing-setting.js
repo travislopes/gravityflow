@@ -242,17 +242,7 @@
                 str = '<input type="text" value="" class="gform-routing-value value_{0}" />'.format(index);
             }
 
-            /**
-             * Filter the markup rendered for the Conditional Routing's value select.
-             *
-             * @param str    str              The markup to be rendered.
-             * @param object filter           An object containing the properties of the current condition.
-             * @param str    selectedOperator The operator that is selected for the current condition.
-             * @param int    index            The index of the current condition.
-             *
-             * @since 2.6.1
-             */
-            return gform.applyFilters( 'gravityflow_routing_values_markup', str, filter, selectedOperator, index );
+            return str;
         },
 
         getFilter: function  (key) {
