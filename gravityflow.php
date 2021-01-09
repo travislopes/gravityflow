@@ -11,7 +11,7 @@ Text Domain: gravityflow
 Domain Path: /languages
 
 ------------------------------------------------------------------------
-Copyright 2015-2020 Steven Henty S.L.
+Copyright 2015-2021 Steven Henty S.L.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
