@@ -55,6 +55,21 @@ Gravity Flow will work with any license of [Gravity Forms](https://gravityflow.i
 
 == ChangeLog ==
 
+= 2.7 =
+- Added support for Gravity Forms 2.5-beta-3.
+- Added filter gravityflow_entry_url_status_table to allow the url in status page to be customized.
+- Added filter gravityflow_sort_columns_status_table to allow custom columns defined in gravityflow_field_value_status_table to be sorted
+- Added filter gravityflow_sort_criteria_status to allow initial sort order on status page load to be defined.
+- Added a setting to enable the Workflow Inbox count in the WordPress admin menu.
+- Updated the Workflow Inbox Count to be disabled by default; it can be enabled with the advanced setting on the plugin settings page.
+- Fixed an issue where the front-end workflow was showing stuck on same step for email based assignee.
+- Fixed an issue with Step Assignees on User Input Step causing a Fatal Error.
+- Fixed an issue with the print button on workflow details page and front-end pages.
+- Fixed JS errors with multiple status shortcodes on the same page.
+- Fixed an issue where workflow steps are processed for entry revisions created by GravityView Entry Revisions.
+- Fixed an issue with Step Condition on Form Submission Step. The entry meta of child form was fetched to process the condition, instead of parent form.
+- Fixed an issue with step reassignment when the assignee policy has changed.
+
 = 2.6 =
 - Added support for Gravity Forms 2.5.
 - Added the 'gravityflow_inbox_count_display' filter to allow the inbox count to be hidden in the WordPress admin menu.
