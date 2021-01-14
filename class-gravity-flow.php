@@ -4647,16 +4647,19 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 					'label' => esc_html__( 'General', 'gravityflow' ),
 					'title' => esc_html__( 'Gravity Flow Settings', 'gravityflow' ),
 					'callback' => array( $this, 'app_settings_tab' ),
+					'icon' => 'dashicons-admin-settings',
 				),
 				array(
 					'name' => 'labels',
 					'label' => __( 'Labels', 'gravityflow' ),
 					'callback' => array( $this, 'app_settings_label_tab' ),
+					'icon' => 'dashicons-format-aside',
 				),
 				array(
 					'name' => 'connected_apps',
 					'label' => __( 'Connected Apps', 'gravityflow' ),
 					'callback' => array( $this, 'app_settings_connected_apps_tab' ),
+					'icon' => 'dashicons-networking',
 				),
 				/*
 				array(
@@ -4670,7 +4673,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 			$setting_tabs = apply_filters( 'gravityflow_settings_menu_tabs', $setting_tabs );
 
 			if ( $this->current_user_can_any( $this->_capabilities_uninstall ) ) {
-				$setting_tabs[] = array( 'name' => 'uninstall', 'label' => __( 'Uninstall', 'gravityflow' ), 'callback' => array( $this, 'app_settings_uninstall_tab' ) );
+				$setting_tabs[] = array( 'name' => 'uninstall', 'label' => __( 'Uninstall', 'gravityflow' ), 'callback' => array( $this, 'app_settings_uninstall_tab' ), 'icon' => 'dashicons-trash' );
 			}
 
 			ksort( $setting_tabs, SORT_NUMERIC );
