@@ -22,3 +22,7 @@ table.gravityflow-settings-labels th {
     max-width: 69.5rem;
     padding: 1.5rem;
 }
+
+input#gravityflow-labels-update {
+    background: #3E7DA6;
+}
