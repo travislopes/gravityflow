@@ -1,1 +1,2 @@
 - Fixed an issue that prevented use of gravityflow_status_filter with an 'any' mode selection from being applied correctly.
+- Fixed an issue with display of Update button on Workflow Labels Settings.
