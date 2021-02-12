@@ -12,3 +12,4 @@
 - Fixed an issue with Step Condition on Form Submission Step. The entry meta of child form was fetched to process the condition, instead of parent form.
 - Fixed an issue with reassignment when the assignee policy has changed.
 - Fixed Assignee Email merge tag to display alongside the container.
+- Fixed the background on Workflow Labels Settings page.
