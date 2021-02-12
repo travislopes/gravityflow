@@ -3,6 +3,8 @@
  * Purpose: Test Update User workflow step
  */
 
+// @group new-tests
+
 $I = new AcceptanceTester( $scenario );
 
 $I->wantTo( 'Test the Update User Workflow Step' );

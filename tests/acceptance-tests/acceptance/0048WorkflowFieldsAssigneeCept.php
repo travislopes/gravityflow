@@ -3,6 +3,8 @@
  * Purpose: Test workflow fields as assignees on Workflow Step
  */
 
+// @group new-tests
+
 $I = new AcceptanceTester( $scenario );
 
 $I->wantTo( 'Test workflow fields as assignees on Workflow Step' );

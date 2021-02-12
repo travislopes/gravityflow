@@ -3,6 +3,8 @@
  * Purpose: Test that hidden fields work on Workflow Completion
  */
 
+// @group new-tests
+
 $I = new AcceptanceTester( $scenario );
 
 $I->wantTo( 'Test that hidden fields work on Workflow Completion' );
