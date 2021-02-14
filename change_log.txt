@@ -1,1 +1,2 @@
 - Fixed an issue that prevented use of gravityflow_status_filter with an 'any' mode selection from being applied correctly.
+- Fixed the entry filter setting to support the filters being passed in the field config which improves Form Connector extension remote site scenarios.
