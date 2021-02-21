@@ -5601,9 +5601,10 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 
 				}
 
+				require_once( $this->get_base_path() . '/includes/class-gf-api-strategy.php' );
 				require_once( $this->get_base_path() . '/includes/pages/class-entry-detail-page.php' );
 
-				$page = new Gravity_Flow_Entry_Detail_Page( $provided_form_id, $entry_id );
+				$page = new Gravity_Flow_Entry_Detail_Page( $provided_form_id, $entry_id, Gravity_Flow_GF_API_Strategy::instance() );
 
 				if ( ! $page->is_valid() ) {
 					esc_html_e( 'Oops! We could not locate your entry.', 'gravityflow' );

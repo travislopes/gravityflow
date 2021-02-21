@@ -20,14 +20,16 @@ class Gravity_Flow_Entry_Detail_Page {
 
 	private $form_id;
 	private $entry_id;
+	private $gfapi;
 	private $entry;
 	private $form;
 
-	public function __construct( $form_id, $entry_id ) {
+	public function __construct( $form_id, $entry_id, $gfapi ) {
 		$this->entry_id = $entry_id;
 		$this->form_id  = $form_id;
-		$this->form     = GFAPI::get_form( $form_id );
-		$this->entry    = GFAPI::get_entry( $entry_id );
+		$this->gfapi    = $gfapi;
+		$this->form     = $this->gfapi->get_form( $form_id );
+		$this->entry    = $this->gfapi->get_entry( $entry_id );
 	}
 
 	/**
@@ -412,7 +414,7 @@ class Gravity_Flow_Entry_Detail_Page {
 
 			gravity_flow()->log_debug( __METHOD__ . '() $is_assignee: ' . ( $is_assignee ? 'yes' : 'no' ) );
 
-			$full_access = GFAPI::current_user_can_any( array(
+			$full_access = $this->gfapi->current_user_can_any( array(
 				'gform_full_access',
 				'gravityflow_status_view_all',
 			) );
