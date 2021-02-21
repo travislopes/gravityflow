@@ -5592,7 +5592,8 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 
 			if ( rgget( 'view' ) == 'entry' || ! empty( $args['entry_id'] ) ) {
 
-				$entry_id = absint( rgget( 'lid' ) );
+				$entry_id         = absint( rgget( 'lid' ) );
+				$provided_form_id = absint( rgget( 'id' ) );
 
 				if ( empty( $entry_id ) ) {
 
@@ -5600,25 +5601,24 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 
 				}
 
-				$entry = GFAPI::get_entry( $entry_id );
+				require_once( $this->get_base_path() . '/includes/pages/class-entry-detail-page.php' );
 
-				if ( is_wp_error( $entry ) ) {
+				$page = new Gravity_Flow_Entry_Detail_Page( $provided_form_id, $entry_id );
+
+				if ( ! $page->is_valid() ) {
 					esc_html_e( 'Oops! We could not locate your entry.', 'gravityflow' );
 					return;
 				}
 
-				$form_id = $entry['form_id'];
-				$form = GFAPI::get_form( $form_id );
-
-				$process_entry_detail = apply_filters( 'gravityflow_inbox_entry_detail_pre_process', true, $form, $entry );
+				$process_entry_detail = apply_filters( 'gravityflow_inbox_entry_detail_pre_process', true, $page->get_form(), $page->get_entry() );
 
 				if ( ! $process_entry_detail || is_wp_error( $process_entry_detail ) ) {
 					return;
 				}
 
-				require_once( $this->get_base_path() . '/includes/pages/class-entry-detail.php' );
-
-				$step = $this->get_current_step( $form, $entry );
+				$step  = $this->get_current_step( $page->get_form(), $page->get_entry() );
+				$entry = $page->get_entry();
+				$form  = $page->get_form();
 
 				if ( $step ) {
 					$token = $this->decode_access_token();
@@ -5630,7 +5630,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 								esc_html_e( 'Error: incorrect entry.', 'gravityflow' );
 								return;
 							}
-							$api = new Gravity_Flow_API( $form_id );
+							$api = new Gravity_Flow_API( $page->get_form_id() );
 							$result = $api->cancel_workflow( $entry );
 							if ( $result ) {
 								$feedback = esc_html__( 'Workflow Cancelled', 'gravityflow' );
@@ -5719,7 +5719,7 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 					$args['check_permissions'] = false;
 				}
 
-				Gravity_Flow_Entry_Detail::entry_detail( $form, $entry, $step, $args );
+				$page->entry_detail( $step, $args );
 				return;
 			} else {
 
