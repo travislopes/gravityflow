@@ -76,6 +76,10 @@ class Gravity_Flow_Entry_Detail_Page {
 		return true;
 	}
 
+	public function update_form_data( $form ) {
+		$this->form = wp_parse_args( $this->form, $form );
+	}
+
 	/**
 	 * Displays the entry detail page.
 	 *

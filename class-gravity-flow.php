@@ -5720,6 +5720,8 @@ jQuery('#setting-entry-filter-{$name}').gfFilterUI({$filter_settings_json}, {$va
 					$args['check_permissions'] = false;
 				}
 
+				$page->update_form_data( $form );
+
 				$page->entry_detail( $step, $args );
 				return;
 			} else {
