@@ -10,8 +10,8 @@ class Tests_Gravity_Flow_Entry_Detail_Page extends GF_UnitTestCase {
 	private $api_stub;
 
 	public function setUp() {
-		require_once( dirname(__FILE__) . '/../../includes/pages/class-entry-detail-page.php' );
-		require_once( dirname(__FILE__) . '/../../includes/class-gf-api-strategy.php' );
+		require_once( dirname( __FILE__ ) . '/../../includes/pages/class-entry-detail-page.php' );
+		require_once( dirname( __FILE__ ) . '/../../includes/class-gf-api-strategy.php' );
 
 		$this->api_stub = $this->createMock( Gravity_Flow_GF_API_Strategy::class );
 		parent::setUp();
@@ -37,16 +37,49 @@ class Tests_Gravity_Flow_Entry_Detail_Page extends GF_UnitTestCase {
 
 	public function is_valid_data_provider() {
 		return array(
+			// Matching form IDs
 			array(
 				1,
 				2,
-				[
+				array(
 					'id' => 1,
-				],
-				[
+				),
+				array(
 					'form_id' => 1,
-				],
-				true
+				),
+				true,
+			),
+			// Non-matching form IDs
+			array(
+				1,
+				2,
+				array(
+					'id' => 2,
+				),
+				array(
+					'form_id' => 1,
+				),
+				false,
+			),
+			// Invalid/empty Form
+			array(
+				1,
+				2,
+				false,
+				array(
+					'form_id' => 1,
+				),
+				false,
+			),
+			// Invalid Entry
+			array(
+				1,
+				2,
+				array(
+					'id' => 2,
+				),
+				new \WP_Error( 'Invalid' ),
+				false,
 			),
 		);
 	}
