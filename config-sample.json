@@ -1,4 +1,6 @@
 {
+  "proxy": "gravityforms.local",
+  "certs_path": "/Users/USERNAME/Library/Application Support/Local/run/router/nginx/certs",
   "dropbox" : {
     "access_token" : "your token",
     "upload_path" : "My Builds"
