@@ -82,68 +82,10 @@ module.exports = {
 			dest: pkg.gravityflow.paths.css_dist,
 		} );
 	},
-	adminThemeCss() {
-		return cssProcess( {
-			src: [
-				`${ pkg.gravityflow.paths.css_src }admin/admin-theme.pcss`,
-			],
-			dest: pkg.gravityflow.paths.css_dist,
-		} );
-	},
-	adminFontAwesomeCss() {
-		return cssProcess( {
-			src: [
-				`${ pkg.gravityflow.paths.css_src }admin/deprecated/font-awesome.pcss`,
-			],
-			dest: pkg.gravityflow.paths.css_dist,
-		} );
-	},
-	adminIE11Css() {
-		return cssProcess( {
-			src: [
-				`${ pkg.gravityflow.paths.css_src }admin/admin-ie11.pcss`,
-			],
-			dest: pkg.gravityflow.paths.css_dist,
-		} );
-	},
-	editorCss() {
-		return cssProcess( {
-			src: [
-				`${ pkg.gravityflow.paths.css_src }admin/editor.pcss`,
-			],
-			dest: pkg.gravityflow.paths.css_dist,
-		} );
-	},
-	settingsCss() {
-		return cssProcess( {
-			src: [
-				`${ pkg.gravityflow.paths.css_src }admin/settings.pcss`,
-			],
-			dest: pkg.gravityflow.paths.settings_css_dist,
-		} );
-	},
-	baseCss() {
-		return cssProcess( {
-			src: [
-				`${ pkg.gravityflow.paths.css_src }theme/basic.pcss`,
-			],
-			dest: pkg.gravityflow.paths.css_dist,
-			plugins: compileTheme,
-		} );
-	},
 	themeCss() {
 		return cssProcess( {
 			src: [
 				`${ pkg.gravityflow.paths.css_src }theme/theme.pcss`,
-			],
-			dest: pkg.gravityflow.paths.css_dist,
-			plugins: compileTheme,
-		} );
-	},
-	themeIE11Css() {
-		return cssProcess( {
-			src: [
-				`${ pkg.gravityflow.paths.css_src }theme/theme-ie11.pcss`,
 			],
 			dest: pkg.gravityflow.paths.css_dist,
 			plugins: compileTheme,

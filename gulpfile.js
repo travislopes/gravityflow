@@ -64,14 +64,7 @@ const gulpTasks = [
 	/* Postcss tasks */
 
 	'postcss:adminCss', // the postcss task that transforms admin css
-	'postcss:editorCss', // the postcss task that transforms editor css
-	'postcss:settingsCss', // the postcss task that transforms settings css
-	'postcss:adminThemeCss', // the postcss task that transforms the front end theme components used in the admin
-	'postcss:adminFontAwesomeCss', // the postcss task that transforms the deprecated font awesome kit
-	'postcss:adminIE11Css', // the postcss task that transforms the admin ie11 css
-	'postcss:baseCss', // the postcss task that transforms base css
 	'postcss:themeCss', // the postcss task that transforms theme css
-	'postcss:themeIE11Css', // the postcss task that transforms the theme ie11 css
 
 	/* Replace tasks */
 
@@ -125,6 +118,8 @@ gulp.task( 'icons:admin', gulp.series(
 	'header:adminIconsVariables',
 	'footer:adminIconsVariables',
 	'clean:adminIconsEnd',
+	'postcss:adminCss',
+	'postcss:themeCss',
 ) );
 
 gulp.task( 'icons:theme', gulp.series(
@@ -139,6 +134,8 @@ gulp.task( 'icons:theme', gulp.series(
 	'header:themeIconsVariables',
 	'footer:themeIconsVariables',
 	'clean:themeIconsEnd',
+	'postcss:adminCss',
+	'postcss:themeCss',
 ) );
 
 /**
@@ -172,14 +169,7 @@ gulp.task( 'dev', gulp.parallel( watchTasks, async function() {
 
 gulp.task( 'dist', gulp.series(
 	'postcss:adminCss',
-	'postcss:editorCss',
-	'postcss:settingsCss',
-	'postcss:adminThemeCss',
-	'postcss:adminFontAwesomeCss',
-	'postcss:adminIE11Css',
-	'postcss:baseCss',
 	'postcss:themeCss',
-	'postcss:themeIE11Css',
 ) );
 
 gulp.task( 'default', gulp.series( 'dist' ) );

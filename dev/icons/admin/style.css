@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'gflow-icons-admin';
   src:
-    url('fonts/gflow-icons-admin.woff2?fjrjo1') format('woff2'),
-    url('fonts/gflow-icons-admin.ttf?fjrjo1') format('truetype'),
-    url('fonts/gflow-icons-admin.woff?fjrjo1') format('woff'),
-    url('fonts/gflow-icons-admin.svg?fjrjo1#gflow-icons-admin') format('svg');
+    url('fonts/gflow-icons-admin.woff2?8pdavt') format('woff2'),
+    url('fonts/gflow-icons-admin.ttf?8pdavt') format('truetype'),
+    url('fonts/gflow-icons-admin.woff?8pdavt') format('woff'),
+    url('fonts/gflow-icons-admin.svg?8pdavt#gflow-icons-admin') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.gflow-icon-gravityflow-icon:before {
+.gflow-icon--gravityflow-icon:before {
   content: "\41";
 }
