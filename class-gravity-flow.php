@@ -3167,7 +3167,7 @@ PRIMARY KEY  (id)
 							$tooltip_class = isset( $field['tooltip_class'] ) ? $field['tooltip_class'] : '';
 							$tooltip       = gform_tooltip( $field['tooltip'], $tooltip_class, true );
 						}
-						printf( '<div id="%s-setting-tab-field-%s" class="gravityflow-tab-field"><div class="gravityflow-tab-field-label">%s %s</div>', $settings_prefix, $id, $field['label'], $tooltip );
+						printf( '<div id="%s-setting-tab-field-%s" class="gform-settings-field gform-settings-field__%s gravityflow-tab-field"><div class="gravityflow-tab-field-label">%s %s</div>', $settings_prefix, $id, $field['type'], $field['label'], $tooltip );
 						call_user_func( $func, $field );
 						echo '</div>';
 					}

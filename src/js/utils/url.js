@@ -1,6 +1,6 @@
 /**
  * @module
- * @description Url utils for the filter loops
+ * @description Url utils
  */
 
 import _ from 'lodash';
