@@ -59,7 +59,7 @@ function cssProcess( {
 	plugins = compilePlugins,
 	bundleName = 'empty.css', // Needs to be a valid filename else concat errors
 } ) {
-	const server = browserSync.get( 'Gravity Forms Dev' );
+	const server = browserSync.get( 'Gravityflow Dev' );
 	return gulp.src( src )
 		.pipe( sourcemaps.init() )
 		.pipe( postcss( plugins ) )

@@ -1,20 +1,22 @@
-const gulp = require( 'gulp' );
-const requireDir = require( 'require-dir' );
-const tasks = requireDir( './gulp-tasks' );
-const browserSync = require( 'browser-sync' ).create( 'Gravity Forms Dev' );
+const gulp = require('gulp');
+const requireDir = require('require-dir');
+const tasks = requireDir('./gulp-tasks');
+const browserSync = require('browser-sync').create('Gravityflow Dev');
 
-function module_exists( name ) {
+function module_exists(name) {
 	try {
-		return require.resolve( name );
-	} catch ( e ) {
+		return require.resolve(name);
+	} catch (e) {
 		return false;
 	}
 }
 
-const config = module_exists( './config.json' ) ? require( './config.json' ) : {
-	proxy: 'gravity-forms.local',
-	certs_path: '',
-};
+const config = module_exists('./config.json')
+	? require('./config.json')
+	: {
+			proxy: 'gravity-forms.local',
+			certs_path: '',
+	  };
 
 /**
  * List out your tasks as defined in the gulp_tasks directory
@@ -49,6 +51,13 @@ const gulpTasks = [
 	'decompress:adminIcons', // extract icomoon admin kit to dev directory
 	'decompress:themeIcons', // extract icomoon theme kit to dev directory
 
+	/* Eslint tasks */
+
+	'eslint:theme', // lint the theme js according to the products lint rules, uses fix to auto correct common issues
+	'eslint:apps', // lint the apps js according to the products lint rules, uses fix to auto correct common issues
+	'eslint:utils', // lint the utils js according to the products lint rules, uses fix to auto correct common issues
+	'eslint:admin', // lint the admin js according to the products lint rules, uses fix to auto correct common issues
+
 	/* Footer tasks */
 
 	'footer:adminIconsVariables', // just adds a closing } to the admin icons variables file during the icons import transform tasks
@@ -73,9 +82,25 @@ const gulpTasks = [
 	'replace:themeIconsStyle', // runs regex to replace and convert scss to pcss compatible with our systems in the icons task
 	'replace:themeIconsVariables', // runs regex to replace and convert scss to pcss compatible with our systems in the icons task
 
+	/* Shell tasks */
+
+	'shell:test', // runs jests tests
+	'shell:scriptsThemeDev', // runs webpack for the theme dev build
+	'shell:scriptsThemeProd', // runs webpack for the theme prod build
+	'shell:scriptsAdminDev', // runs webpack for the admin dev build
+	'shell:scriptsAdminProd', // runs webpack for the admin prod build
+
+	/* Stylelint tasks */
+
+	'stylelint:admin', // lints and fixes the admin pcss
+	'stylelint:theme', // lints and fixes the theme pcss
+	'stylelint:apps', // lints and fixes the apps pcss modules
+
 	/* Watch Tasks (THESE MUST BE LAST) */
 
 	'watch:main', // watch all fe assets and run appropriate routines
+	'watch:watchAdminJS', // watch all fe assets for admin and theme and run appropriate routines
+	'watch:watchThemeJS', // watch all fe assets for admin and theme and run appropriate routines
 ];
 
 /**
@@ -84,10 +109,10 @@ const gulpTasks = [
  */
 
 function registerTasks() {
-	gulpTasks.forEach( ( task ) => {
-		const parts = task.split( ':' );
-		gulp.task( task, tasks[ parts[ 0 ] ][ parts[ 1 ] ] );
-	} );
+	gulpTasks.forEach((task) => {
+		const parts = task.split(':');
+		gulp.task(task, tasks[parts[0]][parts[1]]);
+	});
 }
 
 /**
@@ -96,80 +121,123 @@ function registerTasks() {
 
 registerTasks();
 
-const watchTasks = [
-	'watch:main',
-];
+const watchTasks = ['watch:main', 'watch:watchAdminJS', 'watch:watchThemeJS'];
 
-gulp.task( 'watch', gulp.parallel( watchTasks ) );
+gulp.task('watch', gulp.parallel(watchTasks));
+
+/**
+ * Lints js and css, fixed common issues automatically.
+ */
+
+gulp.task(
+	'lint',
+	gulp.series(
+		gulp.parallel(
+			'eslint:theme',
+			'eslint:apps',
+			'eslint:utils',
+			'eslint:admin',
+			'stylelint:admin',
+			'stylelint:theme',
+			'stylelint:apps'
+		)
+	)
+);
+
+/**
+ * Tests js.
+ */
+
+gulp.task('test', gulp.series(gulp.parallel('shell:test')));
+
+/**
+ * Run linting and tests
+ */
+
+gulp.task('validate', gulp.series(gulp.parallel('lint', 'test')));
 
 /**
  * Takes a zip file from icomoon and injects it into the postcss, modifying the scss to pcss and handling all conversions/cleanup.
  */
 
-gulp.task( 'icons:admin', gulp.series(
-	'clean:adminIconsStart',
-	'decompress:adminIcons',
-	'copy:adminIconsFonts',
-	'copy:adminIconsStyles',
-	'copy:adminIconsVariables',
-	'replace:adminIconsStyle',
-	'replace:adminIconsVariables',
-	'header:adminIconsStyle',
-	'header:adminIconsVariables',
-	'footer:adminIconsVariables',
-	'clean:adminIconsEnd',
-	'postcss:adminCss',
-	'postcss:themeCss',
-) );
+gulp.task(
+	'icons:admin',
+	gulp.series(
+		'clean:adminIconsStart',
+		'decompress:adminIcons',
+		'copy:adminIconsFonts',
+		'copy:adminIconsStyles',
+		'copy:adminIconsVariables',
+		'replace:adminIconsStyle',
+		'replace:adminIconsVariables',
+		'header:adminIconsStyle',
+		'header:adminIconsVariables',
+		'footer:adminIconsVariables',
+		'clean:adminIconsEnd',
+		'postcss:adminCss',
+		'postcss:themeCss'
+	)
+);
 
-gulp.task( 'icons:theme', gulp.series(
-	'clean:themeIconsStart',
-	'decompress:themeIcons',
-	'copy:themeIconsFonts',
-	'copy:themeIconsStyles',
-	'copy:themeIconsVariables',
-	'replace:themeIconsStyle',
-	'replace:themeIconsVariables',
-	'header:themeIconsStyle',
-	'header:themeIconsVariables',
-	'footer:themeIconsVariables',
-	'clean:themeIconsEnd',
-	'postcss:adminCss',
-	'postcss:themeCss',
-) );
+gulp.task(
+	'icons:theme',
+	gulp.series(
+		'clean:themeIconsStart',
+		'decompress:themeIcons',
+		'copy:themeIconsFonts',
+		'copy:themeIconsStyles',
+		'copy:themeIconsVariables',
+		'replace:themeIconsStyle',
+		'replace:themeIconsVariables',
+		'header:themeIconsStyle',
+		'header:themeIconsVariables',
+		'footer:themeIconsVariables',
+		'clean:themeIconsEnd',
+		'postcss:adminCss',
+		'postcss:themeCss'
+	)
+);
 
 /**
  * Watches all css and php for bundle, runs tasks and reloads browser using browsersync.
  */
 
-gulp.task( 'dev', gulp.parallel( watchTasks, async function() {
-	browserSync.init( {
-		watchTask: true,
-		debugInfo: true,
-		logConnections: true,
-		notify: true,
-		open: 'external',
-		host: config.proxy,
-		proxy: `https://${ config.proxy }`,
-		https: {
-			key: `${ config.certs_path }/${ config.proxy }.key`,
-			cert: `${ config.certs_path }/${ config.proxy }.crt`,
-		},
-		ghostMode: {
-			scroll: true,
-			links: true,
-			forms: true,
-		},
-	} );
-} ) );
+gulp.task(
+	'dev',
+	gulp.parallel(watchTasks, async function () {
+		browserSync.init({
+			watchTask: true,
+			debugInfo: true,
+			logConnections: true,
+			notify: true,
+			open: 'external',
+			host: config.proxy,
+			proxy: `https://${config.proxy}`,
+			https: {
+				key: `${config.certs_path}/${config.proxy}.key`,
+				cert: `${config.certs_path}/${config.proxy}.crt`,
+			},
+			ghostMode: {
+				scroll: true,
+				links: true,
+				forms: true,
+			},
+		});
+	})
+);
 
 /**
  * Builds the entire package for production locally
  */
 
-gulp.task( 'dist', gulp.series(
-	'postcss:adminCss',
-	'postcss:themeCss',
-) );
+gulp.task(
+	'dist',
+	gulp.series(
+		gulp.parallel('lint', 'test'),
+		gulp.parallel('postcss:adminCss', 'postcss:themeCss'),
+		gulp.parallel('shell:scriptsThemeDev', 'shell:scriptsAdminDev'),
+		gulp.parallel('shell:scriptsAdminProd', 'shell:scriptsThemeProd')
+	)
+);
 
-gulp.task( 'default', gulp.series( 'dist' ) );
+gulp.task('default', gulp.series('dist'));

@@ -1,13 +1,12 @@
 @define-mixin list-columns $colcount {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr) [ $colcount ];
-    grid-template-columns: repeat( $colcount, 1fr );
-    grid-template-rows: repeat( auto-fill, auto );
-    grid-column-gap: 2rem;
+	display: grid;
+	-ms-grid-columns: (1fr) [ $colcount ];
+	grid-template-columns: repeat($colcount, 1fr);
+	grid-template-rows: repeat(auto-fill, auto);
+	grid-column-gap: 2rem;
 }
 
 @define-mixin list-columns-vertical $colcount {
-    column-count: $colcount;
-    grid-column-gap: 2rem;
+	column-count: $colcount;
+	grid-column-gap: 2rem;
 }
