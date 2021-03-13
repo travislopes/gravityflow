@@ -1,4 +1,4 @@
-const wp = window.gravityflow_config;
+const wp = window.gflow_config;
 
 export const IMAGES_URL = wp.images_url;
 export const TEMPLATE_URL = wp.template_url;
