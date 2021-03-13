@@ -31,7 +31,7 @@ services:
       - 80:80
     environment:
       WORDPRESS_DB_HOST: mysql
-      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
   mysql:
