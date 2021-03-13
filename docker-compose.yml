@@ -41,6 +41,10 @@ services:
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
        MYSQL_PASSWORD: wordpress
+       WORDPRESS_CONFIG_EXTRA: |
+         /* Gravity Flow and Gravity Forms development versions requires SCRIPT_DEBUG */
+         define( 'SCRIPT_DEBUG', true );
+
 
   chrome:
     environment:
