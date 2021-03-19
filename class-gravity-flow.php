@@ -2077,6 +2077,10 @@ PRIMARY KEY  (id)
 		 * Ajax handler for the request to save the custom feed order.
 		 */
 		public function ajax_save_feed_order() {
+			if ( rgpost( 'action' ) !== 'gravityflow_save_feed_order' ) {
+				return;
+			}
+
 			$feed_ids = rgpost( 'feed_ids' );
 			$form_id  = absint( rgpost( 'form_id' ) );
 			foreach ( $feed_ids as &$feed_id ) {
