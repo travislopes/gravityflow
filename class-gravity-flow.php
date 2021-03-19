@@ -736,6 +736,7 @@ PRIMARY KEY  (id)
 						'hasStartStep'    => $has_start_step,
 						'hasCompleteStep' => $has_complete_step,
 						'formId'          => $form_id,
+						'nonce'           => wp_create_nonce( 'gravityflow_feed_list' ),
 					),
 				),
 				array(
@@ -2080,6 +2081,8 @@ PRIMARY KEY  (id)
 			if ( rgpost( 'action' ) !== 'gravityflow_save_feed_order' ) {
 				return;
 			}
+
+			check_ajax_referer( 'gravityflow_feed_list', 'nonce' );
 
 			$feed_ids = rgpost( 'feed_ids' );
 			$form_id  = absint( rgpost( 'form_id' ) );
